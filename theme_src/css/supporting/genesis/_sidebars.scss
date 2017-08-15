@@ -1,0 +1,22 @@
+
+/* # Sidebars
+---------------------------------------------------------------------------------------------------- */
+
+.sidebar {
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.sidebar p:last-child,
+.sidebar ul > li:last-child {
+  margin-bottom: 0;
+}
+
+.sidebar .widget {
+  margin-bottom: 60px;
+}

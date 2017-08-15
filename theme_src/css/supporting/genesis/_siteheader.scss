@@ -1,0 +1,74 @@
+
+/* # Site Header
+---------------------------------------------------------------------------------------------------- */
+
+.site-header {
+  min-height: 160px;
+  border-bottom: 1px solid #eee;
+}
+
+.site-header .wrap {
+  padding: 40px 0;
+}
+
+/* ## Title Area
+--------------------------------------------- */
+
+.title-area {
+  float: left;
+  padding: 10px 0;
+  width: 360px;
+}
+
+.header-full-width .title-area {
+  width: 100%;
+}
+
+.site-title {
+  font-size: 30px;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.site-title a,
+.site-title a:hover,
+.site-title a:focus {
+  color: #333;
+}
+
+.header-image .site-title > a {
+  background: url(images/logo.png) no-repeat left;
+  float: left;
+  min-height: 60px;
+  width: 100%;
+}
+
+.site-description {
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.site-description,
+.site-title {
+  margin-bottom: 0;
+}
+
+.header-image .site-description,
+.header-image .site-title a {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+/* ## Widget Area
+--------------------------------------------- */
+
+.site-header .widget-area {
+  float: right;
+  text-align: right;
+  width: 780px;
+}
+
