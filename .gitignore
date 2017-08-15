@@ -6,6 +6,4 @@ rsync*.json
 *.map
 images/
 theme_dest/
-gulpfile (copy).js
-package (copy).json
 theme_backup/
