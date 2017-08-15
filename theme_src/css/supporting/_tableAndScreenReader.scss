@@ -1,3 +1,4 @@
+
 /* ## Tables
 --------------------------------------------- */
 
@@ -39,12 +40,13 @@ th {
   width: 1px;
   border: 0;
   overflow: hidden;
+  word-wrap: normal !important;
 }
 
 .screen-reader-text:focus,
 .screen-reader-shortcut:focus,
 .genesis-nav-menu .search input[type="submit"]:focus,
-.widget_search input[type="submit"]:focus  {
+.widget_search input[type="submit"]:focus {
   clip: auto !important;
   height: auto;
   width: auto;
@@ -56,10 +58,9 @@ th {
   background: #fff;
   z-index: 100000; /* Above WP toolbar. */
   text-decoration: none;
-  box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 }
 
 .more-link {
   position: relative;
 }
-

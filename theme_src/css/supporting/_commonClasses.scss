@@ -77,18 +77,18 @@
 }
 
 .entry-title {
-  font-size: 48px;
-  font-size: 4.8rem;
+  font-size: 36px;
+  font-size: 3.6rem;
 }
 
 .entry-title a,
 .sidebar .widget-title a {
-  color: $color_blue;
+  color: #333;
 }
 
 .entry-title a:hover,
 .entry-title a:focus {
-  color: lighten($color_blue, 10%);
+  color: #c3251d;
 }
 
 .widget-title {
@@ -161,154 +161,4 @@ img.alignright,
 .entry-content .wp-playlist,
 .entry-content .wp-video {
   margin: 0 0 28px;
-}
-.text-center {
-  text-align: center;
-}
-@media (min-width: $screen-md-min) {  // without this col-md-* will not stack at smaller screens because display is flex
-  .md-vert-center {
-    display:flex;
-    align-items: center;
-  }
-  .md-horiz-center {
-    display: flex;
-    justify-content: center;
-  }
-
-  .md-same-height {
-    display:flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-  .nowrap {
-    flex-wrap: nowrap;
-  }
-}
-
-.pad15 {
-  padding: 15px;
-  padding: 1.5rem;
-}
-.pad25 {
-  padding: 25px;
-  padding: 2.5rem;
-}
-@media only screen and (max-width: 1020px) {
-
-  .site-header .search-form {
-    float: none;
-  }
-
-  .genesis-nav-menu,
-  .site-description,
-  .site-header .title-area,
-  .site-header .search-form,
-  .site-title {
-    text-align: center;
-  }
-
-  .site-header .search-form {
-    margin: 16px auto;
-  }
-
-}
-
-//remove underline in .btn (bootstrap)
-
-.btn {
-  text-decoration: none;
-}
-
-
-/*  Arrows
---------------------------------------------------- */
-
-
-.white-arrow-right {
-  display:block;
-  width: 0;
-  height: 0;
-  border-top: 18px solid transparent;
-  border-bottom: 18px solid transparent;
-  border-left: 18px solid #fff;
-}
-
-.white-arrow-left {
-  display:block;
-  width: 0;
-  height: 0;
-  border-top: 18px solid transparent;
-  border-bottom: 18px solid transparent;
-  border-right:18px solid #fff;
-}
-
-.blue-arrow-right {
-  display:block;
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-left: 25px solid $color_cyan;
-}
-.blue-arrow-left {
-  display:block;
-  width: 0;
-  height: 0;
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-right:25px solid $color_cyan;
-}
-
-.arrow-down--front-nav {
-  border-top: 5px solid $color_front_nav_sub
-}
-
-/*  Author box
------------------------------------------------------- */
-.author-box {
-  font-size: 13px;
-  font-size: 1.3rem;
-  display: block;
-  padding: 5px;
-  margin-bottom: 0;
-}
-.author-info {
-  display: table;
-}
-.author-image, .author-text {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.author-image {
-  text-align: left;
-  width: 100px;
-  vertical-align: middle;
-  font-size: 0;
-  padding: 4px;
-}
-.author-info {
-  width: 100%;
-}
-.author-image img {
-  max-width: 80px;
-  margin: 0;
-}
-
-.author-title {
-  color: $color_black;
-  text-transform: uppercase;
-  margin-bottom: 9px;
-  letter-spacing: 2px;
-  font-size: 18px;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-.author-bio {
-  line-height: 1.5;
-}
-.author {
-  color: $color_orange;
-  line-height: 1.5;
-  font-weight: 700;
 }

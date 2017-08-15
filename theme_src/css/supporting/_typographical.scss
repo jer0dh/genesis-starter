@@ -1,7 +1,7 @@
 /* Fonts
 --------------------------------------------- */
 
-
+/*
 @font-face {
   font-family: 'mb_empire_bookregular';
   src: url('../fonts/m-b_creative_-_mbempire-book-webfont.woff2') format('woff2'),
@@ -10,69 +10,7 @@
   font-style: normal;
 
 }
-//?
-@font-face {
-  font-family: 'mb_empireblack';
-  src: url('../fonts/m-b_creative_-_mbempire-heavy-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-heavy-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'mb_empirebold';
-  src: url('../fonts/m-b_creative_-_mbempire-bold-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-bold-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'mb_empiremedium';
-  src: url('../fonts/m-b_creative_-_mbempire-medium-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-medium-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'mb_empiremedium_italic';
-  src: url('../fonts/m-b_creative_-_mbempire-mediumitalic-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-mediumitalic-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'mb_empirethin';
-  src: url('../fonts/m-b_creative_-_mbempire-thin-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-thin-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'mb_empirelight';
-  src: url('../fonts/m-b_creative_-_mbempire-light-webfont.woff2') format('woff2'),
-  url('../fonts/m-b_creative_-_mbempire-light-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-  @font-face {
-    font-family: 'mb_empirelight_italic';
-    src: url('../fonts/m-b_creative_-_mbempire-lightitalic-webfont.woff2') format('woff2'),
-    url('../fonts/m-b_creative_-_mbempire-lightitalic-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-  }
-
-
+*/
 
 /* ## Typographical Elements
 --------------------------------------------- */
@@ -88,12 +26,12 @@ body > div {
 
 body {
   background-color: #fff;
-  color: $color_black;
-  font-family: $font_mbempire_book;
-  font-size: 17px;
-  font-size: 1.7rem;
+  color: #333;
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.625;
   margin: 0;
 }
 
@@ -125,7 +63,7 @@ a:focus {
 }
 
 p {
-  margin: 0 0 $p_bottom_margin;
+  margin: 0 0 28px;
   padding: 0;
 }
 
@@ -171,35 +109,4 @@ blockquote::before {
   left: -20px;
   position: relative;
   top: -10px;
-}
-
-/* icons */
-
-.icon {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  -webkit-background-size: 20px 20px;
-  background-size: 20px;
-  background-position: center;
-  -webkit-transition: background .1s ease-in;
-  transition: background .1s ease-in;
-  position: relative;
-  top: 5px;
-}
-
-.icon-linked-in-white {
-  background-image: url(../images/linkedin_white.svg);
-}
-
-.icon-linked-in-black {
-  background-image: url(../images/linkedin_black.svg);
-}
-
-.no-svg {
-  .icon-linked-in-black, .icon-linked-in-white {
-    background-image: url(../images/linkedin_white.png);
-  }
 }

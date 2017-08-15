@@ -23,9 +23,9 @@
 
 
 /* Bootstrap css
------------------------------------------------------------- */
+------------------------------------------------------------
 @import "supporting/bootstrap";
-
+*/
 
 /* Typographical
 ------------------------------------------------------------ */
@@ -119,18 +119,11 @@
 ------------------------------------------------------------ */
 @import "supporting/sitefooter";
 
-/* Front Page
------------------------------------------------------------- */
-@import "supporting/front_page";
 
-
-/* News Page
+/* Media Queries
 ------------------------------------------------------------ */
-@import "supporting/news";
+@import "supporting/mediaQueries";
 
-/* Portfolio Page
------------------------------------------------------------- */
-@import "supporting/portfolio";
 
 
 /* Genesis Base
@@ -138,13 +131,4 @@
 @import "supporting/printStyles";
 
 
-/* Swiper JS CSS
------------------------------------------------------------- */
-@import "supporting/swiper";
-
-
-
-/* Favorites CSS
------------------------------------------------------------- */
-@import "supporting/favorites";
 

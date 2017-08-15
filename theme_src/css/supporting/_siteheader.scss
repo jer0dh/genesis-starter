@@ -1,43 +1,14 @@
+
 /* # Site Header
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-  min-height: 110px;
-
+  min-height: 160px;
+  border-bottom: 1px solid #eee;
 }
-$border_size: 8px;
-
-.border_gold .site-header{
-  border-bottom: $border_size solid $color_gold;
-}
-.border_orange .site-header{
-  border-bottom: $border_size solid $color_orange;
-}
-.border_magenta .site-header {
-  border-bottom: $border_size solid $color_magenta;
-}
-.border_violet .site-header{
-  border-bottom: $border_size solid $color_violet;
-}
-.border_blue .site-header{
-  border-bottom: $border_size solid $color_blue;
-}
-.border_cyan .site-header{
-  border-bottom: $border_size solid $color_cyan;
-}
-.border_green .site-header{
-  border-bottom: $border_size solid $color_green;
-}
-.border_black .site-header{
-  border-bottom: $border_size solid $color_black;
-}
-.border_default .site-header{
-  border-bottom: $border_size solid $color_magenta;
-}
-
 
 .site-header .wrap {
-  padding: 10px 0;
+  padding: 40px 0;
 }
 
 /* ## Title Area
@@ -45,8 +16,8 @@ $border_size: 8px;
 
 .title-area {
   float: left;
-  padding: 1.5% 2% 0 1%;
-  width: 15%;
+  padding: 10px 0;
+  width: 360px;
 }
 
 .header-full-width .title-area {
@@ -67,9 +38,9 @@ $border_size: 8px;
 }
 
 .header-image .site-title > a {
-  background: url(../images/logo.png) no-repeat left 0/contain;
+  background: url(images/logo.png) no-repeat left;
   float: left;
-  min-height: 90px;
+  min-height: 60px;
   width: 100%;
 }
 
@@ -98,63 +69,6 @@ $border_size: 8px;
 .site-header .widget-area {
   float: right;
   text-align: right;
-  width: 14%;
-  padding: 2% 0 25px 0;
+  width: 780px;
 }
 
-.client-portal--header {
-  background: $color_gold url(../images/shutter.png) no-repeat center left;
-  background-size: contain;
-  height: 69px;
-  padding-left: 69px;
-    text-align: center;
-  position: relative;
-    a, .client-portal--content > span {  //.client-portal--content > span added to remove link during coming soon.
-      position: absolute;
-      top: 50%;
-      left: 72px;
-      transform: translateY(-50%);
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-  }
-
-
-@media only screen and (max-width: 1020px) {
-
-
-  .title-area {
-    width: 70%;
-    float: none;
-    margin: 0 auto;
-    padding-bottom: 20px;
-    height: 130px;
-  }
-  .site-header .widget-area {
-    width: 250px;
-  }
-
-  .site-header .wrap {
-    padding: 20px 5%;
-  }
-
-  .header-image .site-title > a {
-    background-position: center top;
-    min-height: 130px;
-
-  }
-  .site-header .widget-area {
-    margin: 0 auto;
-    float: none;
-    text-align: center;
-    padding: 15px;
-    clear:both;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-
-
-}
