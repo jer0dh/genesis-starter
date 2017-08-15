@@ -1,0 +1,57 @@
+/* ## Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font_mbempire_bold;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0 0 20px;
+}
+
+h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 48px;
+  font-size: 4.8rem;
+}
+
+h2 {
+  font-size: 20px;
+  font-size: 2rem;
+  font-weight:normal;
+}
+
+h3 {
+  font-size: 18px;
+  font-size: 1.8rem;
+  font-weight:normal;
+  text-decoration: underline;
+}
+
+h4 {
+  font-size: 20px;
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 18px;
+  font-size: 1.8rem;
+}
+
+h6 {
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
+.bg_color_violet h2 {
+  color: #fff;
+}
+
+.bg_color_default h2 {
+  color: $color_black;
+}

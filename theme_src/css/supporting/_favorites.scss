@@ -1,0 +1,59 @@
+/*  Favorites theme styles
+---------------------------------------------------------------------------------------- */
+
+
+.swiper-container--portfolio {
+  .portrait {
+    position: relative;
+  }
+}
+
+.simplefavorite-button {
+  font-size: 20px;
+  font-size: 2rem;
+  position: absolute;
+  width: auto;
+  height: 20px;
+  bottom: 5px;
+  right: 5px;
+  margin: 0;
+  padding: 0;
+  background: rgba(200,200,200,.4);
+  border: none;
+  color: $color_warm_gray;
+  cursor: pointer;
+
+  span {
+    display: none;
+    font-size: 12px;
+    font-size: 1.2rem;
+    color: $color_black;
+    line-height: 20px;
+    line-height: 2rem;
+    vertical-align: top;
+  }
+}
+
+.simplefavorite-button.active {
+  color: $color_gold;
+}
+
+.modal--large {
+  .simplefavorite-button {
+    width: auto;
+    height: 30px;
+    bottom: 0;
+    right: 0;
+    font-size: 30px;
+    padding: 5px;
+    padding: 0.5rem;
+    background: transparent;
+
+    span {
+      display: inline;
+      line-height: 30px;
+      line-height: 3rem;
+    }
+  }
+}
+

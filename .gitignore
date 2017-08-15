@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+rsync.json
+rsync-jhtech.json
+rsync*.json
+*.map
+images/
+theme_dest/
+gulpfile (copy).js
+package (copy).json

@@ -1,0 +1,19 @@
+/*!
+	Theme Name: <%= pkg.templateName %>
+	Theme URI: <%= pkg.templateUri %>
+	Description: <%= pkg.description %>
+	Author: <%= pkg.author %>
+	Author URI: <%= pkg.authorUri %>
+    Version: <%= pkg.version %><% if(!production){print('-build');} %>
+	Tags:
+
+	Template: genesis
+	Template Version: <%= pkg.genesisVersion %>
+
+	License: <%= pkg.license %>
+
+
+//TODO add lodash template loop here listing out Dependencies from package.json and versions
+
+*/
+

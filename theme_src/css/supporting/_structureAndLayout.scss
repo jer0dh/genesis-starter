@@ -1,0 +1,195 @@
+/* # Structure and Layout
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Site Containers
+--------------------------------------------- */
+html {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: $max_screen_width;
+}
+.site-inner .wrap {
+  margin: 0 auto;
+  width: 70%;
+  max-width: $max_screen_width * .70;
+}
+.site-inner {
+  clear: both;
+  padding-top: 50px;
+  position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8c8e92+0,eeeeee+100 */
+//  background: #8c8e92; /* Old browsers */
+//  background: -moz-linear-gradient(top, #8c8e92 0%, #eeeeee 100%); /* FF3.6-15 */
+//  background: -webkit-linear-gradient(top, #8c8e92 0%,#eeeeee 100%); /* Chrome10-25,Safari5.1-6 */
+//  background: linear-gradient(to bottom, #8c8e92 0%,#eeeeee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+//  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c8e92', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+  background-color: $color_gray;
+
+  &:before {
+
+      content: "";
+      position:absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 150px;
+      opacity: 0.4;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,383838+90,383838+100&1+0,0.06+90,0+100 */
+      background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(56,56,56,0.06) 90%, rgba(56,56,56,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(56,56,56,0.06) 90%,rgba(56,56,56,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(56,56,56,0.06) 90%,rgba(56,56,56,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00383838',GradientType=0 ); /* IE6-9 */
+
+  }
+}
+
+
+.content-sidebar-wrap {
+  position: relative;
+}
+/* ## Column Widths and Positions
+--------------------------------------------- */
+
+/* ### Wrapping div for .content and .sidebar-primary */
+
+/*
+.content-sidebar-sidebar .content-sidebar-wrap,
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+  width: 980px;
+}
+
+.content-sidebar-sidebar .content-sidebar-wrap {
+  float: left;
+}
+
+.sidebar-content-sidebar .content-sidebar-wrap,
+.sidebar-sidebar-content .content-sidebar-wrap {
+  float: right;
+}
+
+!* ### Content *!
+
+.content {
+  float: right;
+  width: 780px;
+}
+
+.content-sidebar .content,
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content {
+  float: left;
+}
+
+.content-sidebar-sidebar .content,
+.sidebar-content-sidebar .content,
+.sidebar-sidebar-content .content {
+  width: 580px;
+}
+*/
+
+.full-width-content .content {
+  width: 100%;
+}
+
+/* ### Primary Sidebar */
+/*
+
+.sidebar-primary {
+  float: right;
+  width: 360px;
+}
+
+.sidebar-content .sidebar-primary,
+.sidebar-sidebar-content .sidebar-primary {
+  float: left;
+}
+*/
+
+/* ### Secondary Sidebar */
+/*
+
+.sidebar-secondary {
+  float: left;
+  width: 180px;
+}
+
+.content-sidebar-sidebar .sidebar-secondary {
+  float: right;
+}
+*/
+
+/*
+@media only screen and (max-width: 1280px) {
+
+  .site-inner,
+  .wrap {
+    max-width: 960px;
+  }
+
+  .content-sidebar-sidebar .content-sidebar-wrap,
+  .sidebar-content-sidebar .content-sidebar-wrap,
+  .sidebar-sidebar-content .content-sidebar-wrap {
+    width: 720px;
+  }
+
+  .content,
+  .site-header .widget-area {
+    width: 600px;
+  }
+
+  .sidebar-content-sidebar .content,
+  .sidebar-sidebar-content .content,
+  .content-sidebar-sidebar .content {
+    width: 360px;
+  }
+
+  .sidebar-primary,
+  .title-area {
+    width: 300px;
+  }
+
+}
+@media only screen and (max-width: 1020px) {
+
+  .site-inner,
+  .wrap {
+    max-width: 800px;
+  }
+
+  .content,
+  .content-sidebar-sidebar .content,
+  .content-sidebar-sidebar .content-sidebar-wrap,
+  .sidebar-content-sidebar .content,
+  .sidebar-content-sidebar .content-sidebar-wrap,
+  .sidebar-primary,
+  .sidebar-secondary,
+  .sidebar-sidebar-content .content,
+  .sidebar-sidebar-content .content-sidebar-wrap {
+    width: 100%;
+  }
+
+}*/
+
+@media only screen and (max-width: 1020px) {
+
+  .site-inner .wrap {
+    width: 90%;
+ //   padding: 0 5px;  //same as .site-header .wrap
+  }
+
+}
+
+/*
+@media only screen and (max-width: 880px) {
+
+  .wrap {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+}*/

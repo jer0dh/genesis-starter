@@ -1,0 +1,65 @@
+/* Colors
+------------------------------------ */
+
+$color_gold:        #f9a01b;
+$color_orange:      #f26122;
+$color_magenta:     #ec008c;
+$color_violet:      #ab4a9c;
+$color_blue:        #0066a6;
+$color_cyan:        #00aeef;
+$color_green:       #39b45a;
+
+
+$color_pantone425c: #545759;
+$color_warm_gray:   #8e8279;
+$color_black:       #000000;
+$color_gray:        #e7e7e7;
+$color_front_nav_bg:  #16aee5;
+$color_front_nav_sub: #5accf2;
+$color_client_portal_bg: #f9a030;
+$color_client_portal_border: #f26932;
+$color_client_portal_blue_button: #0b6ead;
+$color_client_portal: #fcca85;
+
+$btn-default-bg: $color_blue;
+$btn-primary-bg: $color_orange;
+$btn-success-bg: $color_green;
+$btn-info-bg: $color_violet;
+$btn-warning-bg: $color_gold;
+
+$btn-default-color: #fff;
+$btn-primary-color: #fff;
+$btn-success-color: #fff;
+$btn-info-color: #fff;
+$btn-warning-color: #fff;
+$btn-danger-color: #fff;
+
+$btn-border-radius-base: 0;
+$btn-border-radius-large: 0;
+$btn-border-radius-small: 0;
+
+
+/* Typography
+------------------------------------- */
+
+$font_mbempire_book: 'mb_empire_bookregular', sans-serif;
+$font_mbempire_black: 'mb_empireblack', sans-serif;
+$font_mbempire_bold: 'mb_empirebold', sans-serif;
+$font_mbempire_medium: 'mb_empiremedium', sans-serif;
+$font_mbempire_medium_italic: 'mb_empiremedium_italic', sans-serif;
+$font_mbempire_thin: 'mb_empirethin', sans-serif;
+$font_mbempire_light: 'mb_empirelight', sans-serif;
+$font_mbempire_light_italic: 'mb_empirelight_italic', sans-serif;
+
+
+/* sizing
+------------------------------------- */
+
+$max_screen_width: 1700px;
+
+$screen-sm-min:              500px;
+
+/* margins
+------------------------------------- */
+
+$p_bottom_margin: 2.8rem;

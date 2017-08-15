@@ -1,0 +1,92 @@
+<?php
+
+if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+
+//* Start the Genesis engine
+include_once( get_template_directory() . '/lib/init.php' );
+
+// Child theme definitions
+define( 'CHILD_THEME_NAME', '<%= pkg.templateName %>' );
+define( 'CHILD_THEME_URL', '<%= pkg.templateUri %>' );
+define( 'CHILD_THEME_VERSION', '<%= pkg.version %>' );
+
+
+// Remove genesis style.css - only theme info
+remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
+
+// ENQUEUE Scripts and Styles used throughout.  REGISTER Scripts and Styles that MIGHT be loaded depending on page template.
+// The page template will enqueue registered scripts only if they are needed
+add_action( 'wp_enqueue_scripts', 'gtl_enqueue_scripts_styles' );
+
+function gtl_enqueue_scripts_styles() {
+
+	$version = wp_get_theme()->Version;
+
+	wp_enqueue_style( 'dashicons' );
+
+
+	wp_enqueue_style( 'gtl_css', get_stylesheet_directory_uri() . '<% if(production){%>/css/style.min.css<% } else { %>/css/style.css<% } %>', array(), $version );
+
+    wp_enqueue_style( 'google-font', '//fonts.googleapis.com/css?family=Muli:400,600,700,800', array() );
+
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
+
+	wp_enqueue_script( 'gtlscripts', get_stylesheet_directory_uri() . "/js/scripts{$suffix}.js", array( 'jquery' ), $version, true );
+
+
+	wp_enqueue_script( 'genesis-responsive-menu', get_stylesheet_directory_uri() . "/js/dist/responsive-menu{$suffix}.js", array( 'jquery' ), $version, true );
+	wp_localize_script(
+		'genesis-responsive-menu',
+		'genesis_responsive_menu',
+		genesis_sample_responsive_menu_settings()
+	);
+
+}
+// Update CSS within in Admin
+function gtl_admin_style() {
+	$version = wp_get_theme()->Version;
+	wp_enqueue_style('admin-styles', get_stylesheet_directory_uri() . '/css/admin-style.min.css', array(), $version );
+}
+add_action('admin_enqueue_scripts', 'gtl_admin_style');
+
+// Define our responsive menu settings.
+function genesis_sample_responsive_menu_settings() {
+
+	$settings = array(
+		'mainMenu'          => __( '', 'genesis-sample' ),
+		'menuIconClass'     => 'dashicons-before dashicons-menu',
+		'subMenu'           => __( 'Submenu', 'genesis-sample' ),
+		'subMenuIconsClass' => 'dashicons-before dashicons-arrow-down-alt2',
+		'menuClasses'       => array(
+			'combine' => array(
+				'.nav-primary',
+				'.nav-header',
+			),
+			'others'  => array(),
+		),
+	);
+
+	return $settings;
+
+}
+
+//* Add HTML5 markup structure
+add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list' ) );
+
+//* Add Accessibility support
+add_theme_support( 'genesis-accessibility', array( 'headings', 'drop-down-menu',  'search-form', 'skip-links', 'rems' ) );
+
+//* Add viewport meta tag for mobile browsers
+add_theme_support( 'genesis-responsive-viewport' );
+
+add_theme_support( 'header-image');
+
+//* Add support for custom background
+add_theme_support( 'custom-background' );
+
+//* Add support for post-thumbnails
+add_theme_support('post-thumbnails');
+
+
+

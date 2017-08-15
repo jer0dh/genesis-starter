@@ -1,0 +1,205 @@
+/* Fonts
+--------------------------------------------- */
+
+
+@font-face {
+  font-family: 'mb_empire_bookregular';
+  src: url('../fonts/m-b_creative_-_mbempire-book-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+//?
+@font-face {
+  font-family: 'mb_empireblack';
+  src: url('../fonts/m-b_creative_-_mbempire-heavy-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-heavy-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'mb_empirebold';
+  src: url('../fonts/m-b_creative_-_mbempire-bold-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'mb_empiremedium';
+  src: url('../fonts/m-b_creative_-_mbempire-medium-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'mb_empiremedium_italic';
+  src: url('../fonts/m-b_creative_-_mbempire-mediumitalic-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-mediumitalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'mb_empirethin';
+  src: url('../fonts/m-b_creative_-_mbempire-thin-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-thin-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mb_empirelight';
+  src: url('../fonts/m-b_creative_-_mbempire-light-webfont.woff2') format('woff2'),
+  url('../fonts/m-b_creative_-_mbempire-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+  @font-face {
+    font-family: 'mb_empirelight_italic';
+    src: url('../fonts/m-b_creative_-_mbempire-lightitalic-webfont.woff2') format('woff2'),
+    url('../fonts/m-b_creative_-_mbempire-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+  }
+
+
+
+/* ## Typographical Elements
+--------------------------------------------- */
+
+html {
+  font-size: 62.5%; /* 10px browser default */
+}
+
+/* Chrome fix */
+body > div {
+  font-size: 1.8rem;
+}
+
+body {
+  background-color: #fff;
+  color: $color_black;
+  font-family: $font_mbempire_book;
+  font-size: 17px;
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+a,
+button,
+input:focus,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+textarea:focus,
+.button,
+.gallery img {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+
+a {
+  color: #c3251d;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #333;
+  text-decoration: none;
+}
+
+p {
+  margin: 0 0 $p_bottom_margin;
+  padding: 0;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+hr {
+  border: 0;
+  border-collapse: collapse;
+  border-top: 1px solid #ddd;
+  clear: both;
+  margin: 1em 0;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+blockquote,
+cite,
+em,
+i {
+  font-style: italic;
+}
+
+blockquote {
+  margin: 40px;
+}
+
+blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: 30px;
+  height: 0;
+  left: -20px;
+  position: relative;
+  top: -10px;
+}
+
+/* icons */
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  -webkit-background-size: 20px 20px;
+  background-size: 20px;
+  background-position: center;
+  -webkit-transition: background .1s ease-in;
+  transition: background .1s ease-in;
+  position: relative;
+  top: 5px;
+}
+
+.icon-linked-in-white {
+  background-image: url(../images/linkedin_white.svg);
+}
+
+.icon-linked-in-black {
+  background-image: url(../images/linkedin_black.svg);
+}
+
+.no-svg {
+  .icon-linked-in-black, .icon-linked-in-white {
+    background-image: url(../images/linkedin_white.png);
+  }
+}
