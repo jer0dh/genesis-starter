@@ -60,10 +60,9 @@ function genesis_sample_responsive_menu_settings() {
 		'subMenuIconsClass' => 'dashicons-before dashicons-arrow-down-alt2',
 		'menuClasses'       => array(
 			'combine' => array(
-				'.nav-primary',
-				'.nav-secondary',
+				'.nav-primary'
 			),
-			'others'  => array(),
+			'others'  => array('.nav-secondary'),
 		),
 	);
 
@@ -87,6 +86,4 @@ add_theme_support( 'custom-background' );
 
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
-
-
 

@@ -17,7 +17,9 @@ button.menu-toggle {
   }
 
   .nav-primary,
-  .nav-primary .sub-menu {
+  .nav-primary .sub-menu,
+  .nav-secondary,
+  .nav-secondary .sub-menu {
     width: 100%;
     display: none;
   }

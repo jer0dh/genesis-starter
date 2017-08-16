@@ -98,5 +98,17 @@ It watches the `/images/src` folder and minifies any new images.
 see `/theme_backups` folder description
 
 
+### Sticky Nav
+  * using [sticky.js](http://stickyjs.com)
+  * added `js/vendor/sticky.js` from gitHub. (no npm install)
+  * added `js/vendor/sticky.js` to jsContenatedScripts to package.json
+  * added `js/scripts.js` code to init sticky.js on `.nav-primary`
+  * added `css/supporting/_nav_sticky.scss` to apply any new css needed (added css to move sticky nav down if wp-admin-bar present)
+  
+
+
 ## Change Log
 
+###2017-08-16
+  * adding Genesis StudioPress Responsive menu.
+  * adding sticky nav

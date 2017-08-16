@@ -32,7 +32,7 @@ const themeName = pkg.name;
 const destFolder = pkg.themeDestFolder;
 const destination = destFolder + '/' + themeName;
 
-const production = true;
+const production = false;
 
 const remote = require( './' + pkg.remote );
 

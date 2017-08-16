@@ -40,8 +40,7 @@
   "themeDestFolder": "theme_dest",
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
-    "node_modules/jquery/dist/jquery.js",
-    "theme_src/js/scripts.js",
-    "theme_src/js/vendor/test.js"
+    "theme_src/js/vendor/sticky.js",
+    "theme_src/js/scripts.js"
   ]
 }
