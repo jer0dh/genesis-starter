@@ -35,7 +35,7 @@ function gtl_enqueue_scripts_styles() {
 	wp_enqueue_script( 'gtlscripts', get_stylesheet_directory_uri() . "/js/scripts{$suffix}.js", array( 'jquery' ), $version, true );
 
 
-	wp_enqueue_script( 'genesis-responsive-menu', get_stylesheet_directory_uri() . "/js/dist/responsive-menu{$suffix}.js", array( 'jquery' ), $version, true );
+	wp_enqueue_script( 'genesis-responsive-menu', get_stylesheet_directory_uri() . "/js/responsive-menu{$suffix}.js", array( 'jquery' ), $version, true );
 	wp_localize_script(
 		'genesis-responsive-menu',
 		'genesis_responsive_menu',
@@ -61,7 +61,7 @@ function genesis_sample_responsive_menu_settings() {
 		'menuClasses'       => array(
 			'combine' => array(
 				'.nav-primary',
-				'.nav-header',
+				'.nav-secondary',
 			),
 			'others'  => array(),
 		),
