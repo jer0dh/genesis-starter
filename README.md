@@ -105,6 +105,24 @@ see `/theme_backups` folder description
   * added code in `js/scripts.js` to init sticky.js on `.nav-primary`
   * added `css/supporting/_nav_sticky.scss` to apply any new css needed (added css to move sticky nav down if wp-admin-bar present)
   
+  
+## Theme Options  
+
+### Background Slider
+  * using [backstretch.js](https://github.com/jquery-backstretch/jquery-backstretch)
+  * add `theme_options/js/vendor/jQuery.backstretch.js` to `theme_src/js/src/vendor`.  Add `vendor/jQuery.backstretch.js` to `jsConcatenatedScripts` in `package.json`
+  * `theme_options/lib/backstretch.php` contains possible php code to help with customizing backstretch
+    * a `div` with class `backstretch_overlay` to put a gradient on top of the images
+    * an example of using an Advanced Custom Fields Gallery so the user can choose images and creating a local js 
+        variable with the url's of these images
+  * add `theme_options/css/supporting/backstretch.scss` to `theme_src/css/supporting` 
+     * only needed to style if adding overlay ontop of images
+     * contains the style to apply to `.backstretch_overly`
+     * add `@import "supporting/backstretch";` to `theme_src/css/style.css` 
+  
+  * add js code to start backstretch on the element you want with an array of images.  See above link for syntax.
+
+  
 ### Theme Customization panel
 This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
 
@@ -112,9 +130,18 @@ This option can be added to quickly add settings and options on the WordPress Th
   * add `theme_options/lib/customization.js` to `theme_src/js` and make sure `customization.php` contains the correct path to enqueue it.
   * alter these files to include the settings/controls you want to add
   * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
+  * [WordPress Docs on Theme Customization API](https://codex.wordpress.org/Theme_Customization_API)
+
+
+
 
 ## Change Log
 
+###2017-08-22
+  * adding Theme Customization panel code
+  * adding backstretch.js code options
+  
 ###2017-08-16
   * adding Genesis StudioPress Responsive menu.
   * adding sticky nav
+  
