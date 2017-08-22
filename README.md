@@ -102,10 +102,16 @@ see `/theme_backups` folder description
   * using [sticky.js](http://stickyjs.com)
   * added `js/vendor/sticky.js` from gitHub. (no npm install)
   * added `js/vendor/sticky.js` to jsContenatedScripts to package.json
-  * added `js/scripts.js` code to init sticky.js on `.nav-primary`
+  * added code in `js/scripts.js` to init sticky.js on `.nav-primary`
   * added `css/supporting/_nav_sticky.scss` to apply any new css needed (added css to move sticky nav down if wp-admin-bar present)
   
+### Theme Customization panel
+This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
 
+  * add `theme_options/lib/customization.php` to `theme_src` and `include` it in the functions.php
+  * add `theme_options/lib/customization.js` to `theme_src/js` and make sure `customization.php` contains the correct path to enqueue it.
+  * alter these files to include the settings/controls you want to add
+  * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
 
 ## Change Log
 
