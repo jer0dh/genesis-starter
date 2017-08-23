@@ -125,6 +125,8 @@ see `/theme_backups` folder description
  
  
 ### Bootstrap options
+A great way to get some of the css classes of bootstrap like the grid and responsive classes. In the past I've added the
+bootstrap modal css and created a boostrap.js file with only the modal code using [Boostrap's website](http://getbootstrap.com/).
   * add `theme_options/css/supporting/bootstrap` to `theme_src/css/supporting` (or download latest)
   * add `theme_options/css/supporting/bootstrap.scss` to `theme_src/css/supporting` and edit it to import in only the bootstrap items you need.
   * add `@import "supporting/boostrap"` to the `theme_src/css/style.scss`
@@ -142,6 +144,9 @@ see `/theme_backups` folder description
   * add `node_modules/slick-carousel/slick/slick.js` to `jsConcatenatedScripts` in `package.json`
   * add php code to produce the markup needed by slick.js
   * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
+
+### Infinite Scroll - using [modified Bill Erickson code](https://www.billerickson.net/infinite-scroll-in-wordpress/)
+
 
 ### Scroll to section of page using [jQuery.scrollTo](https://github.com/flesler/jquery.scrollTo)
   * install jQuery.scrollTo: `npm install jquery.scrollto --save`
