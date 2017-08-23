@@ -41,7 +41,6 @@
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
     "theme_src/js/vendor/sticky.js",
-    "theme_src/js/infinite-scroll.js",
     "theme_src/js/scripts.js"
   ]
 }

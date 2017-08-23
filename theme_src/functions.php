@@ -89,5 +89,3 @@ add_theme_support( 'custom-background' );
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
 
-//* Infinite Scroll functions
-require_once( get_stylesheet_directory() . '/lib/infinite-scroll.php' );
