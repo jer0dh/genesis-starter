@@ -106,8 +106,9 @@ see `/theme_backups` folder description
   * added `css/supporting/_nav_sticky.scss` to apply any new css needed (added css to move sticky nav down if wp-admin-bar present)
   
   
-## Theme Options  
+## Theme Options 
 
+  
 ### Background Slider
   * using [backstretch.js](https://github.com/jquery-backstretch/jquery-backstretch)
   * add `theme_options/js/vendor/jQuery.backstretch.js` to `theme_src/js/src/vendor`.  Add `vendor/jQuery.backstretch.js` to `jsConcatenatedScripts` in `package.json`
@@ -121,8 +122,19 @@ see `/theme_backups` folder description
      * add `@import "supporting/backstretch";` to `theme_src/css/style.css` 
   
   * add js code to start backstretch on the element you want with an array of images.  See above link for syntax.
-
-  
+ 
+ 
+### Bootstrap options
+  * add `theme_options/css/supporting/bootstrap` to `theme_src/css/supporting` (or download latest)
+  * add `theme_options/css/supporting/bootstrap.scss` to `theme_src/css/supporting` and edit it to import in only the bootstrap items you need.
+  * add `@import "supporting/boostrap"` to the `theme_src/css/style.scss`
+  * if some of the features needed need javascript, obtain the bootstrap.js file, place in `theme_src/js/vendor`, 
+  and add `vendor/bootstrap.js` to `jsConcatenatedScripts` in `package.json`
+  * Another way to add the latest bootstrap would be to `npm install bootstrap --save` and copy from `node_modules` to `theme_src`. 
+  Or use the full path to the code under `node_modules` above.
+  * Another great way of using bootstrap and genesis would be to use [this starter theme](https://github.com/salcode/bootstrap-genesis)
+   
+ 
 ### Theme Customization panel
 This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
 
@@ -132,7 +144,9 @@ This option can be added to quickly add settings and options on the WordPress Th
   * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
   * [WordPress Docs on Theme Customization API](https://codex.wordpress.org/Theme_Customization_API)
 
-
+### Page builder option
+Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
+[Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 
 
 ## Change Log

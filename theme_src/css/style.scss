@@ -1,8 +1,15 @@
 
 /* # Table of Contents
 
+/* Boostrap Variables
+ UnComment if using bootstrap.
+ and you need access to bootstrap variables early on.
+ Override anything you need in the vars.scss file.
+-----------------------------------------------------------*/
+/* @import "supporting/bootstrap/variables.scss */
 
 /* Variables
+NOTE: to override bootstrap vars, don't include the !default when assigning values.
 ------------------------------------------------------------ */
 @import "supporting/vars";
 
@@ -20,6 +27,8 @@
 @import "supporting/nav-sticky";
 
 /* Bootstrap css
+NOTE: if you changed anything that is used in other variables (like grid), you will want to load the bootstrap/variables.scss file
+again as now it will have your overrides from the vars.scss file.
 ------------------------------------------------------------
 @import "supporting/bootstrap";
 */
