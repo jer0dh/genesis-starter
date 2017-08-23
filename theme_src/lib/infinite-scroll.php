@@ -5,6 +5,15 @@ if( !defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  * Contains code to provide Infinite scroll features.
  * Much of the code is based on Bill Erickson's
  * @link http://www.billerickson.net/infinite-scroll-in-wordpress
+ *
+ *
+ * The add_action ('wp_enqueue_scripts' ....) line could go into a particular template to only load this on certain pages.
+ * Also, good idea to change the jQuery selector of 'container' in the infinite-scroll.js to include a body class that is specific for the page
+ * this code is needed.
+ *
+ * Changed to $_GET so better chance of caching.
+ * Original code did not include any NONCE creation or checking since this is front-end and for not logged in users
+ * See: https://konstantin.blog/2012/nonces-on-the-front-end-is-a-bad-idea/
  */
 
 
@@ -49,7 +58,7 @@ function gs_ajax_load_more() {
  *
  */
 
-add_action( 'wp_enqueue_scripts', 'gs_localize_config' );
+add_action( 'wp_enqueue_scripts', 'gs_localize_config' );  // This could be moved to a particular template file that requires the infinite-scroll
 
 function gs_localize_config() {
    global $wp_query;
@@ -66,6 +75,10 @@ function gs_localize_config() {
 			$local
 		);
 }
+
+/**
+ * This function provides the markup for each post.  Alter as needed.
+ */
 
 function gs_post_markup() {
 	$link    = get_the_permalink();
