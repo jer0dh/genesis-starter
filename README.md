@@ -134,7 +134,15 @@ see `/theme_backups` folder description
   Or use the full path to the code under `node_modules` above.
   * Another great way of using bootstrap and genesis would be to use [this starter theme](https://github.com/salcode/bootstrap-genesis)
    
- 
+### Carousel - [Slick.js](https://github.com/kenwheeler/slick/) 
+  * install slick.js: `npm install slick-carousel --save` 
+  * copy `node_modules/slick-carousel/slick/slick.scss` to `theme_src/css/supporting` and add
+  `@import "supporting/slick.scss` to `style.scss`
+  * follow the step above with `slick-theme.scss` if you want slick's default styling
+  * add `node_modules/slick-carousel/slick/slick.js` to `jsConcatenatedScripts` in `package.json`
+  * add php code to produce the markup needed by slick.js
+  * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
+  
 ### Theme Customization panel
 This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
 
