@@ -142,6 +142,11 @@ see `/theme_backups` folder description
   * add `node_modules/slick-carousel/slick/slick.js` to `jsConcatenatedScripts` in `package.json`
   * add php code to produce the markup needed by slick.js
   * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
+
+### Scroll to section of page using [jQuery.scrollTo](https://github.com/flesler/jquery.scrollTo)
+  * install jQuery.scrollTo: `npm install jquery.scrollto --save`
+  * add `node_modules/jquery.scrollto/jquery.scrollTo.js` to `jsConcatenatedScripts` in `package.json`
+  * in `theme_src/js/my_scripts.js` add the javascript to perform the scrolling
   
 ### Theme Customization panel
 This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
@@ -159,6 +164,9 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 ## Change Log
 
+###2017-08-23
+  * Instructions on adding slick-carousel to theme
+  
 ###2017-08-22
   * adding Theme Customization panel code
   * adding backstretch.js code options
