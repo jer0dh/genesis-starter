@@ -146,7 +146,7 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
   * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
 
 ### Infinite Scroll - using [modified Bill Erickson code](https://www.billerickson.net/infinite-scroll-in-wordpress/)
-
+  
 
 ### Scroll to section of page using [jQuery.scrollTo](https://github.com/flesler/jquery.scrollTo)
   * install jQuery.scrollTo: `npm install jquery.scrollto --save`

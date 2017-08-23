@@ -4,7 +4,11 @@
 
 
     $('document').ready(function() {
+
         $('.nav-primary').sticky();
+
+
+
     });
 
 })(jQuery);

@@ -19,6 +19,8 @@ remove_action( 'genesis_meta', 'genesis_load_stylesheet' );
 // The page template will enqueue registered scripts only if they are needed
 add_action( 'wp_enqueue_scripts', 'gtl_enqueue_scripts_styles' );
 
+define('GS_MAIN_SCRIPT', 'gs_scripts');
+
 function gtl_enqueue_scripts_styles() {
 
 	$version = wp_get_theme()->Version;
@@ -32,7 +34,7 @@ function gtl_enqueue_scripts_styles() {
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '<% if(production){%>.min<% } %>';  //Gulptask in dev environment will put in '.min' if dev is set for production
 
-	wp_enqueue_script( 'gtlscripts', get_stylesheet_directory_uri() . "/js/scripts{$suffix}.js", array( 'jquery' ), $version, true );
+	wp_enqueue_script( GS_MAIN_SCRIPT, get_stylesheet_directory_uri() . "/js/scripts{$suffix}.js", array( 'jquery' ), $version, true );
 
 
 	wp_enqueue_script( 'genesis-responsive-menu', get_stylesheet_directory_uri() . "/js/responsive-menu{$suffix}.js", array( 'jquery' ), $version, true );
@@ -87,3 +89,5 @@ add_theme_support( 'custom-background' );
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
 
+//* Infinite Scroll functions
+require_once( get_stylesheet_directory() . '/lib/infinite-scroll.php' );
