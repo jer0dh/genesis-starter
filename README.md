@@ -107,9 +107,19 @@ see `/theme_backups` folder description
   
   
 ## Theme Options 
-
+This ever growing list of options are common client website needs.  They are not added to the `theme_src` but
+can be using the instructions below.  The basic instructions are
+  * install the javascript library needed either in the `/js/vendor` directory or via `npm`
+  and place the file path in the `package.json` so the gulp task will concatentate and minify it.
+  * place any css needed in the `css/supporting` directory and use the `@import` command to add it into `styles.css`
+  * any javascript code needed to initialize or customize the javascript library can be put in a js file under `/js` and
+  add this file to `package.json` so it will be concatenated and minified.
+  * move any php file needed from `theme_options/lib` to `theme_src/lib` and `require` this file in the `functions.php`
   
-### Background Slider
+  
+### Background Slide
+This has been used to create a simple home page with beautiful images covering the whole screen and sliding in the background.  This 
+js can also be used inside smaller containers as well.  If you need text or more complex slider, use the carousel shown below.
   * using [backstretch.js](https://github.com/jquery-backstretch/jquery-backstretch)
   * add `theme_options/js/vendor/jQuery.backstretch.js` to `theme_src/js/src/vendor`.  Add `vendor/jQuery.backstretch.js` to `jsConcatenatedScripts` in `package.json`
   * `theme_options/lib/backstretch.php` contains possible php code to help with customizing backstretch
@@ -137,6 +147,7 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
   * Another great way of using bootstrap and genesis would be to use [this starter theme](https://github.com/salcode/bootstrap-genesis)
    
 ### Carousel - [Slick.js](https://github.com/kenwheeler/slick/) 
+A highly customizable slider.  It's a toss up between this slider and swiper.js slider.
   * install slick.js: `npm install slick-carousel --save` 
   * copy `node_modules/slick-carousel/slick/slick.scss` to `theme_src/css/supporting` and add
   `@import "supporting/slick.scss` to `style.scss`
@@ -146,6 +157,7 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
   * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
 
 ### Infinite Scroll - using [modified Bill Erickson code](https://www.billerickson.net/infinite-scroll-in-wordpress/)
+
   * copy `theme_options/js/infinite-scroll.js` to `theme_src/js`
   * add `theme_src/js/infinite-scroll.js` to `jsConcatenatedScripts` in `package.json`
   * copy `theme_options/lib/infinite-scroll.php` to `theme_src/lib`
@@ -201,18 +213,18 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 ## Change Log
 
-###2017-08-25
+### 2017-08-25
   * Adding Lazy loading of images
   * Adding parallax images
 
-###2017-08-23
+### 2017-08-23
   * Instructions on adding slick-carousel to theme
   
-###2017-08-22
+### 2017-08-22
   * adding Theme Customization panel code
   * adding backstretch.js code options
   
-###2017-08-16
+### 2017-08-16
   * adding Genesis StudioPress Responsive menu.
   * adding sticky nav
   
