@@ -90,6 +90,3 @@ add_theme_support( 'custom-background' );
 add_theme_support('post-thumbnails');
 
 
-//* Lazyload image functions
-require_once( get_stylesheet_directory() . '/lib/lazyload.php' );
-

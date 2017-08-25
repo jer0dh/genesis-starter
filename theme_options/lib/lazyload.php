@@ -10,6 +10,11 @@
  * NOTE: this will not change markup for img tags in the post_content (see below for that)
  */
 
+//* Lazyload image functions
+/*require_once( get_stylesheet_directory() . '/lib/lazyload.php' );*/
+
+
+
 add_action( 'genesis_after_header', 'gs_add_image_filter' );
 add_action( 'genesis_after_footer', 'gs_remove_image_filter' );
 
