@@ -168,6 +168,18 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
      ```
   * see more explanation of [changing image tag markup with this article](https://jhtechservices.com/changing-your-image-markup-in-wordpress/) 
 
+
+### Parallax Images
+  * copy `theme_options/css/supporting/parallax.scss` to `theme_src/css/supporting` and add
+      `@import "supporting/parallax.scss` to `style.scss`
+  * add the parallax mixin to a selector with the height of the selector as a parameter
+  ```
+  .parallax-container {
+    @include parallax(30em);
+    background-image: url('path to img');
+    }
+  ```
+  
 ### Scroll to section of page using [jQuery.scrollTo](https://github.com/flesler/jquery.scrollTo)
   * install jQuery.scrollTo: `npm install jquery.scrollto --save`
   * add `node_modules/jquery.scrollto/jquery.scrollTo.js` to `jsConcatenatedScripts` in `package.json`
@@ -188,6 +200,10 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 
 ## Change Log
+
+###2017-08-25
+  * Adding Lazy loading of images
+  * Adding parallax images
 
 ###2017-08-23
   * Instructions on adding slick-carousel to theme

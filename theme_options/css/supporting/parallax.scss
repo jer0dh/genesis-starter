@@ -1,0 +1,18 @@
+
+
+@mixin parallax( $height) {
+  height: $height;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+/* add this mixin to a selector and add a background-image
+.parallax-container {
+  @include parallax(30em);
+  background-image: url('path to img');
+  }
+
+*/
