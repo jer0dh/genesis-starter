@@ -156,6 +156,18 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
   ```
   * see notes in files on altering
   
+### Lazyload images using [lazysizes by Alexander Farkas](https://github.com/aFarkas/lazysizes)
+  * install by `npm install lazysizes --save`
+  * add `node_modules/lazysizes/lazysizes.js` to `jsConcatenatedScripts` in `package.json`
+  * copy `theme_options/lib/lazyload.php` to `/theme_src/lib/` and alter it for your needs.
+  It is currently set to change all image tags in the post_content using the_content filter
+  * add to `functions.php`:
+     ```php
+     //* Lazyload functions
+     require_once( get_stylesheet_directory() . '/lib/lazyload.php' );
+     ```
+  * see more explanation of [changing image tag markup with this article](https://jhtechservices.com/changing-your-image-markup-in-wordpress/) 
+
 ### Scroll to section of page using [jQuery.scrollTo](https://github.com/flesler/jquery.scrollTo)
   * install jQuery.scrollTo: `npm install jquery.scrollto --save`
   * add `node_modules/jquery.scrollto/jquery.scrollTo.js` to `jsConcatenatedScripts` in `package.json`

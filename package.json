@@ -8,7 +8,8 @@
   },
   "license": "GPL-2.0+",
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "lazysizes": "^4.0.0-rc3"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -41,6 +42,7 @@
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
     "theme_src/js/vendor/sticky.js",
+    "node_modules/lazysizes/lazysizes.js",
     "theme_src/js/scripts.js"
   ]
 }
