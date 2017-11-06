@@ -213,6 +213,12 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 ## Change Log
 
+### 2017-11-06
+  * Adding SASS function `to-em` to convert from px to em
+  * Adding SASS mixin `mq($from, $until, $and, $type)` to create media queries in em
+  * Adding SASS variable $breakpoints containing the default bootstrap breakpoints
+  * `mq` can take `md` or `lg` from $breakpoints map to insert their em value.
+
 ### 2017-08-25
   * Adding Lazy loading of images
   * Adding parallax images

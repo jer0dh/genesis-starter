@@ -153,11 +153,12 @@ function gtl_do_footer(){
 }
 
 /* Adding wraps to all posts and pages at title, at content
------------------------------------------------------------------------------------------ */
+-----------------------------------------------------------------------------------------
 add_action( 'genesis_entry_header', 'gtl_wrap_open', 6 );
 add_action( 'genesis_entry_header', 'gtl_wrap_close', 14 );
 add_action( 'genesis_entry_content', 'gtl_wrap_open', 6 );
 add_action( 'genesis_entry_content', 'gtl_wrap_close', 11 );
+ */
 
 
 

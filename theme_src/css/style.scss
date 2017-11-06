@@ -8,6 +8,9 @@
 -----------------------------------------------------------*/
 /* @import "supporting/bootstrap/variables.scss */
 
+
+@import "supporting/mixin";
+
 /* Variables
 NOTE: to override bootstrap vars, don't include the !default when assigning values.
 ------------------------------------------------------------ */
@@ -33,5 +36,12 @@ again as now it will have your overrides from the vars.scss file.
 @import "supporting/bootstrap";
 */
 
+/* TESTING */
 
+.test {
+  font-size: to-em(16px);
+  font-size: to-em(32px);
+  font-size: to-em(20px, 20px);
+  color: rgba( #ffffff, 0.74);
+}
 

@@ -1,0 +1,113 @@
+/**
+Some helpful mixins
+
+ */
+
+
+/*
+Here's a mixin from Web Designer Issue 266, 2017
+
+
+ */
+
+/* create a map of default breakpoints */
+$breakpoints: (
+        xs: 576px,
+        sm: 768px,
+        md: 992px,
+        lg: 1200px
+) !default;
+
+$global-font-size: 16px !default;
+
+/* Takes $value and converts it to em using the $global-font-size.
+   if $base is included, it checks if it's a px and if so, it returns the $value / $base * 1em
+   if $base is em, it assumes the $base was created by the $global-font-size.
+
+ */
+@function to-em($value, $base: false) {
+  @if index('px', unit($value)) != null {
+    @if $base {  /* if a base font size was included */
+
+      @if index('px', unit($base)) != null {
+        @return $value / $base * 1em;
+      } @else {  /* assume em value used and that it is based off of global-font-size */
+        @return $value / ($base * $global-font-size) * 1em;
+      }
+
+    }
+    @return $value / $global-font-size * 1em;
+  } @else if index('em', unit($value)) != null {
+      @return $value;
+  }
+  @error "'#{$value}' needs to be px";
+}
+
+
+/* returns the em of the $value if it's a number.
+   otherwise checks to see if it's either xs, sm, md, lg listed in $breakpoints.  If so it returns the em of that breakpoint.
+ */
+@function mq-process($value){
+  @if type-of($value) == 'number' {
+
+    @return to-em($value);
+
+  } @else if map-has_key($breakpoints, $value) {
+      $value: map_get($breakpoints, $value);
+      @return to-em($value);
+  } @else {
+    @error "`#{$value}' doesn't exist in $breakpoints"
+  }
+}
+
+/* create a media query using em
+   $from - min-width
+   $until - max-width
+   $and -
+ */
+@mixin mq(
+  $from: false,
+  $until: false,
+  $and: false,
+  $type: false
+) {
+  @if $from == false and $until == false and $and == false and $type == false {
+    @error( "You haven't passed anything")
+  }
+
+  @if $from {
+    $from: mq-process($from);
+  }
+
+  @if $until {
+    $until: mq-process($until);
+    $until: $until - .01em;
+  }
+
+  $mq: false;
+
+  @if $from and $until {
+    $mq: '(min-width: #{$from}) and (max-width: #{$until})';
+  } @else if $from {
+    $mq: '(min-width: #{$from})'
+  } @else if $until {
+    $mq: '(max-width: #{$until})'
+  }
+
+  @if $and and $mq {
+    $mq: '#{$mq} and #{$and}'
+  } @else if $and {
+    $mq: '#{$and}'
+  }
+
+  @if $type and $mq {
+    $mq: '#{$type} and #{$mq}'
+  } @else if $type {
+    $mq: '#{$type}'
+  }
+
+  @media #{$mq} {
+    @content;
+  }
+
+}
