@@ -11,35 +11,35 @@ h6 {
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-weight: 700;
   line-height: 1.2;
-  margin: 0 0 10px;
+  margin: 0 0 to-em(10px);
 }
 
 h1 {
   font-size: 36px;
-  font-size: 3.6rem;
+  font-size: to-em(36px);
 }
 
 h2 {
   font-size: 30px;
-  font-size: 3rem;
+  font-size: to-em(30px);
 }
 
 h3 {
   font-size: 24px;
-  font-size: 2.4rem;
+  font-size: to-em(24px);
 }
 
 h4 {
   font-size: 20px;
-  font-size: 2rem;
+  font-size: to-em(20px);
 }
 
 h5 {
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: to-em(18px);
 }
 
 h6 {
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: to-em(16px);
 }

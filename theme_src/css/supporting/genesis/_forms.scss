@@ -9,9 +9,9 @@ textarea {
   border: 1px solid #ddd;
   color: #333;
   font-size: 18px;
-  font-size: 1.8rem;
+  font-size: to-em(18px);
   font-weight: 400;
-  padding: 16px;
+  padding: to-em(16px, 18px);
   width: 100%;
 }
 
@@ -46,9 +46,9 @@ input[type="submit"],
   color: #fff;
   cursor: pointer;
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: to-em(16px);
   font-weight: 700;
-  padding: 16px 24px;
+  padding: to-em(16px, 16px) to-em(24px, 16px);
   width: auto;
 }
 

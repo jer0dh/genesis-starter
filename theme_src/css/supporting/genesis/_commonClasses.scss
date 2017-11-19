@@ -11,27 +11,27 @@
 
 .alignleft .avatar,
 .author-box .avatar {
-  margin-right: 24px;
+  margin-right: to-em(24px);
 }
 
 .alignright .avatar {
-  margin-left: 24px;
+  margin-left: to-em(24px);
 }
 
 .comment .avatar {
-  margin: 0 16px 24px 0;
+  margin: 0 to-em(16px) to-em(24px) 0;
 }
 
 /* ## Genesis
 --------------------------------------------- */
 
 .breadcrumb {
-  margin-bottom: 40px;
+  margin-bottom: to-em(40px);
 }
 
 .archive-description,
 .author-box {
-  margin-bottom: 60px;
+  margin-bottom: to-em(60px);
 }
 
 .archive-description p:last-child,
@@ -48,7 +48,7 @@
 
 .site-header .search-form {
   float: right;
-  margin-top: 12px;
+  margin-top: to-em(12px);
 }
 
 .entry-content .search-form,
@@ -73,12 +73,12 @@
 .author-box-title,
 .archive-title {
   font-size: 20px;
-  font-size: 2rem;
+  font-size: to-em(20px);
 }
 
 .entry-title {
   font-size: 36px;
-  font-size: 3.6rem;
+  font-size: to-em(36px);
 }
 
 .entry-title a,
@@ -92,7 +92,7 @@
 }
 
 .widget-title {
-  margin-bottom: 20px;
+  margin-bottom: to-em(20px);
 }
 
 /* ## WordPress
@@ -126,29 +126,29 @@ a.alignright {
 img.centered,
 .aligncenter {
   display: block;
-  margin: 0 auto 24px;
+  margin: 0 auto to-em(24px);
 }
 
 img.alignnone,
 .alignnone {
-  margin-bottom: 12px;
+  margin-bottom: to-em(12px);
 }
 
 a.alignleft,
 img.alignleft,
 .wp-caption.alignleft {
-  margin: 0 24px 24px 0;
+  margin: 0 to-em(24px) to-em(24px) 0;
 }
 
 a.alignright,
 img.alignright,
 .wp-caption.alignright {
-  margin: 0 0 24px 24px;
+  margin: 0 0 to-em(24px) to-em(24px);
 }
 
 .wp-caption-text {
   font-size: 14px;
-  font-size: 1.4rem;
+  font-size: to-em(14px);
   font-weight: 700;
   text-align: center;
 }
@@ -160,5 +160,5 @@ img.alignright,
 .entry-content .wp-audio-shortcode,
 .entry-content .wp-playlist,
 .entry-content .wp-video {
-  margin: 0 0 28px;
+  margin: 0 0 to-em(28px);
 }

@@ -6,13 +6,13 @@
 --------------------------------------------- */
 
 .entry {
-  margin-bottom: 60px;
+  margin-bottom: to-em(60px);
 }
 
 .entry-content ol,
 .entry-content ul {
-  margin-bottom: 28px;
-  margin-left: 40px;
+  margin-bottom: to-em(28px);
+  margin-left: to-em(40px);
 }
 
 .entry-content ol > li {
@@ -38,12 +38,12 @@
 
 p.entry-meta {
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: to-em(16px);
   margin-bottom: 0;
 }
 
 .entry-header .entry-meta {
-  margin-bottom: 24px;
+  margin-bottom: to-em(24px, 16px);
 }
 
 .entry-categories,
@@ -53,7 +53,7 @@ p.entry-meta {
 
 .entry-comments-link::before {
   content: "\2014";
-  margin: 0 6px 0 2px;
+  margin: 0 to-em(6px) 0 to-em(2px);
 }
 
 /* ## Pagination
@@ -61,7 +61,7 @@ p.entry-meta {
 
 .pagination {
   clear: both;
-  margin: 40px 0;
+  margin: to-em(40px) 0;
 }
 
 .pagination li {
@@ -72,8 +72,8 @@ p.entry-meta {
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
-  font-size: 1.6rem;
-  padding-right: 10px;
+  font-size: to-em(16px);
+  padding-right: to-em(10px, 16px);
   text-decoration: none;
 }
 
@@ -87,12 +87,12 @@ p.entry-meta {
 .comment-respond,
 .entry-comments,
 .entry-pings {
-  margin-bottom: 60px;
+  margin-bottom: to-em(60px);
 }
 
 .comment-header {
   font-size: 16px;
-  font-size: 1.6rem;
+  font-size: to-em(16px);
 }
 
 .comment-content {
@@ -101,7 +101,7 @@ p.entry-meta {
 }
 
 .comment-list li {
-  padding: 32px 0 0 32px;
+  padding: to-em(32px) 0 0 to-em(32px);
 }
 
 .comment-list li.depth-1 {
@@ -116,7 +116,7 @@ p.entry-meta {
 
 .comment-respond label {
   display: block;
-  margin-right: 12px;
+  margin-right: to-em(12px);
 }
 
 .entry-comments .comment-author {
