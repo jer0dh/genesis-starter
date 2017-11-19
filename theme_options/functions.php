@@ -81,10 +81,10 @@ function gtl_kses_post( $value ) {
 
 
 // add function to retrieve ACF field values without wpautop
-function get_the_field_without_wpautop( $field_name ) {
+function get_the_field_without_wpautop( $field_name, $post_id ) {
 
 	remove_filter('acf_the_content', 'wpautop');
-	$field = get_field( $field_name );
+	$field = get_field( $field_name, $post_id );
 	add_filter('acf_the_content', 'wpautop');
 
 	return $field;

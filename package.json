@@ -40,6 +40,7 @@
   "themeDestFolder": "theme_dest",
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
+    "theme_src/js/vendor/debounce.js",
     "theme_src/js/vendor/sticky.js",
     "theme_src/js/scripts.js"
   ]

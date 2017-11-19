@@ -212,7 +212,11 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 
 ## Change Log
-
+### 2017-11-18
+  * adding $post_id argument to get_field_without_wpautop function.
+  * Altered sticky.js to prevent it from setting height to container
+  * Added debounce.js and code to debounce updating sticky.js during resize
+  
 ### 2017-11-06
   * Adding SASS function `to-em` to convert from px to em
   * Adding SASS mixin `mq($from, $until, $and, $type)` to create media queries in em
