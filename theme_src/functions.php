@@ -89,4 +89,12 @@ add_theme_support( 'custom-background' );
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
 
-
+/*
+add_theme_support( 'genesis-structural-wraps', array(
+	 'header',
+	'menu-primary',
+	'menu-secondary',
+	'site-inner',
+	'footer-widgets',
+	'footer',
+	) );*/

@@ -42,6 +42,41 @@ const imagesDestFolder = 'images/dest';
 
 const themeBackups = 'theme_backup';
 
+
+/* Versioning
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+const bump = require('gulp-bump');
+const semver = require('semver');
+const fs = require('fs');  // `fs` is used instead of require to prevent caching in watch (require caches)
+
+const getPackageJson = function () {
+    return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+};
+
+gulp.task('bump', function(){
+    let pkg = getPackageJson();
+    // increment version
+    let newVer = semver.inc(pkg.version, 'prerelease');
+
+    return gulp.src('./package.json')
+        .pipe(bump({ version: newVer }))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-patch', function(){
+    gulp.src('./package.json')
+        .pipe(bump({type:'patch'}))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('bump-minor', function(){
+    gulp.src('./package.json')
+        .pipe(bump({type:'minor'}))
+        .pipe(gulp.dest('./'));
+});
+
+
+
 /* STYLES TASKS
 -------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -51,7 +86,7 @@ const themeBackups = 'theme_backup';
  */
 gulp.task('styles-style-css', function() {
     return gulp.src([ srcFolder + '/style.scss'])
-        .pipe(template({pkg: pkg, production}))
+        .pipe(template({pkg: getPackageJson(), production}))
         .pipe(rename(function(path){
             path.extname = '.css'
         }))
@@ -103,8 +138,8 @@ gulp.task('styles-clean', function(cb) {
 gulp.task('php-template-copy', function(cb) {
 
     gulp.src([srcFolder + '/**/*.php'])
-        .pipe(newer( destination ))
-        .pipe(template({pkg: pkg, production}))
+    //       .pipe(newer( destination ))    // prevents function.php with new version info to be created...for now always copy all.
+        .pipe(template({pkg: getPackageJson(), production}))
         .pipe(gulp.dest( destination ));
     cb();
 });
@@ -268,6 +303,10 @@ gulp.task('deploy-all', function(cb) {
     runSequence('php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
 });
 
+gulp.task('bump-deploy-all', function(cb) {
+    runSequence('bump','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
+});
+
 gulp.task('deploy-all-clean', function(cb) {
     runSequence('clean-theme', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
 });
@@ -278,9 +317,16 @@ gulp.task('deploy-all-clean', function(cb) {
 
 gulp.task('default', ['deploy-all-clean'], function() {
 
-    gulp.watch([srcFolder + '/css/**/*.scss'], ['deploy-styles']);
-    gulp.watch(srcFolder +'/js/**/*.*', ['deploy-js']);
-    gulp.watch(srcFolder + '/**/*.php', ['deploy-php']);
+    gulp.watch([srcFolder + '/css/**/*.scss',
+                srcFolder +'/js/**/*.*',
+                srcFolder + '/**/*.php'],  ['bump-deploy-all']);
+
+
+/*    gulp.watch([srcFolder + '/css/!**!/!*.scss'], ['deploy-styles']);
+    gulp.watch(srcFolder +'/js/!**!/!*.*', ['deploy-js']);
+    gulp.watch(srcFolder + '/!**!/!*.php', ['deploy-php']);*/
+
+
     gulp.watch(imagesSrcFolder + '/**/*', ['images']);
 
 });
@@ -320,3 +366,4 @@ gulp.task('zip', function() {
 
 
 });
+

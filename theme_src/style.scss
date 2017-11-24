@@ -4,7 +4,7 @@
 	Description: <%= pkg.description %>
 	Author: <%= pkg.author %>
 	Author URI: <%= pkg.authorUri %>
-    Version: <%= pkg.version %><% if(!production){print('-build');} %>
+    Version: <%= pkg.version %>
 	Tags:
 
 	Template: genesis
