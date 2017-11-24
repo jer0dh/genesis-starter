@@ -212,6 +212,10 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 
 ## Change Log
+
+### 2017-11-23
+  * adding gulp-bump, semver so versioning is done with any change
+  
 ### 2017-11-18
   * adding $post_id argument to get_field_without_wpautop function.
   * Altered sticky.js to prevent it from setting height to container
