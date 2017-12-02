@@ -53,6 +53,7 @@ const getPackageJson = function () {
     return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 };
 
+/* this task is run during any gulp watch so getPackageJson is used to bypass normal file caching */
 gulp.task('bump', function(){
     let pkg = getPackageJson();
     // increment version
@@ -76,15 +77,11 @@ gulp.task('bump-minor', function(){
 });
 
 
-
-/* STYLES TASKS
--------------------------------------------------------------------------------------------------------------------------------------- */
-
 /**
- * Creates the style.css in the root of the theme containing theme name, version, etc.  No styles are actually put in here.  For WordPress only
+ * Creates the style.css in the root of the theme containing theme name, VERSION, etc.  No styles are actually put in here.  For WordPress only
  *
  */
-gulp.task('styles-style-css', function() {
+gulp.task('style-css-version', function() {
     return gulp.src([ srcFolder + '/style.scss'])
         .pipe(template({pkg: getPackageJson(), production}))
         .pipe(rename(function(path){
@@ -92,6 +89,25 @@ gulp.task('styles-style-css', function() {
         }))
         .pipe(gulp.dest( destination ));
 });
+
+
+gulp.task('php-functions-php-version', function(cb) {
+
+    gulp.src([srcFolder + '/functions.php'])
+        .pipe(template({pkg: getPackageJson(), production}))
+        .pipe(gulp.dest( destination ));
+    cb();
+});
+
+gulp.task('bump-and-push', function(cb) {
+    runSequence('bump','style-css-version','php-functions-php-version', () => cb() );
+});
+
+
+/* STYLES TASKS
+-------------------------------------------------------------------------------------------------------------------------------------- */
+
+
 
 
 /**
@@ -121,7 +137,7 @@ gulp.task('styles-sass-max', function () {
 });
 
 
-gulp.task('styles-all-tasks', ['styles-style-css', 'styles-sass-min', 'styles-sass-max' ], function(cb) {
+gulp.task('styles-all-tasks', ['styles-sass-min', 'styles-sass-max' ], function(cb) {
     cb();
 });
 
@@ -138,7 +154,7 @@ gulp.task('styles-clean', function(cb) {
 gulp.task('php-template-copy', function(cb) {
 
     gulp.src([srcFolder + '/**/*.php'])
-    //       .pipe(newer( destination ))    // prevents function.php with new version info to be created...for now always copy all.
+        .pipe(newer( destination ))    // prevents function.php with new version info to be created...for now always copy all.
         .pipe(template({pkg: getPackageJson(), production}))
         .pipe(gulp.dest( destination ));
     cb();
@@ -255,6 +271,11 @@ gulp.task('images-clean', function(cb) {
     rimraf( imagesDestFolder, cb );
 });
 
+gulp.task('images-move', function() {
+   gulp.src([srcFolder + '/images/**/*'])
+       .pipe(gulp.dest( destination + '/images'))
+});
+
 /* CLEAN
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------  */
 
@@ -299,8 +320,15 @@ gulp.task('deploy-php', ['php-all-tasks'], rsyncRemote );
 
 gulp.task('deploy-styles', ['styles-all-tasks'], rsyncRemote );
 
+gulp.task('bump-deploy-js', ['bump-and-push','js-all-tasks'], rsyncRemote );
+
+gulp.task('bump-deploy-php', ['bump-and-push','php-all-tasks'], rsyncRemote );
+
+gulp.task('bump-deploy-styles', ['bump-and-push','styles-all-tasks'], rsyncRemote );
+
+
 gulp.task('deploy-all', function(cb) {
-    runSequence('php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
+    runSequence('php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
 });
 
 gulp.task('bump-deploy-all', function(cb) {
@@ -308,8 +336,10 @@ gulp.task('bump-deploy-all', function(cb) {
 });
 
 gulp.task('deploy-all-clean', function(cb) {
-    runSequence('clean-theme', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
+    runSequence('clean-theme', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
 });
+
+gulp.task('deploy-images', ['images-move'], rsyncRemote );
 
 
 /* DEFAULT and WATCHES
@@ -317,16 +347,9 @@ gulp.task('deploy-all-clean', function(cb) {
 
 gulp.task('default', ['deploy-all-clean'], function() {
 
-    gulp.watch([srcFolder + '/css/**/*.scss',
-                srcFolder +'/js/**/*.*',
-                srcFolder + '/**/*.php'],  ['bump-deploy-all']);
-
-
-/*    gulp.watch([srcFolder + '/css/!**!/!*.scss'], ['deploy-styles']);
-    gulp.watch(srcFolder +'/js/!**!/!*.*', ['deploy-js']);
-    gulp.watch(srcFolder + '/!**!/!*.php', ['deploy-php']);*/
-
-
+    gulp.watch([srcFolder + '/css/**/*.scss'], ['bump-deploy-styles']);
+    gulp.watch(srcFolder +'/js/**/*.*', ['bump-deploy-js']);
+    gulp.watch(srcFolder + '/**/*.php', ['bump-deploy-php']);
     gulp.watch(imagesSrcFolder + '/**/*', ['images']);
 
 });
@@ -366,4 +389,3 @@ gulp.task('zip', function() {
 
 
 });
-
