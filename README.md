@@ -212,6 +212,9 @@ Have not used it but it has a large 1 million+ installs, it's free, and compatib
 
 
 ## Change Log
+### 2017-12-12
+  * Adding [phplint](https://github.com/wayneashleyberry/phplint) to gulp pipeline
+
 ### 2017-12-02
   * Altering gulpfile.js to separate out the watches again and still do versioning.  Too slow after last change where we performed
   versioning and all tasks on any change.  Now it does versioning and copying only the changes up.

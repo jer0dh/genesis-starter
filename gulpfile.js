@@ -19,6 +19,8 @@ const concat = require('gulp-concat');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 
+const phplint = require('phplint').lint;
+
 const rsync = require('gulp-rsync');
 
 
@@ -160,7 +162,7 @@ gulp.task('php-template-copy', function(cb) {
     cb();
 });
 
-gulp.task('php-all-tasks', ['php-template-copy'], function(cb) {
+gulp.task('php-all-tasks', ['php-template-copy', 'phplint'], function(cb) {
     cb();
 });
 
@@ -169,6 +171,19 @@ gulp.task('php-clean', function(cb){
         .pipe(clean());
     cb();
 });
+
+
+gulp.task('phplint', function (cb) {
+    phplint([srcFolder + '/**/*.php'], function (err, stdout, stderr) {
+        if (err) {
+            cb(err)
+            process.exit(1)
+        }
+        cb()
+    })
+});
+
+gulp.task('test', ['phplint'])
 
 //TODO create an array in package.json for file extensions to copy from src to dest.  Use the array to create gulp tasks and an array of gulp tasks.
 
@@ -332,7 +347,7 @@ gulp.task('deploy-all', function(cb) {
 });
 
 gulp.task('bump-deploy-all', function(cb) {
-    runSequence('bump','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
+    runSequence( 'bump','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'deploy-remote', () => cb() );
 });
 
 gulp.task('deploy-all-clean', function(cb) {

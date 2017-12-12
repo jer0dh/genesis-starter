@@ -27,6 +27,7 @@
     "gulp-template": "^4.0.0",
     "gulp-uglify": "^3.0.0",
     "gulp-zip": "^4.0.0",
+    "phplint": "^1.7.4",
     "rimraf": "^2.6.1",
     "run-sequence": "^2.1.0"
   },
