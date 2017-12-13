@@ -89,6 +89,28 @@ add_theme_support( 'custom-background' );
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
 
+/* Add support for 3-column footer widgets
+add_theme_support( 'genesis-footer-widgets', 3 );
+
+
+// change default footer and add ACF fields that should be configured in theme settings
+
+ # Footer
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+add_action( 'genesis_footer', 'gtl_do_footer' );
+
+function gtl_do_footer(){
+
+	$before_year = get_the_field_without_wpautop( 'footer_before', 'options');
+	$after_year = get_the_field_without_wpautop( 'footer_after', 'options');
+	$login_url = get_home_url() . '/login';
+
+	echo '<div class="footer-copyright"><div class="wrap">' . wp_kses_post($before_year) . do_shortcode('[footer_copyright copyright=""] ') . wp_kses_post($after_year) .'</div></div>';
+
+}
+
+*/
+
 /*
 add_theme_support( 'genesis-structural-wraps', array(
 	 'header',
@@ -98,3 +120,12 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'footer-widgets',
 	'footer',
 	) );*/
+
+/*
+/* add sidebar
+genesis_register_sidebar( array(
+	'id'        => 'sidebar-name',
+	'name'      => 'Sidebar Name',
+	'description'   => 'This is a sidebar that will appear ...',
+) );
+ */

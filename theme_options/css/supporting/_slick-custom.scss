@@ -1,0 +1,191 @@
+
+.slides,
+.slick-slide,
+.slide,
+.slick-track,
+.slick-list,
+.slick-slide > div {
+  height: 100%;
+}
+
+.slide {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  opacity: 1;
+  transition: opacity 0.25s;
+}
+
+.slide.slide-not-loaded {
+  opacity: 0;
+}
+.lazyload-slide {
+  display:none;
+}
+.slick-prev, .slick-next {
+  height: to-em(88px);
+  width: to-em(20px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  //font-size: $global-font-size;
+
+  @include fluid-text(10px, 19px, 625px, 1400px);
+}
+
+.slick-prev {
+  left: to-em(20px);
+  z-index: 9;
+  background-image: url(../images/slider-previous.png);
+
+}
+
+.slick-next {
+  right: to-em(20px);
+  z-index: 9;
+  background-image: url(../images/slider-next.png);
+
+}
+
+.slick-next:before, .slick-prev:before {
+  display: none;
+}
+
+
+.slick-dots {
+  bottom: 1%;
+
+  li button {
+    height: to-em(30px);
+    width: to-em(30px);
+    font-size: $global-font-size;
+  }
+
+  li button:before {
+    height: to-em(30px, 30px);
+    width: to-em(30px, 30px);
+    font-size: to-em(30px);
+    color: $color_white;
+    text-shadow: 0 0 10px $color_blackish;
+    opacity: 0.6;
+  }
+
+  li.slick-active button:before {
+    color: $color_white;
+    opacity: 1;
+  }
+}
+
+
+.aspect-ratio-hero-slider {
+  margin-top: to-em($site_inner_top);
+  margin-bottom: to-em(- $site_inner_top);
+  height: 0;
+  width: 100%;
+  position: relative;
+  padding-bottom: 415px; /* 66.67%; */
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 625px) {
+  .aspect-ratio-hero-slider {
+    padding-bottom: 66.67%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .aspect-ratio-hero-slider {
+    padding-bottom: 850px;
+  }
+}
+
+
+.slider-content {
+  margin-left: 50%;
+  margin-top: 9.514%;
+  color: $color_white;
+}
+
+
+
+.slider-testimonial {
+
+  position: relative;
+  font-family: $font-oranienbaum;
+  line-height:1.4;
+  text-shadow: 0 0 to-em(10px, 63px) $color_blackish;
+
+  margin-bottom: to-em(50px, 63px);
+
+
+  @include fluid-text(25px, 63px, 625px, 1400px);
+
+  &:before {
+    position: absolute;
+    content: '';
+    width: to-em(50px, 63px);
+    height: to-em(50px, 63px);
+    background-image: url(../images/block-open.png);
+    background-repeat:no-repeat;
+    background-size: contain;
+    top: to-em(-25px, 63px);
+    left: to-em(-60px, 63px);
+
+  }
+
+
+}
+/* This keeps the quote with the last word of the quote. span.end-quote added to end of testimonial in php */
+.end-quote {
+  width: 0;
+  height: 0;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '';
+    width: to-em(50px, 63px);
+    height: to-em(50px, 63px);
+    background-image: url(../images/block-close.png);
+    background-repeat:no-repeat;
+    background-size: contain;
+   // bottom: to-em(15px, 63px);
+   // right: to-em(-10px, 63px);
+    top: 0;
+    left: to-em(5px, 63px);
+  }
+
+}
+
+.slider-author {
+  overflow: hidden;
+  font-family: $font-raleway;
+  text-shadow: 0 0 to-em(10px, 14px) $color_blackish;
+  text-align: right;
+  font-weight: bold;
+  letter-spacing: 5px;
+
+
+  @include fluid-text(10px, 14px, 625px, 1400px);
+
+  span {
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 100%;
+      border: 1px solid $color_white;
+      top: 50%;
+      width: 9999px;
+      margin-right: to-em(20px, 14px);
+    }
+  }
+
+
+}

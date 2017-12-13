@@ -55,57 +55,6 @@ require_once( get_stylesheet_directory() . '/lib/common.php' );
 
 
 
-//* ACF settings ----------------------------------------------------------------------------------------
-
-
-// Hide ACF field group menu item
-//add_filter('acf/settings/show_admin', '__return_false');
-
-
-/* adding more security to ACF fields by sanitizing input */
-/* from: http://www.advancedcustomfields.com/resources/acf_form/#security */
-add_filter('acf/update_value', 'gtl_kses_post', 10, 1);
-function gtl_kses_post( $value ) {
-
-	// is array
-	if( is_array($value) ) {
-
-		return array_map('gtl_kses_post', $value);
-
-	}
-
-	// return
-	return wp_kses_post( $value );
-
-}
-
-
-// add function to retrieve ACF field values without wpautop
-function get_the_field_without_wpautop( $field_name, $post_id ) {
-
-	remove_filter('acf_the_content', 'wpautop');
-	$field = get_field( $field_name, $post_id );
-	add_filter('acf_the_content', 'wpautop');
-
-	return $field;
-
-}// add function to retrieve ACF field values without wpautop
-function get_the_sub_field_without_wpautop( $field_name ) {
-
-	remove_filter('acf_the_content', 'wpautop');
-	$field = get_sub_field( $field_name );
-	add_filter('acf_the_content', 'wpautop');
-
-	return $field;
-}
-
-// add Theme options page using ACF
-if( function_exists('acf_add_options_page') ) {
-
-	acf_add_options_page('Theme Settings');
-}
-
-
 
 /* # Footer
 ----------------------------------------------------------------------------------------- */
@@ -152,6 +101,19 @@ function gtl_do_footer(){
 	}
 }
 
+
+/* Adding a wrap around certain elements */
+
+add_theme_support( 'genesis-structural-wraps', array(
+	'header',
+	'menu-primary',
+	'menu-secondary',
+	'site-inner',
+	'footer-widgets',
+	'footer',
+) );
+
+
 /* Adding wraps to all posts and pages at title, at content
 -----------------------------------------------------------------------------------------
 add_action( 'genesis_entry_header', 'gtl_wrap_open', 6 );
@@ -169,3 +131,141 @@ add_action( 'genesis_entry_content', 'gtl_wrap_close', 11 );
 /* Allow shortcodes in text widgets
 -------------------------------------- */
 add_filter('widget_text', 'do_shortcode');
+//remove_filter('widget_text_content', 'wpautop');
+
+/**
+ * overwrite gallery shortcode to produce isotope/masonry layout
+ * altered from: https://stackoverflow.com/questions/14585538/customise-the-wordpress-gallery-html-layout
+ */
+add_filter('post_gallery','gitt_format_gallery',10,2);
+
+function gitt_format_gallery($string,$attr){
+
+	$posts_order_string = $attr['ids'];
+	$posts_order = explode(',', $posts_order_string);
+
+
+	$posts = get_posts(array(
+		'include' => $posts_order,
+		'post_type' => 'attachment',
+		'orderby' => 'post__in'
+	));
+
+	if($attr['orderby'] == 'rand') {
+		shuffle($posts);
+	}
+
+	$output = '<div class="grid grid-gallery-shortcode" >
+
+            <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>';
+	add_filter( 'wp_get_attachment_image_attributes', 'gitt_lazyload_image_markup' );
+
+	foreach($posts as $imagePost){
+
+		$output .= '<div class="grid-item grid-item-expandable"> ';
+		$output .=  wp_get_attachment_image( $imagePost->ID, 'large');
+		$output .= '</div>';
+
+	}
+
+	$output .= "</div>";
+	remove_filter( 'wp_get_attachment_image_attributes', 'gitt_lazyload_image_markup' );
+	return $output;
+}
+
+/**
+ * Returns an unordered list of social media icons that are from the Theme Settings
+ *
+ * @param string $class
+ *
+ * @return string
+ */
+function gitt_get_social_icons($class = '', $wrap = true, $li_class = '') {
+
+	$return = '';
+	if(have_rows('social_media', 'options')){
+		if ($wrap) {
+			$return .= '<ul class="social-icons ' . esc_attr( $class ) . '">';
+		}
+		while(have_rows('social_media', 'options')) {
+			the_row();
+			$icon  = get_sub_field( 'icon' );
+			$image = get_sub_field( 'image' );
+			$name  = get_sub_field( 'name' );
+			$url   = get_sub_field( 'url' );
+
+			if ( $icon ) {
+				$iconHtml = '<span class="icon ' . esc_attr( $icon ) . '"></span>';
+			} elseif ( $image ) {
+				$iconHtml = wp_get_attachment_image( $image['ID'], 'thumbnail', true, array( 'alt' => $name ) );
+			} else {
+				$iconHtml = $name;
+			}
+			$return .= '<li class="'. $li_class .'">';
+			$return .= '<a target="_blank" href="' . esc_url( $url ) . '">';
+			$return .= $iconHtml;
+			$return .= '</a></li>';
+		}
+
+		if($wrap) {
+			$return .= '</ul>';
+		}
+	}
+	return $return;
+}
+
+/* Add social icons to mobile menu */
+
+add_filter('wp_nav_menu_items', 'add_admin_link', 10, 2);
+function add_admin_link($items, $args){
+	if( $args->theme_location == 'primary' ){
+		$items .= gitt_get_social_icons('', false, 'menu-item menu-item-mobile');
+	}
+	return $items;
+}
+
+// Add the before and after markup of the nav 'ul'
+// Here we are adding a search form
+add_filter( 'wp_nav_menu_args', 'gitt_nav_menu_args' );
+
+function gitt_nav_menu_args($args) {
+
+
+	//Check to make sure we are dealing with primary menu
+	if( 'primary' === $args['theme_location']) {
+
+		$post_menu = '<div class="wsearch hide-opacity">' . genesis_search_form() . '</div>';
+		$args['items_wrap'] = '<ul id="%1$s" class="%2$s">%3$s</ul>' . $post_menu;
+	}
+
+	return $args;
+}
+
+
+// change default footer and add ACF fields that should be configured in theme settings
+
+# Footer
+remove_action( 'genesis_footer', 'genesis_do_footer' );
+add_action( 'genesis_footer', 'gtl_do_afooter' );
+
+function gtl_do_afooter(){
+
+	$before_year = get_the_field_without_wpautop( 'footer_before', 'options');
+	$after_year = get_the_field_without_wpautop( 'footer_after', 'options');
+	$login_url = get_home_url() . '/login';
+
+	echo '<div class="footer-copyright"><div class="wrap">' . wp_kses_post($before_year) . do_shortcode('[footer_copyright copyright=""] ') . wp_kses_post($after_year) .'</div></div>';
+
+}
+
+
+
+//* add sidebar
+genesis_register_sidebar( array(
+	'id'        => 'sidebar-name',
+	'name'      => 'Sidebar Name',
+	'description'   => 'This is a sidebar that will appear ...',
+) );
+
+

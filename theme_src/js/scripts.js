@@ -5,17 +5,27 @@
 
     $('document').ready(function() {
 
-        $('.nav-primary').sticky();
+        /* Sticky NAV code
+        --------------------------------------------------------------------
+         */
 
-        /* helps update sticky if user resizes the browser */
+
+        $('.site-header').sticky({
+            responsiveWidth: true,
+            widthFromWrapper: true,
+            zIndex: 999
+        });
+
         var updateSticky = debounce(function () {
-            $('.nav-primary').sticky('update');
+            $('.site-header').sticky('update');
 
         }, 250);
 
-
         window.addEventListener('resize', updateSticky);
 
+        /* END Sticky NAV code
+        -----------------------------------------------------------------------
+         */
 
     });
 

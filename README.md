@@ -155,6 +155,10 @@ A highly customizable slider.  It's a toss up between this slider and swiper.js 
   * add `node_modules/slick-carousel/slick/slick.js` to `jsConcatenatedScripts` in `package.json`
   * add php code to produce the markup needed by slick.js
   * add javascript code in `theme_src/js/my_scripts.js` to initialize slick on the element's markup
+  * slick.js currently does not support responsive image markup (img tag with srcset and sizes attributes).  `theme_options/js/slick-responsive-lazy.js` 
+  gives an example of how one can still do this with background images.
+  * `theme_options/css/supporting/_slick-custom.scss` gives some example styling to create a set aspect ratio for the slider, add classes needed for `slick-responsive-lazy.js`,
+  altering next and previous icons, and providing a fluid size text for the content.
 
 ### Infinite Scroll - using [modified Bill Erickson code](https://www.billerickson.net/infinite-scroll-in-wordpress/)
 
@@ -210,8 +214,44 @@ This option can be added to quickly add settings and options on the WordPress Th
 Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
 [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 
+### Elegant Icons for social media
+  * copy `theme_options/css/supporting/_elegant-icons.scss` to `theme_src/css/supporting` and add
+      `@import "supporting/elegant-icons` to `style.scss`
+  * download the elegant icon fonts from [here](https://www.elegantthemes.com/blog/resources/elegant-icon-font) and copy to the `fonts` directory
+  * Checkout the icons [here](https://www.elegantthemes.com/blog/resources/elegant-icon-font) to get the class name to use in your markup
 
+### Search form
+Most themes have a way to search the site.  Remember, by default WP search only returns text found in the content of pages and posts.  It does not find content
+in ACF fields unless you add some of the code in the ACF section of these theme options. This code hides the search form and shows it when a icon/link is clicked
+  * Add php from `theme_options/lib/searchform.php` - alter to put the search form where you want it in the page.
+  * Add `searchform.js` and alter the selector to select the icon/link you want clicked to show the search form.
+  * Add `_searchform.scss` and alter to match how the search form is added to the page.
+
+### Recommended Dev plugin
+  * [Query Monitor](https://wordpress.org/plugins/query-monitor/) by John Blackbourn.  It will show queries, hooks, PHP warnings and notices.
+  
+
+  
+  
 ## Change Log
+
+### 2017-12-13
+  * Adding code from project to use as templates.  Mainly stored in `theme_options/functions.php`
+    * get social icons function
+    * structural wrap settings
+    * creation of sidebar
+    * shortcode
+    * footer change
+  * Adding Elegant Icons for social media 
+  * Updated sticky nav initialization in `scripts.js`
+  * Added Search form php, js, and scss to `theme_options`
+  * Adding php code to allow content stored in ACF fields to be in the results of a search using the frontend WP search form
+  * Moving all optional ACF php code to `theme_options/lib/acf.php`
+  * Adding `theme_options/js/polyfill.js` that adds the Object.assign method for IE
+  * Adding `theme_options/js/slick-responsive-lazy.js`. Gives an example of how one can use responsive images and slick.js.
+  * Adding `theme_options/css/supporting/_slick-custom.scss`. Gives some example styling to create a set aspect ratio for the slider, add classes needed for `slick-responsive-lazy.js`,
+             altering next and previous icons, and providing a fluid size text for the content.
+      
 ### 2017-12-12
   * Adding [phplint](https://github.com/wayneashleyberry/phplint) to gulp pipeline
 
