@@ -1,6 +1,6 @@
 {
   "name": "genesis-starter",
-  "version": "1.0.0",
+  "version": "1.0.1-13",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -8,30 +8,33 @@
   },
   "license": "GPL-2.0+",
   "dependencies": {
+    "headroom.js": "^0.9.4",
     "jquery": "^3.2.1"
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
     "gulp-babel": "^7.0.0",
-    "gulp-bump": "^2.8.0",
+    "gulp-bump": "^2.9.0",
     "gulp-concat": "^2.6.1",
-    "gulp-newer": "^1.3.0",
+    "gulp-filter": "^5.1.0",
+    "gulp-newer": "^1.4.0",
     "gulp-prettier": "^1.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rimraf": "^0.2.1",
+    "gulp-rimraf": "^0.2.2",
     "gulp-rsync": "0.0.8",
     "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.0",
+    "gulp-sourcemaps": "^2.6.3",
     "gulp-template": "^4.0.0",
     "gulp-uglify": "^3.0.0",
-    "gulp-zip": "^4.0.0",
+    "gulp-zip": "^4.1.0",
     "phplint": "^1.7.4",
     "prettier": "1.9.2",
-    "rimraf": "^2.6.1",
-    "run-sequence": "^2.1.0"
+    "rimraf": "^2.6.2",
+    "run-sequence": "^2.2.1",
+    "sticky-kit": "^1.1.3"
   },
   "//": "Order the dependencies how you want them concatenated",
   "templateName": "Genesis Starter",
@@ -42,10 +45,12 @@
   "genesisVersion": "2.4.3",
   "themeSrcFolder": "theme_src",
   "themeDestFolder": "theme_dest",
+  "jsConcatenatedVendorScripts": [
+    "theme_src/js/vendor/debounce.js",
+    "theme_src/js/vendor/sticky.js"
+  ],
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
-    "theme_src/js/vendor/debounce.js",
-    "theme_src/js/vendor/sticky.js",
     "theme_src/js/scripts.js"
   ]
 }

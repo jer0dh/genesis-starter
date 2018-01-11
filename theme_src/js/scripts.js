@@ -10,7 +10,7 @@
          */
 
 
-        $('.site-header').sticky({
+       $('.site-header').sticky({
             responsiveWidth: true,
             widthFromWrapper: true,
             zIndex: 999
@@ -26,6 +26,19 @@
         /* END Sticky NAV code
         -----------------------------------------------------------------------
          */
+
+        /* Sticky NAV code - sticky-kit
+        -------------------------------------------------------------------------
+         */
+
+/*        $('.site-header').stick_in_parent();
+        $('.nav-primary').stick_in_parent();*/
+
+        /* END Sticky NAV code - sticky-kit
+        -------------------------------------------------------------------------
+         */
+
+
 
     });
 

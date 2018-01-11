@@ -23,7 +23,7 @@ const phplint = require('phplint').lint;
 
 const rsync = require('gulp-rsync');
 const prettier = require('gulp-prettier');
-
+const filter = require('gulp-filter');
 
 /* VARIABLES
 --------------------------------------------------------------------------------------------------------------------------------------- */
@@ -41,6 +41,8 @@ const remote = require( './' + pkg.remote );
 const imagesSrcFolder = 'images/src';
 const imagesDestFolder = 'images/dest';
 
+const fontSrcFolder = srcFolder + '/fonts';
+const fontDestFolder = destination + '/fonts';
 
 const themeBackups = 'theme_backup';
 
@@ -191,23 +193,32 @@ gulp.task('test', ['phplint'])
 /* JAVASCRIPT TASKS
 ------------------------------------------------------------------------------------------------------------------------------------- */
 /**
- * vendor folder will be copied to dest as is including non-js files
- * all js (not in jsContcatenatedScripts) under root of js folder will be minified and both copied over to dest
+ * vendor folder will be copied to dest as is, including non-js files
+ * all js (not in jsContcatenatedScripts nor in jsConcatenatedVendorScripts) under root of js folder will be minified and both copied over to dest
  * all non-js files and folders (excluding 'vendor' ) under root of js will be copied to dest.
  */
+//get array with all scripts and vendor scripts to be concatenated...vendor scripts first
+    var concatenatedScripts = pkg.jsConcatenatedScripts;
+    var concatenatedVendorScripts = pkg.jsConcatenatedVendorScripts;
+
+    var allConcatenatedScripts = concatenatedVendorScripts.concat( concatenatedScripts);
+
 
 // get an array of negated files to exclude js files that will be concatenated
-var negatedConcatenatedScripts = pkg.jsConcatenatedScripts.map( function (s) {
+var negatedConcatenatedScripts = concatenatedScripts.map( function (s) {
    return '!' + s;
 });
-
+var negatedConcatenatedVendorScripts = concatenatedVendorScripts.map( function (s) {
+    return '!' + s;
+});
+var negatedAllConcatenatedScripts = negatedConcatenatedScripts.concat(negatedConcatenatedVendorScripts);
 
 /**
  * Vendor Scripts & Assets
- * copy all vendor js and assets to destination excluding any js that is in pkg.jsConcatenatedScripts
+ * copy all vendor js and assets to destination excluding any js that is in pkg.jsConcatenatedScripts or pkg.jsConcatenatedVendorScripts
  */
 gulp.task('js-vendor-scripts-assets', function(){
-    return gulp.src([srcFolder + '/js/vendor/**/*'].concat( negatedConcatenatedScripts ))
+    return gulp.src([srcFolder + '/js/vendor/**/*'].concat( negatedAllConcatenatedScripts ))
         .pipe(gulp.dest( destination + '/js/vendor/'));
 });
 
@@ -215,7 +226,7 @@ gulp.task('js-vendor-scripts-assets', function(){
  * copy all other js scripts and assets to destination excluding any js that is in pkg.jsConcatentatedScripts and excluding anything under vendor folder
  */
 gulp.task('js-other-scripts-assets', function() {
-    return gulp.src([srcFolder + '/js/**/*', '!' + srcFolder + '/js/vendor/**/*', '!' + srcFolder + '/js/**/*.min.js'].concat( negatedConcatenatedScripts ))
+    return gulp.src([srcFolder + '/js/**/*', '!' + srcFolder + '/js/vendor/**/*', '!' + srcFolder + '/js/**/*.min.js'].concat( negatedAllConcatenatedScripts ))
         .pipe(gulp.dest( destination + '/js/'));
 });
 
@@ -224,7 +235,7 @@ gulp.task('js-other-scripts-assets', function() {
  * create and copy to destination a minified js
  */
 gulp.task('js-other-scripts-minify', function() {
-    return gulp.src([srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/vendor/**/*', '!' + srcFolder + '/js/**/*.min.js'].concat( negatedConcatenatedScripts ))
+    return gulp.src([srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/vendor/**/*', '!' + srcFolder + '/js/**/*.min.js'].concat( negatedAllConcatenatedScripts ))
         .pipe(sourcemaps.init())
         .pipe(babel({ presets: ['env']}))
         .pipe(rename({extname: '.min.js'}))
@@ -240,9 +251,12 @@ gulp.task('js-other-scripts-minify', function() {
  * Take array in package.json of js files with paths, run babel, concat, and minify into a file named by jsConcatenatedScriptsName in package.json
  */
 gulp.task('js-concat-scripts', function(cb) {
-    gulp.src(pkg.jsConcatenatedScripts)
+    const noVendorFilter = filter(negatedConcatenatedVendorScripts.concat(concatenatedScripts), {restore: true});  //only script files and remove vendor scripts temporarily while babel is run
+    gulp.src(allConcatenatedScripts)
         .pipe(sourcemaps.init())
+        .pipe(noVendorFilter)
         .pipe(babel({ presets: ['env']}))
+        .pipe(noVendorFilter.restore)
         .pipe(concat(pkg.jsConcatenatedScriptsName))
         .pipe(gulp.dest( destination + '/js' ))
         .pipe(rename({extname: '.min.js'}))
@@ -269,7 +283,14 @@ gulp.task('js-prettier', function(){
 gulp.task('js-clean', function(cb) {
     rimraf( destination + '/js', cb );
 });
+/* FONT TASKS
+------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+gulp.task('fonts', function() {
+    gulp.src([ fontSrcFolder + '/**/*'])
+        //.pipe(newer( fontDestFolder ))
 
+        .pipe(gulp.dest( fontDestFolder ));
+});
 
 
 /* IMAGE TASKS
@@ -361,7 +382,7 @@ gulp.task('bump-deploy-all', function(cb) {
 });
 
 gulp.task('deploy-all-clean', function(cb) {
-    runSequence('clean-theme', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
+    runSequence('clean-theme', 'fonts', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
 });
 
 gulp.task('deploy-images', ['images-move'], rsyncRemote );

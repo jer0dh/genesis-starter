@@ -56,8 +56,9 @@ section of the `gulpfile.js`
 #### Javascript Tasks
   * all js file are run through babel so can be written with latest JS.
   
-  * all js files listed in `package.json` under `jsConcatenatedScripts` will be concatenated and minified into a single file named from `jsConcatenatedScriptsName` and placed
-  in `/js` folder.  They will be concatenated in the order they appear in the array. Here's an example:
+  * js files listed in `package.json` under `jsConcatenatedVendorScripts` and `jsConcatenatedScripts` will be concatenated and minified into a single file named from `jsConcatenatedScriptsName` and placed
+  in `/js` folder.  They will be concatenated in the order they appear in the arrays with `jsConcatenatedVendorScripts` first. The only difference
+  between the two is jsConcatenatedVendorScripts will not run through Babel.  Here's an example:
   ````
     "jsConcatenatedScripts": [
       "node_modules/jquery/dist/jquery.js",
@@ -105,6 +106,20 @@ see `/theme_backups` folder description
   * added code in `js/scripts.js` to init sticky.js on `.nav-primary`
   * added `css/supporting/_nav_sticky.scss` to apply any new css needed (added css to move sticky nav down if wp-admin-bar present)
   
+  Warning: the sticky.js in this theme has be slightly altered to fix a responsive height issue.
+  
+#### Other sticky options
+  * [headroom.js](http://wicky.nillia.ms/headroom.js/).  9k+ gitHub stars
+    - specifically for a header as it appears to monitor only when window is not at the top and not in relation to the element headroom
+    has been assigned.  
+    - Nice in that it does not create the css styles for the sticky header.  Only changes the classes so we can decide how it sticks
+    - Classes are added so you can hide the header as it scrolls down and viewing the page. As soon as the user starts to scroll up a bit,
+    it adds a class so you can then show the header
+  * [Sticky-Kit](http://leafo.net/sticky-kit/). 2.5K+ gitHub stars
+    - `npm install sticky-kit --save-dev
+    - allows multiple sticky elements, but will not stack without addition coding
+   
+    
   
 ## Theme Options 
 This ever growing list of options are common client website needs.  They are not added to the `theme_src` but
@@ -237,6 +252,10 @@ in ACF fields unless you add some of the code in the ACF section of these theme 
 
 ### 2018-01-11
   * Making sure style.css in root of theme is included in the styles all task
+  * Adding notes regarding different sticky options
+  * Adding separate vendor and user js scripts arrays to concatenate together.  Vendor scripts are not run through babel which has caused issue with
+  some javascript libraries. Using gulp-filter to continue to be able to use the same Gulp task
+  * Ran npm update --save-dev
   
 
 ### 2017-12-13
