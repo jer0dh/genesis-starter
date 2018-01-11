@@ -22,7 +22,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const phplint = require('phplint').lint;
 
 const rsync = require('gulp-rsync');
-
+const prettier = require('gulp-prettier');
 
 
 /* VARIABLES
@@ -139,7 +139,7 @@ gulp.task('styles-sass-max', function () {
 });
 
 
-gulp.task('styles-all-tasks', ['styles-sass-min', 'styles-sass-max' ], function(cb) {
+gulp.task('styles-all-tasks', ['style-css-version','styles-sass-min', 'styles-sass-max' ], function(cb) {
     cb();
 });
 
@@ -256,10 +256,20 @@ gulp.task('js-all-tasks', ['js-vendor-scripts-assets', 'js-other-scripts-assets'
    cb();
 });
 
+/**
+ * Prettier
+ */
+
+gulp.task('js-prettier', function(){
+    return gulp.src([srcFolder + '/js/*.js','!' + srcFolder + '/js/*.min.js'])
+        .pipe(prettier({tabWidth:4, singleQuote: true}))
+        .pipe(gulp.dest(srcFolder + '/js'))
+})
 
 gulp.task('js-clean', function(cb) {
     rimraf( destination + '/js', cb );
 });
+
 
 
 /* IMAGE TASKS

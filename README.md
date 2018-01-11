@@ -235,6 +235,10 @@ in ACF fields unless you add some of the code in the ACF section of these theme 
   
 ## Change Log
 
+### 2018-01-11
+  * Making sure style.css in root of theme is included in the styles all task
+  
+
 ### 2017-12-13
   * Adding code from project to use as templates.  Mainly stored in `theme_options/functions.php`
     * get social icons function
