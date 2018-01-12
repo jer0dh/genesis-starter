@@ -98,6 +98,17 @@ It watches the `/images/src` folder and minifies any new images.
 ### Zip task
 see `/theme_backups` folder description
 
+  
+## Theme Options 
+This ever growing list of options are common client website needs.  They are not added to the `theme_src` but
+can be using the instructions below.  The basic instructions are
+  * install the javascript library needed either in the `/js/vendor` directory or via `npm`
+  and place the file path in the `package.json` so the gulp task will concatentate and minify it.
+  * place any css needed in the `css/supporting` directory and use the `@import` command to add it into `styles.css`
+  * any javascript code needed to initialize or customize the javascript library can be put in a js file under `/js` and
+  add this file to `package.json` so it will be concatenated and minified.
+  * move any php file needed from `theme_options/lib` to `theme_src/lib` and `require` this file in the `functions.php`
+
 
 ### Sticky Nav
   * using [sticky.js](http://stickyjs.com)
@@ -119,18 +130,7 @@ see `/theme_backups` folder description
     - `npm install sticky-kit --save-dev
     - allows multiple sticky elements, but will not stack without addition coding
    
-    
-  
-## Theme Options 
-This ever growing list of options are common client website needs.  They are not added to the `theme_src` but
-can be using the instructions below.  The basic instructions are
-  * install the javascript library needed either in the `/js/vendor` directory or via `npm`
-  and place the file path in the `package.json` so the gulp task will concatentate and minify it.
-  * place any css needed in the `css/supporting` directory and use the `@import` command to add it into `styles.css`
-  * any javascript code needed to initialize or customize the javascript library can be put in a js file under `/js` and
-  add this file to `package.json` so it will be concatenated and minified.
-  * move any php file needed from `theme_options/lib` to `theme_src/lib` and `require` this file in the `functions.php`
-  
+     
   
 ### Background Slide
 This has been used to create a simple home page with beautiful images covering the whole screen and sliding in the background.  This 
@@ -216,19 +216,6 @@ A highly customizable slider.  It's a toss up between this slider and swiper.js 
   * add `node_modules/jquery.scrollto/jquery.scrollTo.js` to `jsConcatenatedScripts` in `package.json`
   * in `theme_src/js/my_scripts.js` add the javascript to perform the scrolling
   
-### Theme Customization panel
-This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
-
-  * add `theme_options/lib/customization.php` to `theme_src` and `include` it in the functions.php
-  * add `theme_options/lib/customization.js` to `theme_src/js` and make sure `customization.php` contains the correct path to enqueue it.
-  * alter these files to include the settings/controls you want to add
-  * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
-  * [WordPress Docs on Theme Customization API](https://codex.wordpress.org/Theme_Customization_API)
-
-### Page builder option
-Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
-[Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
-
 ### Elegant Icons for social media
   * copy `theme_options/css/supporting/_elegant-icons.scss` to `theme_src/css/supporting` and add
       `@import "supporting/elegant-icons` to `style.scss`
@@ -242,9 +229,29 @@ in ACF fields unless you add some of the code in the ACF section of these theme 
   * Add `searchform.js` and alter the selector to select the icon/link you want clicked to show the search form.
   * Add `_searchform.scss` and alter to match how the search form is added to the page.
 
+### A Better dropdown - [Select2](https://select2.org/)
+A great dropdown with many options, especially, great for a multi-select dropdown.  Included in the php is a great filter for wp_dropdown_categories() 
+that adds the appropriate markup (`select` tags with the `multiple` attribute and `option` tags with the `selected` attribute).  It also allows the user
+to type to search for the options they want.
+  * `npm install --save select2`
+  * add `node_modules/select2/dist/js/select2.full.js` to `jsConcatenatedVendorScripts` in `package.json`
+  * if using multiple select dropdowns, copy `/theme_options/lib/select-dropdown.php` and add the appropriate `require_once` to `functions.php`
+  
 ### Recommended Dev plugin
   * [Query Monitor](https://wordpress.org/plugins/query-monitor/) by John Blackbourn.  It will show queries, hooks, PHP warnings and notices.
   
+### Theme Customization panel
+This option can be added to quickly add settings and options on the WordPress Theme Customize panel under Appearance | Customize.
+
+  * add `theme_options/lib/customization.php` to `theme_src` and `include` it in the functions.php
+  * add `theme_options/lib/customization.js` to `theme_src/js` and make sure `customization.php` contains the correct path to enqueue it.
+  * alter these files to include the settings/controls you want to add
+  * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
+  * [WordPress Docs on Theme Customization API](https://codex.wordpress.org/Theme_Customization_API)
+
+### Page builder option
+Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
+[Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 
   
   
