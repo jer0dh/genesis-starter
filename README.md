@@ -253,10 +253,47 @@ This option can be added to quickly add settings and options on the WordPress Th
 Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
 [Page Builder by SiteOrigin](https://wordpress.org/plugins/siteorigin-panels/)
 
+### Full Width Genesis
+Many times we want full width even in the content.  
+  * Remove default css for `.site-inner, .wrap` in `_structureAndLayout.scss`.  The `.site-inner` and all `.wrap` have max-width set.
+  * Can keep `.wrap` with max-width but add the following statement without `site-inner` listed
+  
+  ```php
+  add_theme_support( 'genesis-structural-wraps', array(
+  	'header',
+  	'menu-primary',
+  	'menu-secondary',
+  	'site-inner',
+  	'footer-widgets',
+  	'footer',
+  ) );
+  ``` 
+  * Wraps would have to be added to content areas that we want not to be full width.  
+  A good option would be to use the `genesis_entry_header` and `genesis_entry_footer` actions to add the wrap for 
+  `<article>`.  Use the `genesis_statndard_loop()` code to determine best place depending on theme needs.
+
+Another full width option which allows background color to expand full width involves keeping the wraps and css in place but to use some extra css to expand the container.
+   ```css
+   
+   .banner {
+     margin-left: -9999px;
+     margin-right: -9999px;
+     padding-left: 9999px;
+     padding-right: 9999px;
+   }
+   
+   ```
+### CSS Grid 
+As I write this [caniuse.com](https://caniuse.com/#feat=css-grid) reports 76.71% browser support which is 10% higher than 7 months ago.  So this is coming.
+This can probably be used for future projects, but would require some fallbacks.  Need to test to see if this autoprefixer will add the ms prefixes.
+If not available, then [this css-tricks article](https://css-tricks.com/browser-compatibility-css-grid-layouts-simple-sass-mixins/) offers mixins to add
+the ms prefixes.  In addition [this article](https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks) shows how to create some fallbacks.
   
   
 ## Change Log
-
+### 2018-01-12
+  * Researching and checking out full width options.  Making note in README.MD
+  
 ### 2018-01-11
   * Making sure style.css in root of theme is included in the styles all task
   * Adding notes regarding different sticky options
