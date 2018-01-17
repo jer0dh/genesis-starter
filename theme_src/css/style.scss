@@ -30,6 +30,11 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 ------------------------------------------------------------ */
 @import "supporting/nav-sticky";
 
+/* Slidout
+----------------------------------------------------------- */
+@import "../../node_modules/slideout/index";
+
+
 /* Bootstrap css
 NOTE: if you changed anything that is used in other variables (like grid), you will want to load the bootstrap/variables.scss file
 again as now it will have your overrides from the vars.scss file.

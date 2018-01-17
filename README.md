@@ -232,7 +232,9 @@ in ACF fields unless you add some of the code in the ACF section of these theme 
 ### A Better dropdown - [Select2](https://select2.org/)
 A great dropdown with many options, especially, great for a multi-select dropdown.  Included in the php is a great filter for wp_dropdown_categories() 
 that adds the appropriate markup (`select` tags with the `multiple` attribute and `option` tags with the `selected` attribute).  It also allows the user
-to type to search for the options they want.
+to type to search for the options they want.  Select2 does not seem to have great support for accessibility. Screen readers have some issues.  As of 
+August 2017, it appears WooCommerce has forked Select2 and beta testing [a backward compatible version of Select2.](https://woocommerce.wordpress.com/2017/08/08/selectwoo-an-accessible-replacement-for-select2/)
+ 
   * `npm install --save select2`
   * add `node_modules/select2/dist/js/select2.full.js` to `jsConcatenatedVendorScripts` in `package.json`
   * if using multiple select dropdowns, copy `/theme_options/lib/select-dropdown.php` and add the appropriate `require_once` to `functions.php`
@@ -283,14 +285,56 @@ Another full width option which allows background color to expand full width inv
    }
    
    ```
+   
+### Animations
+Adding some easy and nice animations is easy using Daniel Eden's animate.css file.  [It is found here](https://github.com/daneden/animate.css/blob/master/animate.css)
+  * run `npm install animate.css --save` and place `@import '../../node_modules/animate.css/animate.css';` in the `/theme_src/css/styles.scss` file.
+  
+  OR
+  
+  * create a file under `theme_src/css/supporting` called `animate.css` and copy the content of this file from the link above and place a corresponding 
+  import in the styles.scss file.
+  
+  * Instructions for adding the animations on a particular element are at the link
+  
+For more extensive type animations.  We would recommend [GreenSock](https://greensock.com/)
+
+
 ### CSS Grid 
 As I write this [caniuse.com](https://caniuse.com/#feat=css-grid) reports 76.71% browser support which is 10% higher than 7 months ago.  So this is coming.
 This can probably be used for future projects, but would require some fallbacks.  Need to test to see if this autoprefixer will add the ms prefixes.
 If not available, then [this css-tricks article](https://css-tricks.com/browser-compatibility-css-grid-layouts-simple-sass-mixins/) offers mixins to add
 the ms prefixes.  In addition [this article](https://rachelandrew.co.uk/css/cheatsheets/grid-fallbacks) shows how to create some fallbacks.
   
+### Accessibility
+To test page for accessibility issues
+  * add `tota11y.php` or add it's code to `functions.php`.  Add `theme_options\js\vendor\tota11y.js` to `theme_src`. Might want to check for [latest version here](http://khan.github.io/tota11y/)
+  * change WP_DEBUG to true in `wp-config.php` on the web host.
+  * Open page and click on button in a fixed position in the lower left.
   
+### Sliding sidebar menu using slideout.js
+
+* `npm install slideout --save`
+* add `node_modules/slideout/dist/slideout.js` to `jsConcatenatedVendorScripts` in `package.json` 
+* add the following to `/theme_src/css/style.scss`
+```css
+
+/* Slidout
+----------------------------------------------------------- */
+@import "../../node_modules/slideout/index";
+
+```
+
 ## Change Log
+
+### 2018-01-17
+  * wrote GsBus.js to provide an event/message bus similar to Wordpress with priorities
+  * adding/experimenting with slideout for a side menu - may try sidr.js next
+
+### 2018-01-16
+  * Adding notes on select2
+  * adding theme option to add tota11y.js to web page when wp_debug is on so one could analyze for accessibility issues.
+  
 ### 2018-01-12
   * Researching and checking out full width options.  Making note in README.MD
   

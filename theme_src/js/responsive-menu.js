@@ -225,6 +225,7 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 	 */
 	function _mainmenuToggle() {
 		var $this = $( this );
+		$('body').trigger('menuclick');
 		_toggleAria( $this, 'aria-pressed' );
 		_toggleAria( $this, 'aria-expanded' );
 		$this.toggleClass( 'activated' );

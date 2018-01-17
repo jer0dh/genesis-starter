@@ -111,7 +111,6 @@ function gtl_do_footer(){
 
 */
 
-/*
 add_theme_support( 'genesis-structural-wraps', array(
 	 'header',
 	'menu-primary',
@@ -119,7 +118,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'site-inner',
 	'footer-widgets',
 	'footer',
-	) );*/
+	) );
 
 /*
 /* add sidebar
@@ -129,3 +128,14 @@ genesis_register_sidebar( array(
 	'description'   => 'This is a sidebar that will appear ...',
 ) );
  */
+
+add_action( 'genesis_before', 'gs_add_side_content' );
+
+function gs_add_side_content() {
+	?>
+  <div class="site-sidebar">
+	  <h3>hello</h3>
+  </div>
+<?php
+
+}

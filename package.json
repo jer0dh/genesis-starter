@@ -1,6 +1,6 @@
 {
   "name": "genesis-starter",
-  "version": "1.0.1-16",
+  "version": "1.0.1-73",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -8,7 +8,8 @@
   },
   "license": "GPL-2.0+",
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "slideout": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -46,10 +47,12 @@
   "themeDestFolder": "theme_dest",
   "jsConcatenatedVendorScripts": [
     "theme_src/js/vendor/debounce.js",
-    "theme_src/js/vendor/sticky.js"
+    "theme_src/js/vendor/sticky.js",
+    "node_modules/slideout/dist/slideout.js"
   ],
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
+    "theme_src/js/event-bus.js",
     "theme_src/js/scripts.js"
   ]
 }
