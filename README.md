@@ -332,7 +332,10 @@ To test page for accessibility issues
 ```
 
 ## Change Log
-
+### 2018-01-18 v1.0.2
+  * finished slidout.js 
+  * moved all slideout.js code to `theme_options`
+  
 ### 2018-01-17
   * wrote GsBus.js to provide an event/message bus similar to Wordpress with priorities
   * adding/experimenting with slideout for a side menu - may try sidr.js next

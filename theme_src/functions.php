@@ -128,7 +128,3 @@ genesis_register_sidebar( array(
 	'description'   => 'This is a sidebar that will appear ...',
 ) );
  */
-
-//* sideout functions
-require_once( get_stylesheet_directory() . '/lib/slideout.php' );
-
