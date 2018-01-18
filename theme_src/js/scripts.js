@@ -9,6 +9,9 @@
         --------------------------------------------------------------------
          */
 
+        //removeIf(production)
+        console.log( 'starting scripts.js');
+        //endRemoveIf(production)
 
        $('.site-header').sticky({
             responsiveWidth: true,

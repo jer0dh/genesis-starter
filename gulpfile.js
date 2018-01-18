@@ -25,6 +25,8 @@ const rsync = require('gulp-rsync');
 const prettier = require('gulp-prettier');
 const filter = require('gulp-filter');
 
+const removeCode = require('gulp-remove-code');
+
 /* VARIABLES
 --------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -35,6 +37,10 @@ const destFolder = pkg.themeDestFolder;
 const destination = destFolder + '/' + themeName;
 
 const production = false;
+const removeCodeOptions = {
+    production : production,
+    notTesting : production || false
+};
 
 const remote = require( './' + pkg.remote );
 
@@ -159,6 +165,7 @@ gulp.task('php-template-copy', function(cb) {
 
     gulp.src([srcFolder + '/**/*.php'])
         .pipe(newer( destination ))    // prevents function.php with new version info to be created...for now always copy all.
+        .pipe(removeCode(removeCodeOptions))
         .pipe(template({pkg: getPackageJson(), production}))
         .pipe(gulp.dest( destination ));
     cb();
@@ -237,6 +244,7 @@ gulp.task('js-other-scripts-assets', function() {
 gulp.task('js-other-scripts-minify', function() {
     return gulp.src([srcFolder + '/js/**/*.js', '!' + srcFolder + '/js/vendor/**/*', '!' + srcFolder + '/js/**/*.min.js'].concat( negatedAllConcatenatedScripts ))
         .pipe(sourcemaps.init())
+        .pipe(removeCode(removeCodeOptions))
         .pipe(babel({ presets: ['env']}))
         .pipe(rename({extname: '.min.js'}))
         .pipe(uglify())
@@ -254,6 +262,7 @@ gulp.task('js-concat-scripts', function(cb) {
     const noVendorFilter = filter(negatedConcatenatedVendorScripts.concat(concatenatedScripts), {restore: true});  //only script files and remove vendor scripts temporarily while babel is run
     gulp.src(allConcatenatedScripts)
         .pipe(sourcemaps.init())
+        .pipe(removeCode(removeCodeOptions))
         .pipe(noVendorFilter)
         .pipe(babel({ presets: ['env']}))
         .pipe(noVendorFilter.restore)

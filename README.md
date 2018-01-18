@@ -233,7 +233,7 @@ in ACF fields unless you add some of the code in the ACF section of these theme 
 A great dropdown with many options, especially, great for a multi-select dropdown.  Included in the php is a great filter for wp_dropdown_categories() 
 that adds the appropriate markup (`select` tags with the `multiple` attribute and `option` tags with the `selected` attribute).  It also allows the user
 to type to search for the options they want.  Select2 does not seem to have great support for accessibility. Screen readers have some issues.  As of 
-August 2017, it appears WooCommerce has forked Select2 and beta testing [a backward compatible version of Select2.](https://woocommerce.wordpress.com/2017/08/08/selectwoo-an-accessible-replacement-for-select2/)
+August 2017, it appears WooCommerce has forked Select2 and beta testing [an accessible and backward compatible version of Select2.](https://woocommerce.wordpress.com/2017/08/08/selectwoo-an-accessible-replacement-for-select2/)
  
   * `npm install --save select2`
   * add `node_modules/select2/dist/js/select2.full.js` to `jsConcatenatedVendorScripts` in `package.json`
@@ -312,7 +312,7 @@ To test page for accessibility issues
   * change WP_DEBUG to true in `wp-config.php` on the web host.
   * Open page and click on button in a fixed position in the lower left.
   
-### Sliding sidebar menu using slideout.js
+### Sliding sidebar menu using [slideout.js](https://github.com/mango/slideout)
 
 * `npm install slideout --save`
 * add `node_modules/slideout/dist/slideout.js` to `jsConcatenatedVendorScripts` in `package.json` 
@@ -324,14 +324,64 @@ To test page for accessibility issues
 * add the following to `/theme_src/css/style.scss`
 ```css
 
-/* Slidout
+/* Slideout
 ----------------------------------------------------------- */
 @import "../../node_modules/slideout/index";
 @import "supporting/slideOut";
 
 ```
 
+### Remove code
+It's nice to be able to add some testing code to your php and javascript files.  What's not nice, is forgetting the testing code is still there when you've
+push out the production theme.  Removing or commenting out the test code is what we normally do but requires time to reinstate code if we need to 
+test again.  The gulp-remove-code plugin allows us to surround the testing code with a comment that will determine if it should be removed or not.
+
+```javascript
+        //removeIf(production)
+        console.log( 'starting scripts.js');
+        //endRemoveIf(production)
+```
+
+In the `gulpfile.js` there is a constant called `production`.  Change this to `true` and all testing code (including the start and end comments) will
+be removed.  There is another object called `removeCodeOptions`.  This is passed to the gulp-remove-code plugin so one can add different variables
+to test with.  Each key on the object could be used in the testing comment.  Each key should always be OR'ed with `production` so that if `production` is
+true, all testing code is removed.  This gives you the option to only have some of the testing code active in a non production environment.
+
+```php
+//removeIf(notTesting)
+   wp_enqueue_script( GS_MAIN_SCRIPT, get_stylesheet_directory_uri() . "/js/jasmine.js", array( 'jquery' ), $version, true );
+//endRemoveIf(notTesting)
+```
+> NOTE: Remember to restart the gulp process after changing any variables in the `gulpfile.js`
+
+### Event/Message Bus for javascript `theme_src/js/event-bus.js`
+
+Creates a global event/message bus that can be used throughout the life of the web page.  It also extends
+Query to add .onP and .triggerP functions on any jQuery object.
+
+.onP is the same as .on except it will automatically add a namespace of '3' if no namespace is added.
+.triggerP will trigger an 'event' in order of the namespaces.  Starting with '1' and ending with '5'
+
+This is similar to the Wordpress Action/Hook pattern so that one can give certain callbacks priority.
+
+Just as when using .on or .trigger, data can be passed at the time of setting 'onP' or data can be passed at the time
+the event is triggered
+
+Data passed using 'onP' must be the second argument of 'onP' as an Object.  It can be accessed in the trigger
+callback in the event.data.  See examples below.
+
+Data can also be passed to the callback by passing in an array of arguments when event is triggered.  See example in file
+
+Uses jQuery triggerHandler since no need for bubbling
+
+
 ## Change Log
+
+### 2018-01-18
+  * adding gulp-remove-code
+  * cleaning up `theme_versions` directory
+  * adding event-bus doc
+
 ### 2018-01-18 v1.0.2
   * finished slidout.js 
   * moved all slideout.js code to `theme_options`
