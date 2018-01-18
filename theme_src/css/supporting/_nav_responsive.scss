@@ -56,7 +56,7 @@ button.menu-toggle {
   }
 
   button.menu-toggle.activated::before {
-    content: "\f2d7";
+    content: "\f158";
     right: 1.5rem;
   }
 
@@ -81,8 +81,10 @@ button.menu-toggle {
     transform: rotate(-90deg);
   }
 
-  .nav-primary .genesis-nav-menu li {
+  .nav-primary .genesis-nav-menu li,
+  .nav-primary .genesis-nav-menu li:hover {
     width: 100%;
+    position: relative;
   }
 
   .nav-primary .genesis-nav-menu > li:first-child {

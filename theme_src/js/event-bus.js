@@ -48,6 +48,7 @@ jQuery.fn.extend({
             arguments[0] = event + '.3';
         }
 
+        this.off.apply(this, arguments);  //prevent binding multiple times
         this.on.apply(this, arguments);
     }
 });
@@ -71,3 +72,9 @@ if(typeof window.$GsBus === 'undefined') {
 
         $GsBus.triggerP('testing', [{name: 'fromTrigger'}]);  // Each element in the array is a parameter of the callback
 */
+
+/* Finding list of events bound to an element
+
+$._data($(elem).get(0), "events")
+$._data($GsBus.get(0), "events")
+ */

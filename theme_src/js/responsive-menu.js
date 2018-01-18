@@ -122,11 +122,19 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 		// Setup additional classes.
 		$( '.' + mainMenuButtonClass ).addClass( menuIconClass );
 		$( '.' + subMenuButtonClass ).addClass( subMenuIconClass );
-		$( '.' + mainMenuButtonClass ).on( 'click.genesisMenu-mainbutton', _mainmenuToggle ).each( _addClassID );
+		$( '.' + mainMenuButtonClass ).on( 'click.genesisMenu-mainbutton', _mainMenuClick ).each( _addClassID );
 		$( '.' + subMenuButtonClass ).on( 'click.genesisMenu-subbutton', _submenuToggle );
 		$( window ).on( 'resize.genesisMenu', _doResize ).triggerHandler( 'resize.genesisMenu' );
+
+        if(typeof window.$GsBus !== 'undefined') {
+        	$GsBus.onP('mainMenuInit', _mainMenuEvents );
+            $GsBus.triggerP('mainMenuInit');
+        }
 	};
 
+	function _mainMenuEvents () {
+        $GsBus.onP('mainMenuOpen', _mainMenuTrigger );
+	}
 	/**
 	 * Add menu toggle button to appropriate menus.
 	 * @param {toggleButtons} Object of menu buttons to use for toggles.
@@ -220,12 +228,38 @@ var genesisMenuParams      = typeof genesis_responsive_menu === 'undefined' ? ''
 
 	}
 
+    /**
+	 * When main menu button is clicked, trigger event if $GsBus exists. Otherwise just call _mainmenuTrigger
+     */
+
+    function _mainMenuClick(e) {
+    	let that = this;
+		e.stopPropagation();
+
+        if(typeof window.$GsBus === 'undefined') {
+        	_mainMenuTrigger(null, this);
+		} else {
+        	$GsBus.triggerP('mainMenuOpen',[that]);
+		}
+	}
+
+
 	/**
-	 * Action to happen when the main menu button is clicked.
+	 * Original function to call when mainmenu is clicked
 	 */
-	function _mainmenuToggle() {
+/*	function _mainmenuToggle() {
 		var $this = $( this );
-		$('body').trigger('menuclick');
+		_toggleAria( $this, 'aria-pressed' );
+		_toggleAria( $this, 'aria-expanded' );
+		$this.toggleClass( 'activated' );
+		$this.next( 'nav' ).slideToggle( 'fast' );
+	}*/
+
+	/**
+	 * Action to happen when the main menu button is clicked and this is triggered.
+	 */
+	function _mainMenuTrigger(e, el) {
+		var $this = $( el );
 		_toggleAria( $this, 'aria-pressed' );
 		_toggleAria( $this, 'aria-expanded' );
 		$this.toggleClass( 'activated' );

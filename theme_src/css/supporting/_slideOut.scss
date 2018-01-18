@@ -1,0 +1,22 @@
+.site-sidebar {
+  .nav-primary,
+  .nav-primary .sub-menu,
+  .nav-secondary,
+  .nav-secondary .sub-menu {
+    display: block;
+  }
+}
+
+/* Needed.  Otherwise can see menu through container before it slides */
+
+.site-container {
+  background: #fff;
+
+}
+
+/* Add css if sidebar on right side */
+
+.slideout-menu-right {
+  left: auto;
+
+}

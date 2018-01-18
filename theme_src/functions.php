@@ -129,13 +129,6 @@ genesis_register_sidebar( array(
 ) );
  */
 
-add_action( 'genesis_before', 'gs_add_side_content' );
+//* sideout functions
+require_once( get_stylesheet_directory() . '/lib/slideout.php' );
 
-function gs_add_side_content() {
-	?>
-  <div class="site-sidebar">
-	  <h3>hello</h3>
-  </div>
-<?php
-
-}

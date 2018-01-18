@@ -39,26 +39,6 @@
          */
 
 
-
-        let slideout = new Slideout({
-            'panel' : document.querySelector('.site-container'),
-            'menu'  : document.querySelector('.site-sidebar'),
-            'padding' : 256,
-            'tolerance' : 70
-
-        });
-
-        $GsBus.onP('testing', { name: 'first'},  function(e, a) {
-            console.log(e.data);  // {name: 'first'}
-            console.log(a);       // {name: 'fromTrigger'}
-        });
-        $GsBus.onP('testing.2', function(e, a) {
-            console.log('wow');
-            console.log(e.data);       // undefined
-            console.log(a);            // {name: 'fromTrigger'}
-        });
-
-        $GsBus.triggerP('testing', [{name: 'fromTrigger'}]);
     });
 
 })(jQuery);

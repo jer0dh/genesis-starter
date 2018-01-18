@@ -316,12 +316,18 @@ To test page for accessibility issues
 
 * `npm install slideout --save`
 * add `node_modules/slideout/dist/slideout.js` to `jsConcatenatedVendorScripts` in `package.json` 
+* add `theme_options/css/supporting/_slideOut.scss` to `theme_src/css/support`
+* add `theme_options/js/slideout-cust.js` to `theme_src/js`
+* add `theme_src/js/slideout-cust.js` to `jsConcatenatedScripts` in `package.json`
+* make sure the `event-bus.js` file is in `jsConcatenatedScripts` in `package.json` and loaded before `slideout-cust.js`
+* add `theme_src/lib/sideout.php` to `theme_src/lib` and add `require_once( get_stylesheet_directory() . '/lib/slideout.php' );` to `functions.php`.
 * add the following to `/theme_src/css/style.scss`
 ```css
 
 /* Slidout
 ----------------------------------------------------------- */
 @import "../../node_modules/slideout/index";
+@import "supporting/slideOut";
 
 ```
 

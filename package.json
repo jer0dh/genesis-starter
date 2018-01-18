@@ -1,6 +1,6 @@
 {
   "name": "genesis-starter",
-  "version": "1.0.1-73",
+  "version": "1.0.1-147",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -53,6 +53,7 @@
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [
     "theme_src/js/event-bus.js",
+    "theme_src/js/slideout-cust.js",
     "theme_src/js/scripts.js"
   ]
 }
