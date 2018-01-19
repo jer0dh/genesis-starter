@@ -1,17 +1,18 @@
 /* Colors
 ------------------------------------ */
 
-$color_gold:        #f9a01b;
-$color_orange:      #f26122;
-$color_magenta:     #ec008c;
-$color_violet:      #ab4a9c;
-$color_blue:        #0066a6;
-$color_cyan:        #00aeef;
-$color_green:       #39b45a;
+$color-gold:        #f9a01b;
+$color-orange:      #f26122;
+$color-magenta:     #ec008c;
+$color-violet:      #ab4a9c;
+$color-blue:        #0066a6;
+$color-cyan:        #00aeef;
+$color-green:       #39b45a;
 
-$color_warm_gray:   #8e8279;
-$color_black:       #000000;
-$color_gray:        #e7e7e7;
+$color-warm_gray:   #8e8279;
+$color-black:       #000000;
+$color-white:       #ffffff;
+$color-gray:        #e7e7e7;
 
 $btn-default-bg: $color_blue;
 $btn-primary-bg: $color_orange;
@@ -30,18 +31,27 @@ $btn-border-radius-base: 0;
 $btn-border-radius-large: 0;
 $btn-border-radius-small: 0;
 
+$color-default: $color-black;
+$background-default: $color-white;
+$color-anchor-default: $color-blue;
+$color-border-default: #dddddd;
 
 /* Typography
 ------------------------------------- */
+
+$font-default: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$line-height-default: 1.625;
 
 $font_mbempire_book: 'mb_empire_bookregular', sans-serif;
 
 $global-font-size: 16px;
 
+
+
 /* sizing
 ------------------------------------- */
 
-$max_screen_width: 1700px;
+$max_screen_width: 1200px;
 
 $screen-sm-min:              500px;
 

@@ -4,35 +4,36 @@
 	- Box Sizing
 	- Float Clearing
 ------------------------------------------------------------ */
-@import "genesis/resets";
+@import "bare-genesis/resets";
+
 
 /* Typographical
 ------------------------------------------------------------ */
-@import "genesis/typographical";
+@import "bare-genesis/typographical";
 
 
 /* Headings
 ------------------------------------------------------------ */
-@import "genesis/headings";
+@import "bare-genesis/headings";
 
 
 /* Objects and Gallery
 ------------------------------------------------------------ */
-@import "genesis/objectsAndGallery";
+@import "bare-genesis/objectsAndGallery";
 
 /* Forms
 ------------------------------------------------------------ */
-@import "genesis/forms";
+@import "bare-genesis/forms";
 
 /* Tables and Screen Reader
 ------------------------------------------------------------ */
-@import "genesis/_tableAndScreenReader";
+@import "bare-genesis/_tableAndScreenReader";
 
 /* Structure and Layouts
 	- Site Containers
 	- Column Widths and Positions
 ------------------------------------------------------------ */
-@import "genesis/structureAndLayout";
+@import "bare-genesis/structureAndLayout";
 
 
 /* Common Classes
@@ -42,13 +43,13 @@
 	- Titles
 	- WordPress
 ------------------------------------------------------------ */
-@import "genesis/commonClasses";
+@import "bare-genesis/commonClasses";
 
 
 /* Widgets
 	- Featured Content
 ------------------------------------------------------------ */
-@import "genesis/widgets";
+@import "bare-genesis/widgets";
 
 
 /* Plugins and Skip Links
@@ -57,7 +58,7 @@
 	- Jetpack
 - Skip Links
 ------------------------------------------------------------ */
-@import "genesis/pluginsAndSkipLinks";
+@import "bare-genesis/pluginsAndSkipLinks";
 
 
 
@@ -65,7 +66,7 @@
 	- Title Area
 	- Widget Area
 ------------------------------------------------------------ */
-@import "genesis/siteheader";
+@import "bare-genesis/siteheader";
 
 
 
@@ -74,7 +75,7 @@
 	- Site Header Navigation
 	- Primary and Secondary Navigation
 ------------------------------------------------------------ */
-@import "genesis/nav";
+@import "bare-genesis/nav";
 
 
 
@@ -84,29 +85,29 @@
 	- Pagination
 	- Comments
 ------------------------------------------------------------ */
-@import "genesis/contentArea";
+@import "bare-genesis/contentArea";
 
 
 
 /* Sidebars
 ------------------------------------------------------------ */
-@import "genesis/sidebars";
+@import "bare-genesis/sidebars";
 
 
 
 /* Site Footer
 ------------------------------------------------------------ */
-@import "genesis/sitefooter";
+@import "bare-genesis/sitefooter";
 
 
 /* Media Queries
 ------------------------------------------------------------ */
-@import "genesis/mediaQueries";
+@import "bare-genesis/mediaQueries";
 
 
 
 /* Genesis Base
 ------------------------------------------------------------ */
-@import "genesis/printStyles";
+@import "bare-genesis/printStyles";
 
 

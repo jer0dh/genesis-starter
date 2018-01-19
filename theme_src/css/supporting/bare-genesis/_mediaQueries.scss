@@ -2,42 +2,42 @@
 /* # Media Queries
 ---------------------------------------------------------------------------------------------------- */
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: to-em(1280px)) {
 
   .site-inner,
   .wrap {
-    max-width: 960px;
+    max-width: to-em(960px);
   }
 
   .content-sidebar-sidebar .content-sidebar-wrap,
   .sidebar-content-sidebar .content-sidebar-wrap,
   .sidebar-sidebar-content .content-sidebar-wrap {
-    width: 720px;
+    width: to-em(720px);
   }
 
   .content,
   .site-header .widget-area {
-    width: 600px;
+    width: to-em(600px);
   }
 
   .sidebar-content-sidebar .content,
   .sidebar-sidebar-content .content,
   .content-sidebar-sidebar .content {
-    width: 360px;
+    width: to-em(360px);
   }
 
   .sidebar-primary,
   .title-area {
-    width: 300px;
+    width: to-em(300px);
   }
 
 }
 
-@media only screen and (max-width: 1020px) {
+@media only screen and (max-width: to-em(1020px)) {
 
   .site-inner,
   .wrap {
-    max-width: 800px;
+    max-width: to-em(800px);
   }
 
   .content,
@@ -55,7 +55,7 @@
   }
 
   .site-header .wrap {
-    padding: 20px 5%;
+    padding: to-em(20px) 5%;
   }
 
   .header-image .site-title > a {
@@ -79,16 +79,16 @@
   .genesis-nav-menu a,
   .genesis-nav-menu > .first > a,
   .genesis-nav-menu > .last > a {
-    padding: 20px 16px;
+    padding: to-em(20px) to-em(16px);
   }
 
   .site-header .search-form {
-    margin: 16px auto;
+    margin: to-em(16px) auto;
   }
 
 }
 
-@media only screen and (max-width: 880px) {
+@media only screen and (max-width: to-em(880px)) {
 
   .site-inner,
   .wrap {

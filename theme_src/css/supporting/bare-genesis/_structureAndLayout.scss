@@ -8,12 +8,12 @@
 .site-inner,
 .wrap {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: $max_screen_width;
 }
 
 .site-inner {
   clear: both;
-  padding-top: 60px;
+  padding-top: to-em(60px);
 }
 
 /* ## Column Widths and Positions
@@ -24,7 +24,7 @@
 .content-sidebar-sidebar .content-sidebar-wrap,
 .sidebar-content-sidebar .content-sidebar-wrap,
 .sidebar-sidebar-content .content-sidebar-wrap {
-  width: 980px;
+  width: to-em( 980px / 1200px * $max_screen_width );
 }
 
 .content-sidebar-sidebar .content-sidebar-wrap {
@@ -40,7 +40,7 @@
 
 .content {
   float: right;
-  width: 780px;
+  width: to-em( 780px / 1200px * $max_screen_width ) ;
 }
 
 .content-sidebar .content,
@@ -52,7 +52,7 @@
 .content-sidebar-sidebar .content,
 .sidebar-content-sidebar .content,
 .sidebar-sidebar-content .content {
-  width: 580px;
+  width: to-em( 580px / 1200px * $max_screen_width );
 }
 
 .full-width-content .content {
@@ -63,7 +63,7 @@
 
 .sidebar-primary {
   float: right;
-  width: 360px;
+  width: to-em( 360px / 1200px * $max_screen_width );
 }
 
 .sidebar-content .sidebar-primary,
@@ -75,7 +75,7 @@
 
 .sidebar-secondary {
   float: left;
-  width: 180px;
+  width: to-em( 180px / 1200px * $max_screen_width );
 }
 
 .content-sidebar-sidebar .sidebar-secondary {

@@ -19,19 +19,20 @@ html {
   font-size: $global-font-size; //62.5%; /* 10px browser default */
 }
 
-/* Chrome fix */
+/* Chrome fix - not sure if we need this anymore
 body > div {
   font-size: 1.8rem;
 }
+*/
 
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  background-color: $background-default;
+  color: $color-default;
+  font-family: $font-default;
   font-size: $global-font-size;
   font-size: 1em;
   font-weight: 400;
-  line-height: 1.625;
+  line-height: $line-height-default;
   margin: 0;
 }
 
@@ -52,13 +53,13 @@ textarea:focus,
 }
 
 a {
-  color: #c3251d;
+  color: $color-anchor-default;
   text-decoration: underline;
 }
 
 a:hover,
 a:focus {
-  color: #333;
+  color: darken($color-anchor-default, 40%);
   text-decoration: none;
 }
 
@@ -80,7 +81,7 @@ li {
 hr {
   border: 0;
   border-collapse: collapse;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid $color-border-default;
   clear: both;
   margin: 1em 0;
 }

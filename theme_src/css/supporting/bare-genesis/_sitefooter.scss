@@ -3,11 +3,10 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-footer {
-  border-top: 1px solid #ddd;
-  font-size: 16px;
-  font-size: 1.6rem;
+  border-top: 1px solid $color-border-default;
+  font-size: 1rem;
   line-height: 1;
-  padding: 40px 0;
+  padding: to-em(40px) 0;
 }
 
 .site-footer p {

@@ -4,7 +4,7 @@
 
 .site-header {
   min-height: 160px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $color-border-default;
 }
 
 .site-header .wrap {
@@ -29,12 +29,6 @@
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
-}
-
-.site-title a,
-.site-title a:hover,
-.site-title a:focus {
-  color: #333;
 }
 
 .header-image .site-title > a {

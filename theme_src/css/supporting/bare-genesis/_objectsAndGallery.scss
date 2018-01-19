@@ -24,7 +24,7 @@ img {
 
 .gallery-item {
   float: left;
-  margin: 0 0 28px;
+  margin: 0 0 to-em(28px);
   text-align: center;
 }
 
@@ -61,9 +61,9 @@ img {
 }
 
 .gallery img {
-  border: 1px solid #ddd;
+  border: 1px solid $color-border-default;
   height: auto;
-  padding: 4px;
+  padding: to-em(4px);
 }
 
 .gallery img:hover,

@@ -368,7 +368,7 @@ Just as when using .on or .trigger, data can be passed at the time of setting 'o
 the event is triggered
 
 Data passed using 'onP' must be the second argument of 'onP' as an Object.  It can be accessed in the trigger
-callback in the event.data.  See examples below.
+callback in the event.data.  See examples in file.
 
 Data can also be passed to the callback by passing in an array of arguments when event is triggered.  See example in file
 

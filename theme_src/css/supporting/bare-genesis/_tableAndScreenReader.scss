@@ -6,12 +6,12 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   line-height: 2;
-  margin-bottom: 40px;
+  margin-bottom: to-em(40px);
   width: 100%;
 }
 
 tbody {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid $color-border-default;
 }
 
 td,
@@ -20,8 +20,8 @@ th {
 }
 
 td {
-  border-top: 1px solid #ddd;
-  padding: 6px 0;
+  border-top: 1px solid $color-border-default;
+  padding: to-em(6px) 0;
 }
 
 th {
@@ -53,9 +53,9 @@ th {
   display: block;
   font-size: 1em;
   font-weight: bold;
-  padding: 15px 23px 14px;
-  color: #333;
-  background: #fff;
+  padding: to-em(15px) to-em(23px) to-em(14px);
+  color: $color-default;
+  background: $background-default;
   z-index: 100000; /* Above WP toolbar. */
   text-decoration: none;
   box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);

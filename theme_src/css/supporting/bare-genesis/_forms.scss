@@ -5,9 +5,9 @@
 input,
 select,
 textarea {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  color: #333;
+  background-color: $background-default;
+  border: 1px solid $color-border-default;
+  color: $color-default;
   font-size: 18px;
   font-size: to-em(18px);
   font-weight: 400;
@@ -28,12 +28,12 @@ input[type="radio"] {
 }
 
 ::-moz-placeholder {
-  color: #333;
+  color: $color-default;
   opacity: 1;
 }
 
 ::-webkit-input-placeholder {
-  color: #333;
+  color: $color-default;
 }
 
 button,
@@ -41,9 +41,9 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .button {
-  background-color: #333;
+  background-color: $btn-default-bg;
   border: 0;
-  color: #fff;
+  color: $btn-default-color;
   cursor: pointer;
   font-size: 16px;
   font-size: to-em(16px);
@@ -62,13 +62,13 @@ input:focus[type="button"],
 input:focus[type="reset"],
 input:focus[type="submit"],
 .button:focus {
-  background-color: #c3251d;
-  color: #fff;
+  background-color: lighten($btn-default-bg, 30%);
+  color: $btn-default-color;
 }
 
 .entry-content .button:hover,
 .entry-content .button:focus {
-  color: #fff;
+  color: $btn-default-color;
 }
 
 .button {
