@@ -377,6 +377,9 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ## Change Log
 
+### 2018-01-21
+  * mobile-first css for responsive nav 
+
 ### 2018-01-20
   * Altering Genesis CSS and making it use em and mobile first media queries
 

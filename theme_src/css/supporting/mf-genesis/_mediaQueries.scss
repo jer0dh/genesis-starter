@@ -14,17 +14,6 @@
 
   }
 
-
-  .genesis-nav-menu li,
-  .site-header ul.genesis-nav-menu,
-  .site-header .search-form {
-    float: none;
-  }
-
-  .genesis-nav-menu {
-    text-align: center;
-  }
-
   .genesis-nav-menu a,
   .genesis-nav-menu > .first > a,
   .genesis-nav-menu > .last > a {
@@ -74,10 +63,9 @@
   }
 }
 
-@include mq($from: $screen-md-min, $type: screen) {  //992px
+@include mq($from: $screen-md-min, $type: screen) { //992px
 
   $sidespacing: 40px;
-
 
   .wrap {
     padding-left: to-em($sidespacing);
@@ -95,7 +83,6 @@
   .content-sidebar-sidebar .content-sidebar-wrap {
     float: left;
   }
-
 
   .sidebar-content-sidebar .content-sidebar-wrap,
   .sidebar-sidebar-content .content-sidebar-wrap {
@@ -122,12 +109,12 @@
   .sidebar-content-sidebar .content,
   .sidebar-sidebar-content .content,
   .content-sidebar-sidebar .content {
-    width: 60%; //to-em( ($screen-md-min - $sidespacing * 2))
+    width: 55%; //to-em( ($screen-md-min - $sidespacing * 2))
   }
 
   .sidebar-primary {
     float: right;
-    width: 35%; //to-em( ($screen-md-min - $sidespacing * 2) * 0.4);
+    width: 30%; //to-em( ($screen-md-min - $sidespacing * 2) * 0.4);
     background-color: #aaa;
   }
   .sidebar-secondary {
@@ -140,9 +127,37 @@
     float: right;
   }
 
+  /* NAV */
+
+  .genesis-nav-menu .sub-menu {
+    position: absolute;
+    width: to-em(210px, $global-font-size);
+    border-top: 1px solid $color-border-default;
+  }
+  .genesis-nav-menu .sub-menu {
+
+    left: -9999px;
+    opacity: 0;
+  }
+
+  .genesis-nav-menu .sub-menu a {
+    border: 1px solid $color-border-default;
+    border-top: 0;
+    width: to-em(210px);
+  }
+
+  .genesis-nav-menu .menu-item:hover {
+    position: static;
+  }
+
+
+  .genesis-nav-menu .menu-item:hover > .sub-menu {
+    left: auto;
+    opacity: 1;
+  }
+
+
 }
-
-
 
 $sidespacing: 40px;
 
