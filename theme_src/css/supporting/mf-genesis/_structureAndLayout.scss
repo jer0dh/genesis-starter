@@ -5,16 +5,20 @@
 /* ## Site Containers
 --------------------------------------------- */
 
-.site-inner,
+
 .wrap {
   margin: 0 auto;
-  max-width: $max_screen_width;
+
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .site-inner {
   clear: both;
   padding-top: to-em(60px);
+
 }
+
 
 /* ## Column Widths and Positions
 --------------------------------------------- */
@@ -24,35 +28,23 @@
 .content-sidebar-sidebar .content-sidebar-wrap,
 .sidebar-content-sidebar .content-sidebar-wrap,
 .sidebar-sidebar-content .content-sidebar-wrap {
-  width: to-em( 980px / 1200px * $max_screen_width );
-}
-
-.content-sidebar-sidebar .content-sidebar-wrap {
-  float: left;
-}
-
-.sidebar-content-sidebar .content-sidebar-wrap,
-.sidebar-sidebar-content .content-sidebar-wrap {
-  float: right;
+  width: 100%;
+ // width: to-em( 980px / 1200px * $max_screen_width );
 }
 
 /* ### Content */
 
 .content {
-  float: right;
-  width: to-em( 780px / 1200px * $max_screen_width ) ;
-}
 
-.content-sidebar .content,
-.content-sidebar-sidebar .content,
-.sidebar-content-sidebar .content {
-  float: left;
+  width: 100%
+  //width: to-em( 780px / 1200px * $max_screen_width ) ;
 }
 
 .content-sidebar-sidebar .content,
 .sidebar-content-sidebar .content,
 .sidebar-sidebar-content .content {
-  width: to-em( 580px / 1200px * $max_screen_width );
+  width: 100%;
+  //width: to-em( 580px / 1200px * $max_screen_width );
 }
 
 .full-width-content .content {
@@ -62,22 +54,14 @@
 /* ### Primary Sidebar */
 
 .sidebar-primary {
-  float: right;
-  width: to-em( 360px / 1200px * $max_screen_width );
+  width: 100%;
+ // width: to-em( 360px / 1200px * $max_screen_width );
 }
 
-.sidebar-content .sidebar-primary,
-.sidebar-sidebar-content .sidebar-primary {
-  float: left;
-}
 
 /* ### Secondary Sidebar */
 
 .sidebar-secondary {
-  float: left;
-  width: to-em( 180px / 1200px * $max_screen_width );
-}
-
-.content-sidebar-sidebar .sidebar-secondary {
-  float: right;
+  width: 100%;
+ // width: to-em( 180px / 1200px * $max_screen_width );
 }

@@ -377,6 +377,9 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ## Change Log
 
+### 2018-01-20
+  * Altering Genesis CSS and making it use em and mobile first media queries
+
 ### 2018-01-18
   * adding gulp-remove-code
   * cleaning up `theme_versions` directory

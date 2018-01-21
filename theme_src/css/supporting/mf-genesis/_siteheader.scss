@@ -8,16 +8,16 @@
 }
 
 .site-header .wrap {
-  padding: 40px 0;
+  padding-top: to-em(20px);
+  padding-bottom: to-em(20px);
 }
 
 /* ## Title Area
 --------------------------------------------- */
 
 .title-area {
-  float: left;
   padding: 10px 0;
-  width: 360px;
+
 }
 
 .header-full-width .title-area {
@@ -33,7 +33,8 @@
 
 .header-image .site-title > a {
   background: url(images/logo.png) no-repeat left;
-  float: left;
+  background-position: center top;
+
   min-height: 60px;
   width: 100%;
 }
@@ -43,11 +44,13 @@
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.5;
+
 }
 
 .site-description,
 .site-title {
   margin-bottom: 0;
+  text-align: center;
 }
 
 .header-image .site-description,
@@ -61,8 +64,6 @@
 --------------------------------------------- */
 
 .site-header .widget-area {
-  float: right;
-  text-align: right;
-  width: 780px;
+  text-align: center;
 }
 

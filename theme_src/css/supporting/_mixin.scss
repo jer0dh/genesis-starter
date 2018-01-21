@@ -12,10 +12,10 @@ Here's a mixin from Web Designer Issue 266, 2017
 
 /* create a map of default breakpoints */
 $breakpoints: (
-        xs: 576px,
-        sm: 768px,
-        md: 992px,
-        lg: 1200px
+        xs: $screen-xs-min,
+        sm: $screen-sm-min,
+        md: $screen-md-min,
+        lg: $screen-lg-min
 ) !default;
 
 $global-font-size: 16px !default;

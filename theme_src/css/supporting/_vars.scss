@@ -51,9 +51,12 @@ $global-font-size: 16px;
 /* sizing
 ------------------------------------- */
 
-$max_screen_width: 1200px;
+$max_screen_width: 1500px;
 
-$screen-sm-min:              500px;
+$screen-xs-min:              576px;
+$screen-sm-min:              768px;
+$screen-md-min:              992px;
+$screen-lg-min:             1200px;
 
 /* margins
 ------------------------------------- */
