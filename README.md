@@ -239,6 +239,11 @@ August 2017, it appears WooCommerce has forked Select2 and beta testing [an acce
   * add `node_modules/select2/dist/js/select2.full.js` to `jsConcatenatedVendorScripts` in `package.json`
   * if using multiple select dropdowns, copy `/theme_options/lib/select-dropdown.php` and add the appropriate `require_once` to `functions.php`
   
+### Another Better dropdown - [Chosen](https://github.com/harvesthq/chosen)
+Found that Gravity Forms will use this to improve their select input if you opt to in advanced settings of the field.  It has
+also been starred over 21K in github.  Will look at this for my next project
+
+
 ### Recommended Dev plugin
   * [Query Monitor](https://wordpress.org/plugins/query-monitor/) by John Blackbourn.  It will show queries, hooks, PHP warnings and notices.
   
