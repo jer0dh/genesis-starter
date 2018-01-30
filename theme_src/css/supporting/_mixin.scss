@@ -112,3 +112,50 @@ $global-font-size: 16px !default;
   }
 
 }
+
+/*
+From: https://css-tricks.com/snippets/sass/strip-unit-function/
+ */
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+/*
+Here's a mixin from Web Designer Issue 266, 2017
+
+This will allow the font to adjust in a linear fashion
+This is based on screen width 100vw.
+
+ */
+
+
+@mixin fluid-text (
+  $min-font-size,
+  $max-font-size,
+  $break-start,
+  $break-end
+) {
+
+  $m: (strip-unit($max-font-size) - strip-unit($min-font-size)) / (strip-unit($break-end) - strip-unit($break-start));
+  $b: #{$min-font-size - $m * $break-start};
+  $mx: #{$m * 100vw};
+
+  font-size: #{$min-font-size};
+
+  @media (min-width: #{$break-start}) {
+    font-size: calc(#{$mx} + #{$b});
+  }
+
+  @media (min-width: #{$break-end}) {
+    font-size: #{$max-font-size};
+  }
+}
+

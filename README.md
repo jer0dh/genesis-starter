@@ -377,6 +377,9 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ## Change Log
 
+### 2018-01-30
+  * adding mixin to create css for fluid-text
+
 ### 2018-01-21
   * mobile-first css for responsive nav 
 
