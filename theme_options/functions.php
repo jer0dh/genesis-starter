@@ -57,6 +57,22 @@ require_once( get_stylesheet_directory() . '/lib/search-functions.php' );
 require_once( get_stylesheet_directory() . '/lib/common.php' );
 
 
+//* Check for ACF plugin.  Report error if not found
+
+if( ! class_exists('acf') ) {
+	// show message to dashboard that ACF plugin is required
+	add_action( 'admin_notices',  'gs_plugin_ACF_not_loaded' );
+
+} else {
+
+//* Load ACF functions
+	require_once( get_stylesheet_directory() . '/lib/acf.php' );
+}
+
+function gs_plugin_ACF_not_loaded() {
+	printf( '<div class="error"><p>%s</p></div>', __( 'This theme REQUIRES the Advanced Custom Fields plugin and it is not loaded' ) );
+}
+
 
 
 /* # Footer

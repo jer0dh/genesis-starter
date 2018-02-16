@@ -52,9 +52,37 @@ if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page('Theme Settings');
 }
 
+// BEGIN Code to add titles to flex layout on backend
+
+// Add item name to layout title on backend
+add_filter('acf/fields/flexible_content/layout_title', 'acf_flexible_content_layout_title', 10, 4);
+
+// Add acf filter to add titles to flex content layout
+function acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 
 
+	// load text sub field
+	if( $text = get_sub_field('title') ) {
 
+		$title .= ' - <strong>' . wp_strip_all_tags($text) . '</strong>';
+
+	} elseif( $layout['name'] === 'dropdown' && $dropdowns = get_sub_field('dropdowns')) {
+
+		$title .= ' - ';
+		foreach($dropdowns as $dropdown) {
+			$title .= wp_strip_all_tags($dropdown['title']) . ', ';
+		}
+		$title = rtrim($title, ', ');
+	} elseif( $layout['name'] === 'basic_content' && $content = get_sub_field('content')) {
+
+		$title .= ' - ' . wp_strip_all_tags(substr($content, 0,40)) . '...';
+	}
+
+	return $title;
+
+}
+
+// END Code to add titles to flex layout on backend
 
 // BEGIN CODE TO ADD THE ABILITY TO SEARCH ACF fields using WP Search form on the frontend
 

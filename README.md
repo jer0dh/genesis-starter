@@ -384,6 +384,8 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ### 2018-01-30
   * adding mixin to create css for fluid-text
+  * added in theme_options code to add titles to flexible layouts on the backend
+  * added in theme_options code to report error if ACF plugin not loaded.
 
 ### 2018-01-21
   * mobile-first css for responsive nav 
