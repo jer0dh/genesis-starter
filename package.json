@@ -1,6 +1,6 @@
 {
   "name": "genesis-starter",
-  "version": "1.0.3-95",
+  "version": "1.0.3-102",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "bootstrap": "^4.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-babel": "^7.0.0",
@@ -36,6 +37,10 @@
     "run-sequence": "^2.2.1",
     "sticky-kit": "^1.1.3"
   },
+  "browserslist": [
+    "> 0.1%",
+    "last 2 versions"
+  ],
   "//": "Order the dependencies how you want them concatenated",
   "templateName": "Genesis Starter",
   "templateUri": "https://jhtechservices.com",
@@ -47,7 +52,8 @@
   "themeDestFolder": "theme_dest",
   "jsConcatenatedVendorScripts": [
     "theme_src/js/vendor/debounce.js",
-    "theme_src/js/vendor/sticky.js"
+    "theme_src/js/vendor/sticky.js",
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
   ],
   "jsConcatenatedScriptsName": "scripts.js",
   "jsConcatenatedScripts": [

@@ -160,7 +160,13 @@ bootstrap modal css and created a boostrap.js file with only the modal code usin
   * Another way to add the latest bootstrap would be to `npm install bootstrap --save` and copy from `node_modules` to `theme_src`. 
   Or use the full path to the code under `node_modules` above.
   * Another great way of using bootstrap and genesis would be to use [this starter theme](https://github.com/salcode/bootstrap-genesis)
-   
+## Bootstrap Update
+  * Bootstrap 4 can be used instead.  
+  * `npm install bootstrap --save-dev`
+  * add `"node_modules/bootstrap/dist/js/bootstrap.bundle.js"` to `jsConcatenatedVendorScripts` in package.json.  This includes popper.js.  Only 67KB when minified
+  * `_bootstrap4.scss` or `_bootstrap-grid.scss` can be `@import`ed in the `style.scss` and it will load the SASS version of bootstrap directly from
+   the source files in the node_modules folder.  `boostrap-grid.scss` only loads the new bootstrap grid framework.
+     
 ### Carousel - [Slick.js](https://github.com/kenwheeler/slick/) 
 A highly customizable slider.  It's a toss up between this slider and swiper.js slider.
   * install slick.js: `npm install slick-carousel --save` 
@@ -381,6 +387,9 @@ Uses jQuery triggerHandler since no need for bubbling
 
 
 ## Change Log
+
+### 2018-02-20
+  * Adding Bootstrap 4 as option.  Adding Bootstrap4 Grid only to theme_src
 
 ### 2018-01-30
   * adding mixin to create css for fluid-text

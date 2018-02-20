@@ -127,7 +127,7 @@ gulp.task('styles-sass-min', function () {
     return gulp.src( srcFolder + '/css/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed', sourceMap: true}).on('error', sass.logError))
-        .pipe(autoprefixer({ browsers: ['last 3 versions']}))
+        .pipe(autoprefixer({}))  // browsers: ['last 4 versions']
         .pipe(rename(function(path){
             path.extname = '.min.css'
         }))
@@ -142,7 +142,7 @@ gulp.task('styles-sass-min', function () {
 gulp.task('styles-sass-max', function () {
     return gulp.src( srcFolder + '/css/*.scss')
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-        .pipe(autoprefixer({ browsers: ['last 3 versions']}))
+        .pipe(autoprefixer()) //flexbox: "no-2009",browsers: ['last 4 versions']
         .pipe(gulp.dest( destination + '/css'));
 });
 

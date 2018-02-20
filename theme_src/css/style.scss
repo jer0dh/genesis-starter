@@ -22,6 +22,10 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 ----------------------------------------------------------- */
 @import "supporting/mf-genesis";
 
+/*Bootstrap 4 css
+----------------------------------------------------------- */
+@import "supporting/bootstrap-grid";
+
 /* Responsive Nav
 ----------------------------------------------------------- */
 @import "supporting/nav_responsive";
