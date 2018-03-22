@@ -194,8 +194,30 @@ gulp.task('phplint', function (cb) {
 
 gulp.task('test', ['phplint'])
 
-//TODO create an array in package.json for file extensions to copy from src to dest.  Use the array to create gulp tasks and an array of gulp tasks.
 
+/* MISC FILES TASKS
+------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+// This should copy any other directories and non-php or non-scss files anywhere the template src except the standard directories of css, fonts, images, and js. We
+// will let the other tasks deal with those standard directories.
+// Since these normally do not change, we will only do this task as the default task and not as a watch
+
+gulp.task('files-template-copy', function(cb) {
+
+    const doNotCopyList = [
+        '!' + srcFolder + '/css/**/*.*',
+        '!' + srcFolder + '/fonts/**/*.*',
+        '!' + srcFolder + '/images/**/*.*',
+        '!' + srcFolder + '/js/**/*.*',
+        '!' + srcFolder + '/**/*.scss',
+        '!' + srcFolder + '/**/*.php',
+    ];
+
+    gulp.src([srcFolder + '/**/*.*'].concat(doNotCopyList))
+        .pipe(newer( destination ))    // only copy if not in destination.
+        .pipe(gulp.dest( destination ));
+    cb();
+});
 
 /* JAVASCRIPT TASKS
 ------------------------------------------------------------------------------------------------------------------------------------- */
@@ -391,7 +413,7 @@ gulp.task('bump-deploy-all', function(cb) {
 });
 
 gulp.task('deploy-all-clean', function(cb) {
-    runSequence('clean-theme', 'fonts', 'php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
+    runSequence('clean-theme', 'fonts', 'files-template-copy','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
 });
 
 gulp.task('deploy-images', ['images-move'], rsyncRemote );

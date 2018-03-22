@@ -388,6 +388,10 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ## Change Log
 
+### 2018-03-22
+  * Adding gulp task to copy misc files from src to dest.  It does not touch the files processed by the other tasks. It is
+  run only as the default task (no watch setup for this since these files don't change often)
+
 ### 2018-02-20
   * Adding Bootstrap 4 as option.  Adding Bootstrap4 Grid only to theme_src
 

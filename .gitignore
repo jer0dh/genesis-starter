@@ -7,3 +7,4 @@ rsync*.json
 images/
 theme_dest/
 theme_backup/
+scratch.*
