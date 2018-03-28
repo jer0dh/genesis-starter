@@ -287,4 +287,3 @@ genesis_register_sidebar( array(
 	'description'   => 'This is a sidebar that will appear ...',
 ) );
 
-

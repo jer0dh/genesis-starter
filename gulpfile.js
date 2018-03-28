@@ -27,6 +27,8 @@ const filter = require('gulp-filter');
 
 const removeCode = require('gulp-remove-code');
 
+const filesExist = require('files-exist');
+
 /* VARIABLES
 --------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -274,15 +276,17 @@ gulp.task('js-other-scripts-minify', function() {
         .pipe(gulp.dest( destination + '/js/'));
 });
 
-
 /**
  * Create Main Concatenated Script file
  *
  * Take array in package.json of js files with paths, run babel, concat, and minify into a file named by jsConcatenatedScriptsName in package.json
  */
+
+
 gulp.task('js-concat-scripts', function(cb) {
     const noVendorFilter = filter(negatedConcatenatedVendorScripts.concat(concatenatedScripts), {restore: true});  //only script files and remove vendor scripts temporarily while babel is run
-    gulp.src(allConcatenatedScripts)
+
+    gulp.src(filesExist(allConcatenatedScripts))
         .pipe(sourcemaps.init())
         .pipe(removeCode(removeCodeOptions))
         .pipe(noVendorFilter)
@@ -413,7 +417,7 @@ gulp.task('bump-deploy-all', function(cb) {
 });
 
 gulp.task('deploy-all-clean', function(cb) {
-    runSequence('clean-theme', 'fonts', 'files-template-copy','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
+    runSequence('clean-theme', 'fonts', 'files-template-copy','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move',/* 'deploy-remote',*/ () => cb() );
 });
 
 gulp.task('deploy-images', ['images-move'], rsyncRemote );

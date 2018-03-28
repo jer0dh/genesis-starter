@@ -8,12 +8,14 @@
   },
   "license": "GPL-2.0+",
   "dependencies": {
+    "files-exist": "^1.0.2",
     "jquery": "^3.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bootstrap": "^4.0.0",
+    "file-exists": "^5.0.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.1.0",
     "gulp-babel": "^7.0.0",

@@ -205,6 +205,13 @@ A highly customizable slider.  It's a toss up between this slider and swiper.js 
      ```
   * see more explanation of [changing image tag markup with this article](https://jhtechservices.com/changing-your-image-markup-in-wordpress/) 
 
+### Lazyload images using Lozad.js [ApporvSaxena/Lozad.js](https://github.com/ApoorvSaxena/lozad.js#usage)
+This library was featured in CSS Tricks where it is using the IntersectionObserver API so no polling needed.  This makes it
+much more performant. Works with most latest browsers and for those it does not, like Safari, there is a polyfill.  By default images with class
+'lozad' will only load when in viewport. iframes and others can also use this.  Looks like they have a polyfill to incorporate more
+browsers at [this site](https://www.npmjs.com/package/intersection-observer) and on that page if you want it to work on even older browsers,
+add `<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>` in addition.
+
 
 ### Parallax Images
   * copy `theme_options/css/supporting/parallax.scss` to `theme_src/css/supporting` and add
@@ -261,6 +268,11 @@ This option can be added to quickly add settings and options on the WordPress Th
   * alter these files to include the settings/controls you want to add
   * [Great article on creating these settings](https://premium.wpmudev.org/blog/wordpress-theme-customization-api/)
   * [WordPress Docs on Theme Customization API](https://codex.wordpress.org/Theme_Customization_API)
+
+
+### Linear Gradients
+[A great site with 180 sample linear gradients for backgrounds.](https://webgradients.com)
+
 
 ### Page builder option
 Have not used it but it has a large 1 million+ installs, it's free, and compatible with all themes.
@@ -387,6 +399,10 @@ Uses jQuery triggerHandler since no need for bubbling
 
 
 ## Change Log
+
+### 2018-03-27
+  * added [files-exist](https://www.npmjs.com/package/files-exist) to js gulp task so it will error if it can't find one
+  of the javascript libraries
 
 ### 2018-03-22
   * Adding gulp task to copy misc files from src to dest.  It does not touch the files processed by the other tasks. It is
