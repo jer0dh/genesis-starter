@@ -4,12 +4,8 @@ A gulp based dev environment to help speed up Wordpress theme development using 
 
 ## Folders
 
-### `/images`
-Images contained in images/src folder off of project root.  Tasks should compress the images and place them in 
-images/dest.  Since some imaages will be uploaded to WordPress's media library and some will be theme assets, we leave 
-the moving of the compressed images up to the user.
 
-### `/images_backup`
+### `/theme_backup`
 zip task will compress and create a zip file of the theme_dest folder and place it in this folder. It will have 
 version and timestamp in name. 
 
@@ -83,9 +79,25 @@ default task
 Uses `gulp-rsync` to sync `theme_dest` to remote server.  Best to have exchanged keys with
 remote server so no password has to be entered each time this is run.
 
+`gulp-sftp` can also be used to sftp files up to host if rsync not available.
+
 `package.json` contains the name of the file containing config needed for this such as `username`, `port`, destination path,
 etc.  By default it's called `rsync.json`.  This file name MUST be listed in your `.gitignore` file so it
 does not get saved in a public repo.
+
+`.ftppass.json` contains your sftp information if using sftp.  It should also be listed in your `.gitignore` file.  Its format is like this:
+
+```$xslt
+{
+  "host": "ftp.hostname.com",
+  "user": "yourusername",
+  "pass": "yourpassword",
+  "remotePath": "/public_html/wp-content/themes",
+  "ftpPort": "21",
+  "sftpPort": "18765"
+}
+```
+> note: might need to create the initial theme folder via an ftp client for sftp to work.
 
 #### Default and Watches
 Default task will run the 'deploy-all-clean' task that cleans the `theme_dest`, runs all the tasks to
