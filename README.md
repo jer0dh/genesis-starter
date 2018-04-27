@@ -399,6 +399,8 @@ Uses jQuery triggerHandler since no need for bubbling
 
 
 ## Change Log
+### 2018-04-27
+  * added gulp-if and gulp-sftp to be able to sftp to hosts where we cannot use certificates for Auth nor ssh access for rsync
 
 ### 2018-03-27
   * added [files-exist](https://www.npmjs.com/package/files-exist) to js gulp task so it will error if it can't find one

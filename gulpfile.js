@@ -29,19 +29,33 @@ const removeCode = require('gulp-remove-code');
 
 const filesExist = require('files-exist');
 
+const gulpif = require('gulp-if');
+const sftp = require('gulp-sftp');
+
+try {
+    const sftpConfig = require('./sftp.json');
+} catch (ex) {
+    const sftpConfig = { send : "false" };
+}
+
+
 /* VARIABLES
 --------------------------------------------------------------------------------------------------------------------------------------- */
 
 const pkg = require('./package.json');
+
 const srcFolder = pkg.themeSrcFolder;
 const themeName = pkg.name;
 const destFolder = pkg.themeDestFolder;
 const destination = destFolder + '/' + themeName;
 
+/* allow specific instances when gulp-remove-code should remove...but ALWAYS remove if production is true */
+
 const production = false;
 const removeCodeOptions = {
     production : production,
-    notTesting : production || false
+    notTesting : production || false,
+    notTestingPhp : production || false,  // change false to true to remove any php testing code.
 };
 
 const remote = require( './' + pkg.remote );
@@ -107,6 +121,7 @@ gulp.task('php-functions-php-version', function(cb) {
 
     gulp.src([srcFolder + '/functions.php'])
         .pipe(template({pkg: getPackageJson(), production}))
+        .pipe(removeCode(removeCodeOptions))
         .pipe(gulp.dest( destination ));
     cb();
 });
@@ -166,7 +181,7 @@ gulp.task('styles-clean', function(cb) {
 gulp.task('php-template-copy', function(cb) {
 
     gulp.src([srcFolder + '/**/*.php'])
-        .pipe(newer( destination ))    // prevents function.php with new version info to be created...for now always copy all.
+        .pipe(newer( destination ))
         .pipe(removeCode(removeCodeOptions))
         .pipe(template({pkg: getPackageJson(), production}))
         .pipe(gulp.dest( destination ));
@@ -372,11 +387,11 @@ gulp.task('clean-all', ['images-clean'], function(cb) {
 
 /* DEPLOY TASKS
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
-
+const rsyncing = sftpConfig.send !== "true";
 
 var rsyncRemote = function() {
     return gulp.src([ destination + '/**'])
-        .pipe(rsync({
+        .pipe(gulpif(rsyncing, rsync({
             hostname: remote.hostname,
             //          destination: '~/public_html/wp-content/themes/' + themeName,
             //         destination: '~/staging/3/wp-content/themes/' + themeName,
@@ -389,7 +404,15 @@ var rsyncRemote = function() {
             recursive: true,
             //    clean: true,
             exclude: ['.git', '*.scss']
-        }));
+        })))
+        .pipe(gulpif(sftpConfig.send === "true", sftp( {
+            host: sftpConfig.hostname,
+            user: sftpConfig.username,
+            pass: sftpConfig.pw,
+            port: sftpConfig.port,
+            remotePath: sftpConfig.destination + themeName + '/',
+
+        })));
 
 };
 
@@ -417,7 +440,7 @@ gulp.task('bump-deploy-all', function(cb) {
 });
 
 gulp.task('deploy-all-clean', function(cb) {
-    runSequence('clean-theme', 'fonts', 'files-template-copy','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move',/* 'deploy-remote',*/ () => cb() );
+    runSequence('clean-theme', 'fonts', 'files-template-copy','php-all-tasks', 'js-all-tasks', 'styles-all-tasks', 'images-move', 'deploy-remote', () => cb() );
 });
 
 gulp.task('deploy-images', ['images-move'], rsyncRemote );
