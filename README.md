@@ -77,7 +77,20 @@ default task
 
 #### Deploy Tasks
 Uses `gulp-rsync` to sync `theme_dest` to remote server.  Best to have exchanged keys with
-remote server so no password has to be entered each time this is run.
+remote server so no password has to be entered each time this is run.  Configuration file is read in from filename defined in "remote" key
+of package.json.
+
+We are using rsync.json file.  Be sure to include this in your .gitignore file.  The format is
+```
+{
+ "send"      : true,
+ "hostname"  : "yourhostftpdomain.com",
+  "username"  : "username",
+  "port"      : 18763,
+ "destination" : "~/pathonhost"
+  }
+
+```
 
 `gulp-sftp` can also be used to sftp files up to host if rsync not available.
 
@@ -85,19 +98,21 @@ remote server so no password has to be entered each time this is run.
 etc.  By default it's called `rsync.json`.  This file name MUST be listed in your `.gitignore` file so it
 does not get saved in a public repo.
 
-`.ftppass.json` contains your sftp information if using sftp.  It should also be listed in your `.gitignore` file.  Its format is like this:
+`sftp.json` contains your sftp information if using sftp.  It should also be listed in your `.gitignore` file.  Its format is like this:
 
 ```$xslt
 {
-  "host": "ftp.hostname.com",
+  "send"  :  true,
+  "hostname": "ftp.hostname.com",
   "user": "yourusername",
   "pass": "yourpassword",
   "remotePath": "/public_html/wp-content/themes",
-  "ftpPort": "21",
-  "sftpPort": "18765"
+  "port": "18763"
 }
 ```
 > note: might need to create the initial theme folder via an ftp client for sftp to work.
+
+The `send` key in the files will determine which way to deploy either rsync or sftp.  Set one of them to true and one to false.
 
 #### Default and Watches
 Default task will run the 'deploy-all-clean' task that cleans the `theme_dest`, runs all the tasks to
@@ -389,6 +404,14 @@ true, all testing code is removed.  This gives you the option to only have some 
 ```
 > NOTE: Remember to restart the gulp process after changing any variables in the `gulpfile.js`
 
+### Vue js
+Vue looks promising and the ability to incorporate it into WordPress would be beneficial.  Added ability to create a javascript
+app using modules.  Instead of browserfy, we are using the notorious webpack..integrated using gulp streams.  Vue-loader and
+vue is installed.
+
+The root js app file is '/js/app/app.js'  This can be changed in `gulpfile.js/config/index.js`
+
+
 ### Event/Message Bus for javascript `theme_src/js/event-bus.js`
 
 Creates a global event/message bus that can be used throughout the life of the web page.  It also extends
@@ -409,8 +432,14 @@ Data can also be passed to the callback by passing in an array of arguments when
 
 Uses jQuery triggerHandler since no need for bubbling
 
-
+### Testing performance
+[Lighthouse](https://developers.google.com/web/tools/lighthouse/#devtools)
 ## Change Log
+
+### 2018-4-30
+  * Changing from one big monolithic gulpfile.js file to a gulpfile.js directory and the tasks split up.  Also optimized
+  some of the tasks and added ability to use webpack to compile a javascript app using modules..including using vue.js
+
 ### 2018-04-27
   * added gulp-if and gulp-sftp to be able to sftp to hosts where we cannot use certificates for Auth nor ssh access for rsync
 
