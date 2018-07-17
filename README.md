@@ -83,11 +83,11 @@ of package.json.
 We are using rsync.json file.  Be sure to include this in your .gitignore file.  The format is
 ```
 {
- "send"      : true,
+ "adtive"      : true,
  "hostname"  : "yourhostftpdomain.com",
   "username"  : "username",
   "port"      : 18763,
- "destination" : "~/pathonhost"
+ "destination" : "~/pathonhost/"
   }
 
 ```
@@ -102,7 +102,7 @@ does not get saved in a public repo.
 
 ```$xslt
 {
-  "send"  :  true,
+  "active"  :  true,
   "hostname": "ftp.hostname.com",
   "user": "yourusername",
   "pass": "yourpassword",
@@ -434,7 +434,21 @@ Uses jQuery triggerHandler since no need for bubbling
 
 ### Testing performance
 [Lighthouse](https://developers.google.com/web/tools/lighthouse/#devtools)
+
+### Gutenberg Notes
+Bill Erickson has a [great article](https://www.billerickson.net/getting-your-theme-ready-for-gutenberg/) on this.  So far most
+of the themes we build uses a modular type system using [ACF](https://www.advancedcustomfields.com/) and their Flexible Layout 
+Field.  Once Gutenberg is more finished and custom block creation finalized, we may move over to Gutenberg...unless ACF adds
+the ability to create custom blocks using their interface. It will be nice to have the ACF data in the post_content.
+
 ## Change Log
+
+### 2018-7-17
+  * Adding a bit of Gutenberg code for future.
+  
+### 2018-5-1
+  * Adding deploy-all task and adding to default
+  * fixing readme on rsync.json and sftp.json.. should be "active" and not "send"
 
 ### 2018-4-30
   * Changing from one big monolithic gulpfile.js file to a gulpfile.js directory and the tasks split up.  Also optimized

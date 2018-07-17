@@ -89,6 +89,10 @@ add_theme_support( 'custom-background' );
 //* Add support for post-thumbnails
 add_theme_support('post-thumbnails');
 
+//* Gutenberg wide images support - still need to add css to support
+
+add_theme_support( 'align-wide' );
+
 /* Add support for 3-column footer widgets
 add_theme_support( 'genesis-footer-widgets', 3 );
 

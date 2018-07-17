@@ -3,7 +3,7 @@ const gulpSequence = require('gulp-sequence');
 
 const defaultTask = (cb) => {
 
-    gulpSequence( 'build', 'watch', cb );
+    gulpSequence( 'build', 'deploy-all', 'watch', cb );
 
 };
 

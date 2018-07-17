@@ -1,6 +1,6 @@
 {
   "name": "genesis-starter",
-  "version": "1.0.3-102",
+  "version": "1.0.3-107",
   "description": "A child theme of the Genesis Framework for WordPress",
   "main": "gulpfile.js",
   "scripts": {
