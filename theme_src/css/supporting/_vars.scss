@@ -1,3 +1,75 @@
+/* Breakpoints
+-------------------------------------- */
+
+$screen-xs-min:                0px;
+$screen-sm-min:              576px;
+$screen-md-min:              768px;
+$screen-lg-min:              992px;
+$screen-xl-min:             1200px;
+
+
+$grid-breakpoints: (
+        xs: $screen-xs-min,
+        sm: $screen-sm-min,
+        md: $screen-md-min,
+        lg: $screen-lg-min,
+        xl: $screen-xl-min
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px
+);
+
+
+//Breakpoints for media queries
+
+$breakpoints: (
+        xs: $screen-xs-min,
+     phone: 320px,
+        sm: $screen-sm-min,
+        md: $screen-md-min,
+    tablet: 768px,
+        lg: $screen-lg-min,
+        xl: $screen-xl-min
+);
+
+
+/* Sizing
+----------------------------------------- */
+
+$max_screen_width: 1500px;
+
+
+/* Grid - Columns
+------------------------------------------ */
+
+$grid-columns:                12;
+$grid-gutter-width:           30px;
+
+
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px
+);
+
+
+/* margins
+------------------------------------- */
+
+$p_bottom_margin: 2.8rem;
+
+
 /* Colors
 ------------------------------------ */
 
@@ -39,26 +111,11 @@ $color-border-default: #dddddd;
 /* Typography
 ------------------------------------- */
 
+$global-font-size: 16px;
 $font-default: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 $line-height-default: 1.625;
 
 $font_mbempire_book: 'mb_empire_bookregular', sans-serif;
 
-$global-font-size: 16px;
 
 
-
-/* sizing
-------------------------------------- */
-
-$max_screen_width: 1500px;
-
-$screen-xs-min:              576px;
-$screen-sm-min:              768px;
-$screen-md-min:              992px;
-$screen-lg-min:             1200px;
-
-/* margins
-------------------------------------- */
-
-$p_bottom_margin: 2.8rem;

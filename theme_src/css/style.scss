@@ -14,8 +14,29 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 ------------------------------------------------------------ */
 @import "supporting/vars";
 
-
 @import "supporting/mixin";
+
+/* Include-media
+-------------------------------------------------------- */
+@import "supporting/include-media";
+
+
+/* Resets
+	- Baseline Normalize
+	- Box Sizing
+	- Float Clearing
+------------------------------------------------------------ */
+@import "supporting/resets";
+
+
+/* Typographical
+------------------------------------------------------------ */
+@import "supporting/typographical";
+
+
+/* Headings
+------------------------------------------------------------ */
+@import "supporting/headings";
 
 
 /*Genesis css

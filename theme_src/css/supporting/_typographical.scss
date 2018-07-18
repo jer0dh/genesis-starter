@@ -16,14 +16,9 @@
 --------------------------------------------- */
 
 html {
-  font-size: $global-font-size; //62.5%; /* 10px browser default */
+  font-size: $global-font-size;
 }
 
-/* Chrome fix - not sure if we need this anymore
-body > div {
-  font-size: 1.8rem;
-}
-*/
 
 body {
   background-color: $background-default;

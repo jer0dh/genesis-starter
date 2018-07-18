@@ -11,7 +11,7 @@ Here's a mixin from Web Designer Issue 266, 2017
  */
 
 /* create a map of default breakpoints */
-$breakpoints: (
+$grid-breakpoints: (
         xs: $screen-xs-min,
         sm: $screen-sm-min,
         md: $screen-md-min,
@@ -52,8 +52,8 @@ $global-font-size: 16px !default;
 
     @return to-em($value);
 
-  } @else if map-has_key($breakpoints, $value) {
-      $value: map_get($breakpoints, $value);
+  } @else if map-has_key($grid-breakpoints, $value) {
+      $value: map_get($grid-breakpoints, $value);
       @return to-em($value);
   } @else {
     @error "`#{$value}' doesn't exist in $breakpoints"
