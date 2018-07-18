@@ -39,6 +39,11 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 @import "supporting/headings";
 
 
+/*Bootstrap 4 css
+----------------------------------------------------------- */
+@import "supporting/bootstrap-cust";
+
+
 /* Objects and Gallery
 ------------------------------------------------------------ */
 @import "supporting/objectsAndGallery";
@@ -56,10 +61,6 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 /* Gutenberg styles
 ------------------------------------------------------------*/
 @import "supporting/gutenberg";
-
-/*Bootstrap 4 css
------------------------------------------------------------ */
-@import "supporting/bootstrap-grid";
 
 /* Responsive Nav
 ----------------------------------------------------------- */

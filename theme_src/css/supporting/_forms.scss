@@ -31,47 +31,63 @@ input[type="radio"] {
   opacity: 1;
 }
 
+
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
 .button {
-  background-color: $btn-default-bg;
-  border: 0;
+  background-color: map-get($theme-colors, 'primary');
   color: $btn-default-color;
   cursor: pointer;
   font-size: to-em(16px);
-  font-weight: 700;
-  padding: to-em(16px, 16px) to-em(24px, 16px);
-  width: auto;
-}
 
-button:hover,
-input:hover[type="button"],
-input:hover[type="reset"],
-input:hover[type="submit"],
-.button:hover,
-button:focus,
-input:focus[type="button"],
-input:focus[type="reset"],
-input:focus[type="submit"],
-.button:focus {
-  background-color: lighten($btn-default-bg, 30%);
-  color: $btn-default-color;
-}
-
-.entry-content .button:hover,
-.entry-content .button:focus {
-  color: $btn-default-color;
-}
-
-.button {
   display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+  &:hover,
+  &:focus {
+    background-color: lighten($btn-default-bg, 30%);
+    color: $btn-default-color;
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+    // Disabled comes first so active can properly restyle
+    &.disabled,
+    &:disabled {
+      opacity: $btn-disabled-opacity;
+      @include box-shadow(none);
+    }
+
+    // Opinionated: add "hand" cursor to non-disabled .btn elements
+    &:not(:disabled):not(.disabled) {
+      cursor: pointer;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      background-image: none;
+      @include box-shadow($btn-active-box-shadow);
+
+      &:focus {
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+      }
+    }
 }
+
 
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button {
   display: none;
 }
-
-//TODO add button mixin
