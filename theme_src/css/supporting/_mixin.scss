@@ -159,3 +159,15 @@ This is based on screen width 100vw.
   }
 }
 
+
+/* Placeholder
+Altered from: https://stackoverflow.com/questions/17181849/placeholder-mixin-scss-css
+--------------------------------------------- */
+
+@mixin placeholder() {
+   // &::placeholder                   {@content} - doubled the output of this mixin..even when changing name
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}
+}

@@ -39,6 +39,16 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 @import "supporting/headings";
 
 
+/* Objects and Gallery
+------------------------------------------------------------ */
+@import "supporting/objectsAndGallery";
+
+
+/* Forms
+------------------------------------------------------------ */
+@import "supporting/forms";
+
+
 /*Genesis css
 ----------------------------------------------------------- */
 @import "supporting/mf-genesis";

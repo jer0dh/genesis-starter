@@ -8,7 +8,6 @@ textarea {
   background-color: $background-default;
   border: 1px solid $color-border-default;
   color: $color-default;
-  font-size: 18px;
   font-size: to-em(18px);
   font-weight: 400;
   padding: to-em(16px, 18px);
@@ -27,13 +26,9 @@ input[type="radio"] {
   width: auto;
 }
 
-::-moz-placeholder {
+@include placeholder {
   color: $color-default;
   opacity: 1;
-}
-
-::-webkit-input-placeholder {
-  color: $color-default;
 }
 
 button,
@@ -45,7 +40,6 @@ input[type="submit"],
   border: 0;
   color: $btn-default-color;
   cursor: pointer;
-  font-size: 16px;
   font-size: to-em(16px);
   font-weight: 700;
   padding: to-em(16px, 16px) to-em(24px, 16px);
@@ -79,3 +73,5 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button {
   display: none;
 }
+
+//TODO add button mixin
