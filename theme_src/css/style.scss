@@ -44,6 +44,12 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 @import "supporting/bootstrap-cust";
 
 
+
+/* Tables and Screen Reader
+------------------------------------------------------------ */
+@import "supporting/tableAndScreenReader";
+
+
 /* Objects and Gallery
 ------------------------------------------------------------ */
 @import "supporting/objectsAndGallery";
