@@ -5,63 +5,55 @@
 /* ## Site Containers
 --------------------------------------------- */
 
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; //sticky footer;
+}
 
 .wrap {
   margin: 0 auto;
-
-  padding-left: 5%;
-  padding-right: 5%;
+  max-width: $max_screen_width;
+  padding-left: $wrap-padding;
+  padding-right: $wrap-padding;
 }
 
 .site-inner {
+  flex: 1 0 auto;  //grow if needed for sticky footer;  '0 auto' added as IE11 fix.
   clear: both;
   padding-top: to-em(60px);
 
 }
 
+/* # Content-Sidebar-Wrap structure
+* We have styles for full width or content-sidebar
+-------------------------------------------- */
 
-/* ## Column Widths and Positions
---------------------------------------------- */
+.content-sidebar-wrap {
+  display: flex;
+  flex-direction: column;
 
-/* ### Wrapping div for .content and .sidebar-primary */
+  & > aside {
+    padding-left: 0;
+  }
 
-.content-sidebar-sidebar .content-sidebar-wrap,
-.sidebar-content-sidebar .content-sidebar-wrap,
-.sidebar-sidebar-content .content-sidebar-wrap {
-  width: 100%;
- // width: to-em( 980px / 1200px * $max_screen_width );
 }
 
-/* ### Content */
+@include media('>tablet') {
+  .content-sidebar-wrap {
+    flex-direction: row;
 
-.content {
+    & > main {
+      flex: 1;  //grow if needed
+    }
 
-  width: 100%
-  //width: to-em( 780px / 1200px * $max_screen_width ) ;
-}
+    & > aside {  // sidebar
+      flex-basis: 25%;
+      padding-left: $sidebar-gutter;
 
-.content-sidebar-sidebar .content,
-.sidebar-content-sidebar .content,
-.sidebar-sidebar-content .content {
-  width: 100%;
-  //width: to-em( 580px / 1200px * $max_screen_width );
-}
-
-.full-width-content .content {
-  width: 100%;
-}
-
-/* ### Primary Sidebar */
-
-.sidebar-primary {
-  width: 100%;
- // width: to-em( 360px / 1200px * $max_screen_width );
+    }
+  }
 }
 
 
-/* ### Secondary Sidebar */
 
-.sidebar-secondary {
-  width: 100%;
- // width: to-em( 180px / 1200px * $max_screen_width );
-}

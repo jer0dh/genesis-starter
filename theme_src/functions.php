@@ -132,3 +132,20 @@ genesis_register_sidebar( array(
 	'description'   => 'This is a sidebar that will appear ...',
 ) );
  */
+
+/* Remove genesis layouts.  Leave full-width-content and content-sidebar.
+*/
+//* Remove sidebar/content layout
+genesis_unregister_layout( 'sidebar-content' );
+
+//* Remove content/sidebar/sidebar layout
+genesis_unregister_layout( 'content-sidebar-sidebar' );
+
+//* Remove sidebar/sidebar/content layout
+genesis_unregister_layout( 'sidebar-sidebar-content' );
+
+//* Remove sidebar/content/sidebar layout
+genesis_unregister_layout( 'sidebar-content-sidebar' );
+
+//* Set full-width content as the default layout
+genesis_set_default_layout( 'full-width-content' );

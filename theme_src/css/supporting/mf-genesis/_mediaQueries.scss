@@ -5,14 +5,6 @@
 
 @include mq($from: $screen-xs-min, $type: screen) { //576px
 
-  $sidespacing: 25px;
-
-  .wrap {
-   // max-width: to-em($screen-xs-min);
-    padding-left: to-em($sidespacing);
-    padding-right: to-em($sidespacing);
-
-  }
 
   .genesis-nav-menu a,
   .genesis-nav-menu > .first > a,
@@ -28,14 +20,6 @@
 
 @include mq($from: $screen-sm-min, $type: screen) { //768px
 
-  $sidespacing: 30px;
-
-  .wrap {
-
-    padding-left: to-em($sidespacing);
-    padding-right: to-em($sidespacing);
-
-  }
 
   .site-header .title-area {
     float: left;
@@ -65,67 +49,7 @@
 
 @include mq($from: $screen-md-min, $type: screen) { //992px
 
-  $sidespacing: 40px;
 
-  .wrap {
-    padding-left: to-em($sidespacing);
-    padding-right: to-em($sidespacing);
-
-  }
-
-  .content-sidebar-sidebar .content-sidebar-wrap,
-  .sidebar-content-sidebar .content-sidebar-wrap,
-  .sidebar-sidebar-content .content-sidebar-wrap {
-    width: 75%; //to-em( $screen-md-min - $sidespacing * 2);
-
-  }
-
-  .content-sidebar-sidebar .content-sidebar-wrap {
-    float: left;
-  }
-
-  .sidebar-content-sidebar .content-sidebar-wrap,
-  .sidebar-sidebar-content .content-sidebar-wrap {
-    float: right;
-  }
-
-  .content {
-    float: right;
-    width: 65%; //to-em( ($screen-md-min - $sidespacing * 2) * 0.6);
-    background-color: #ddd;
-  }
-  //.full-width .content  is already defined at 100% and will override above
-
-  .sidebar-content .sidebar-primary,
-  .sidebar-sidebar-content .sidebar-primary {
-    float: left;
-  }
-  .content-sidebar .content,
-  .content-sidebar-sidebar .content,
-  .sidebar-content-sidebar .content {
-    float: left;
-  }
-
-  .sidebar-content-sidebar .content,
-  .sidebar-sidebar-content .content,
-  .content-sidebar-sidebar .content {
-    width: 55%; //to-em( ($screen-md-min - $sidespacing * 2))
-  }
-
-  .sidebar-primary {
-    float: right;
-    width: 30%; //to-em( ($screen-md-min - $sidespacing * 2) * 0.4);
-    background-color: #aaa;
-  }
-  .sidebar-secondary {
-    float: left;
-    width: 25%;
-    background-color: #bbb;
-  }
-
-  .content-sidebar-sidebar .sidebar-secondary {
-    float: right;
-  }
 
   /* NAV */
 
@@ -159,26 +83,3 @@
 
 }
 
-$sidespacing: 40px;
-
-@include mq($from: $screen-lg-min, $type: screen) {  //1200px
-
-  .wrap {
-    padding-left: to-em($sidespacing);
-    padding-right: to-em($sidespacing);
-
-  }
-
-
-}
-
-
-@include mq($from: ($max_screen_width + 2 * $sidespacing) , $type: screen) {
-
-  .wrap {
-    max-width: $max_screen_width;
-    padding-left: 0;
-    padding-right: 0;
-
-  }
-}
