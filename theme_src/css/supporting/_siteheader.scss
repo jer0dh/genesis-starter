@@ -3,13 +3,13 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-  min-height: 160px;
+  min-height: $site-header-min-height;
   border-bottom: 1px solid $color-border-default;
 }
 
 .site-header .wrap {
-  padding-top: to-em(20px);
-  padding-bottom: to-em(20px);
+  padding-top: $site-header-padding-top;
+  padding-bottom: $site-header-padding-bottom;
 }
 
 /* ## Title Area
@@ -25,7 +25,6 @@
 }
 
 .site-title {
-  font-size: 30px;
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.2;
@@ -35,12 +34,11 @@
   background: url(images/logo.png) no-repeat left;
   background-position: center top;
 
-  min-height: 60px;
+  min-height: $header-image-min-height;
   width: 100%;
 }
 
 .site-description {
-  font-size: 16px;
   font-size: 1.6rem;
   font-weight: 300;
   line-height: 1.5;

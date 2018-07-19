@@ -46,8 +46,15 @@ $breakpoints: (
 
 $max_screen_width: 1500px;
 $wrap-padding: 40px;
+
+$site-header-min-height: to-em(160px);
+$site-header-padding-top: to-em(20px);
+$site-header-padding-bottom: to-em(20px);
+
+$header-image-min-height: to-em(60px);
 $sidebar-gutter: 20px;
 
+$main-margin-bottom: to-em(60px);
 
 /* Grid - Columns
 ------------------------------------------ */

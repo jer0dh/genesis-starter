@@ -1,0 +1,21 @@
+
+/* # Sidebars
+---------------------------------------------------------------------------------------------------- */
+
+.sidebar {
+  font-size: 1rem;
+
+  li {
+    margin-bottom: to-em(10px);
+    padding-bottom: to-em(10px);
+  }
+
+  p:last-child,
+  ul > li:last-child {
+    margin-bottom: 0;
+  }
+
+  .widget {
+    margin-bottom: $main-margin-bottom;
+  }
+}

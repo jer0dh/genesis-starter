@@ -1,0 +1,92 @@
+
+/* # Site Navigation
+---------------------------------------------------------------------------------------------------- */
+
+.genesis-nav-menu {
+  clear: both;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  width: 100%;
+
+  .menu-item {
+    display: inline-block;
+    text-align: left;
+  }
+
+  a {
+    color: $color-anchor-default;
+    text-decoration: none;
+    display: block;
+    padding: to-em(32px) to-em(20px);
+  }
+
+  a:hover,
+  a:focus,
+  .current-menu-item > a,
+  .sub-menu .current-menu-item > a:hover,
+  .sub-menu .current-menu-item > a:focus {
+    color: lighten($color-anchor-default, 30%);
+    text-decoration: underline;
+  }
+
+  .sub-menu {
+
+    position: static;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -ms-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+
+    z-index: 99;
+  }
+
+  .sub-menu a {
+    background-color: $background-default;
+
+    font-size: 1rem;
+    padding: to-em(20px);
+    position: relative;
+    word-wrap: break-word;
+  }
+
+  .sub-menu .sub-menu {
+    margin: to-em(-56px) 0 0 to-em(209px);
+  }
+
+  & > .first > a {
+    padding-left: 0;
+  }
+
+  & > .last > a {
+    padding-right: 0;
+  }
+}
+/* ## Accessible Menu
+--------------------------------------------- */
+
+.menu .menu-item:focus {
+  position: static;
+}
+
+.menu .menu-item > a:focus + ul.sub-menu,
+.menu .menu-item.sfHover > ul.sub-menu {
+  left: auto;
+  opacity: 1;
+}
+
+/* ## Site Header Navigation
+--------------------------------------------- */
+
+.site-header .genesis-nav-menu li li {
+  margin-left: 0;
+}
+
+/* ## Primary and Secondary Navigation
+--------------------------------------------- */
+
+.nav-primary,
+.nav-secondary {
+  border-bottom: 1px solid $color-border-default;
+}

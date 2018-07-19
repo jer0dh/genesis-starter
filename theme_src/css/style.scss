@@ -50,14 +50,97 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 @import "supporting/tableAndScreenReader";
 
 
-/* Objects and Gallery
+/* Structure and Layouts
+	- Site Containers
+
 ------------------------------------------------------------ */
-@import "supporting/objectsAndGallery";
+@import "supporting/structureAndLayout";
+
 
 
 /* Forms
 ------------------------------------------------------------ */
 @import "supporting/forms";
+
+
+
+/* Objects and Gallery
+------------------------------------------------------------ */
+@import "supporting/objectsAndGallery";
+
+
+/* Common Classes
+	- Avatar
+	- Genesis
+	- Search Form
+	- Titles
+	- WordPress
+------------------------------------------------------------ */
+@import "supporting/commonClasses";
+
+
+
+/* Widgets
+	- Featured Content
+------------------------------------------------------------ */
+@import "supporting/widgets";
+
+
+
+/* Plugins and Skip Links
+- Plugins
+	- Genesis eNews Extended
+	- Jetpack
+- Skip Links
+------------------------------------------------------------ */
+@import "supporting/pluginsAndSkipLinks";
+
+
+
+/* Site-Header
+	- Title Area
+	- Widget Area
+------------------------------------------------------------ */
+@import "supporting/siteheader";
+
+
+
+
+/* Site Navigation
+	- Accessible Menu
+	- Site Header Navigation
+	- Primary and Secondary Navigation
+------------------------------------------------------------ */
+@import "supporting/nav";
+
+
+
+/* Content Area
+	- Entries
+	- Entry Meta
+	- Pagination
+	- Comments
+------------------------------------------------------------ */
+@import "supporting/contentArea";
+
+
+
+
+/* Sidebars
+------------------------------------------------------------ */
+@import "supporting/sidebars";
+
+
+/* Site Footer
+------------------------------------------------------------ */
+@import "supporting/sitefooter";
+
+
+
+/* Media Queries
+------------------------------------------------------------ */
+@import "supporting/mediaQueries";
+
 
 
 /*Genesis css
