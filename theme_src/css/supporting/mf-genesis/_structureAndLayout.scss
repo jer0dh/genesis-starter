@@ -54,6 +54,30 @@
     }
   }
 }
+/* # Full width container - allow background to move outside of wrap
+--------------------------------------------------------------------- */
 
+// Fix for scrollbar - .wrap within a .full-width container and a .wrap outside would not line up if the vert scrollbar was present
+// determined vw is calculated including the scrollbar width.  Adding this margin to html fixes that
+html { margin-left: calc(100% - 100vw); }
 
+.full-width {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: auto;
+  max-width: 1000%;
+}
 
+// if sidebar then cannot use full-width on screens > tablet
+@include media('>tablet') {
+  .content-sidebar .full-width {
+    margin-left: inherit;
+    margin-right: inherit;
+    width: 100%;
+
+    & > .wrap {
+      padding-right: inherit;
+      padding-left: inherit;
+    }
+  }
+}
