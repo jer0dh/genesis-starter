@@ -105,13 +105,17 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 
 
 
-
 /* Site Navigation
 	- Accessible Menu
 	- Site Header Navigation
 	- Primary and Secondary Navigation
 ------------------------------------------------------------ */
 @import "supporting/nav";
+
+
+/* Responsive Nav
+----------------------------------------------------------- */
+@import "supporting/nav_responsive";
 
 
 
@@ -143,21 +147,21 @@ NOTE: to override bootstrap vars, don't include the !default when assigning valu
 
 
 
-/*Genesis css
------------------------------------------------------------ */
-@import "supporting/mf-genesis";
-
 /* Gutenberg styles
 ------------------------------------------------------------*/
 @import "supporting/gutenberg";
 
-/* Responsive Nav
------------------------------------------------------------ */
-@import "supporting/nav_responsive";
+
 
 /* Sticky Nav
 ------------------------------------------------------------ */
 @import "supporting/nav-sticky";
+
+
+/* Genesis Base
+------------------------------------------------------------ */
+@import "supporting/printStyles";
+
 
 
 /* Bootstrap css

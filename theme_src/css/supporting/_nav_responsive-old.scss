@@ -1,0 +1,155 @@
+/* Responsive Menu */
+
+button {
+
+  &.menu-toggle {
+    display: block;
+    visibility: visible;
+    float: right;
+    background: none;
+    padding:0;
+    overflow: hidden;
+    width: 50px;
+    height: 50px;
+    position: relative;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:before {
+      position: absolute;
+      color: #1a1a1a;
+      top: 1rem;
+      right: 1.2rem;
+      display: inline-block;
+      font-size: 3rem;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+
+    &.activated::before {
+      content: "\f158";
+      right: 1.5rem;
+    }
+  }
+
+  &.sub-menu-toggle {
+    display: block;
+    visibility: visible;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: transparent;
+    padding: 0 1.25rem 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:before {
+      color: #1a1a1a;
+      font-size: 16px;
+      padding: 14px 5px 14px;
+      cursor: pointer;
+    }
+
+    &.activated:before {
+      -moz-transform: rotate(-90deg);
+      -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+    }
+
+  }
+
+
+}
+//,.nav-primary .genesis-nav-menu li:hover
+
+.nav-primary,
+.nav-primary .sub-menu,
+.nav-secondary,
+.nav-secondary .sub-menu {
+  width: 100%;
+  display: none;
+}
+.nav-primary .genesis-nav-menu li,.nav-primary .genesis-nav-menu li:hover {
+  width: 100%;
+  position: relative;
+}
+
+.nav-primary .genesis-nav-menu > li:first-child {
+  margin-top: 20px;
+}
+
+.nav-primary .genesis-nav-menu li .sub-menu {
+  margin: 0 0 0 24px;
+  width: calc( 100% - 24px );
+}
+
+.nav-primary .genesis-nav-menu a {
+  margin: 0 4rem 0 0;
+  padding: 1rem 0;
+}
+
+
+
+@include media('>md') {
+  button {
+    &.sub-menu-toggle,
+    &.menu-toggle {
+      display: none;
+      visibility: hidden;
+      background: transparent !important;
+      color: transparent;
+    }
+  }
+
+  .nav-primary,
+  .nav-primary .sub-menu,
+  .nav-secondary,
+  .nav-secondary .sub-menu {
+    display: block;
+    width: auto;
+  }
+
+  .nav-primary .genesis-nav-menu li,
+  .nav-primary .genesis-nav-menu li:hover {
+    width: auto;
+  }
+
+
+  .nav-primary {
+    text-align: right;
+  }
+
+  .bg-primary .nav-primary {
+    padding-bottom: 22px;
+  }
+
+  .nav-primary .genesis-nav-menu > li > a {
+    margin: 0 0 0 24px;
+    padding: 3rem 0;
+  }
+
+  .nav-primary .genesis-nav-menu > li.left {
+    float: left;
+  }
+
+  .nav-primary .genesis-nav-menu > li.menu-item-has-children > a:after {
+    top: 18px;
+  }
+}
+
+
+@media only screen and (min-width: 1100px) {
+
+  .nav-primary .genesis-nav-menu > li > a {
+    margin: -2px 0 0 36px;
+  }
+}

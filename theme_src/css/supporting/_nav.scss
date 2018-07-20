@@ -90,3 +90,40 @@
 .nav-secondary {
   border-bottom: 1px solid $color-border-default;
 }
+
+
+@include media('>md') { //992px
+
+
+
+  /* NAV */
+
+  .genesis-nav-menu .sub-menu {
+    position: absolute;
+    width: to-em(210px, $global-font-size);
+    border-top: 1px solid $color-border-default;
+  }
+  .genesis-nav-menu .sub-menu {
+
+    left: -9999px;
+    opacity: 0;
+  }
+
+  .genesis-nav-menu .sub-menu a {
+    border: 1px solid $color-border-default;
+    border-top: 0;
+    width: to-em(210px);
+  }
+
+  .genesis-nav-menu .menu-item:hover {
+    position: static;
+  }
+
+
+  .genesis-nav-menu .menu-item:hover > .sub-menu {
+    left: auto;
+    opacity: 1;
+  }
+
+
+}
