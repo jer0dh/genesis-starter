@@ -66,7 +66,6 @@
   "themeDestFolder": "theme_dest",
   "jsConcatenatedVendorScripts": [
     "theme_src/js/vendor/debounce.js",
-    "theme_src/js/vendor/sticky.js",
     "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
   ],
   "jsConcatenatedScriptsName": "scripts.js",

@@ -5,13 +5,15 @@
 
     $('document').ready(function() {
 
-        /* Sticky NAV code
-        --------------------------------------------------------------------
-         */
 
         //removeIf(production)
         console.log( 'starting scripts.js');
         //endRemoveIf(production)
+
+
+        /* Sticky NAV code
+        --------------------------------------------------------------------
+
 
        $('.site-header').sticky({
             responsiveWidth: true,
@@ -26,7 +28,7 @@
 
         window.addEventListener('resize', updateSticky);
 
-        /* END Sticky NAV code
+         END Sticky NAV code
         -----------------------------------------------------------------------
          */
 

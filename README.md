@@ -443,6 +443,9 @@ the ability to create custom blocks using their interface. It will be nice to ha
 
 ## Change Log
 
+### 2018-7-20
+  * rearranging css, optimizing.
+
 ### 2018-7-17
   * Adding a bit of Gutenberg code for future.
   
