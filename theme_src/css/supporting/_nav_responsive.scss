@@ -8,7 +8,7 @@ button.menu-toggle {
   color: transparent;
 }
 
-@media only screen and (max-width: 800px) {
+@include media('<md') {
 
   button.sub-menu-toggle,
   button.menu-toggle {
@@ -30,8 +30,8 @@ button.menu-toggle {
     background: none;
     padding:0;
     overflow: hidden;
-    width: 50px;
-    height: 50px;
+    width: 3rem;
+    height: 3rem;
     position: relative;
   }
 
@@ -47,12 +47,14 @@ button.menu-toggle {
   button.menu-toggle:before {
     position: absolute;
     color: #1a1a1a;
-    top: 1rem;
-    right: 1.2rem;
+    top: 0;
+    left:0;
     display: inline-block;
     font-size: 3rem;
     margin: 0 auto;
     padding: 0;
+    width: 3rem;
+    height: 3rem;
   }
 
   button.menu-toggle.activated::before {

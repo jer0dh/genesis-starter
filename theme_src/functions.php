@@ -149,3 +149,7 @@ genesis_unregister_layout( 'sidebar-content-sidebar' );
 
 //* Set full-width content as the default layout
 genesis_set_default_layout( 'full-width-content' );
+
+//* Moving Nav to header
+remove_action('genesis_after_header', 'genesis_do_nav' );
+add_action( 'genesis_header', 'genesis_do_nav', 11 );

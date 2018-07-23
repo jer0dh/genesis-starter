@@ -441,6 +441,13 @@ of the themes we build uses a modular type system using [ACF](https://www.advanc
 Field.  Once Gutenberg is more finished and custom block creation finalized, we may move over to Gutenberg...unless ACF adds
 the ability to create custom blocks using their interface. It will be nice to have the ACF data in the post_content.
 
+### Element scrolled into view
+  * Couple of functions found [here](https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling)
+  * [ScrollMagic](http://scrollmagic.io/)
+  * ScrollReveal.js
+  * [Waypoints.js](http://imakewebthings.com/waypoints/guides/getting-started/)
+  * jQuery AniView
+
 ## Change Log
 
 ### 2018-7-20

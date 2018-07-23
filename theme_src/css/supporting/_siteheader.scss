@@ -5,12 +5,34 @@
 .site-header {
   min-height: $site-header-min-height;
   border-bottom: 1px solid $color-border-default;
+
 }
 
 .site-header .wrap {
+  position: relative;
   padding-top: $site-header-padding-top;
   padding-bottom: $site-header-padding-bottom;
+  display: flex;
+  flex-direction: column;
+
+  &:before, &:after {
+    display: none;
+  }
+
+  .menu-toggle {
+    position: absolute;
+    top: 0;
+    right: 3rem;
+  }
+
+  @include media('>md') {
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+
 }
+
 
 /* ## Title Area
 --------------------------------------------- */
@@ -20,9 +42,7 @@
 
 }
 
-.header-full-width .title-area {
-  width: 100%;
-}
+
 
 .site-title {
   font-size: 3rem;
