@@ -59,6 +59,8 @@
 
 // Fix for scrollbar - .wrap within a .full-width container and a .wrap outside would not line up if the vert scrollbar was present
 // determined vw is calculated including the scrollbar width.  Adding this margin to html fixes that
+// Update: this breaks when using sticky elements (fixed).
+
 html { margin-left: calc(100% - 100vw); }
 
 .full-width {

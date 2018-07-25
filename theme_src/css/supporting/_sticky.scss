@@ -1,0 +1,17 @@
+.stuck {
+  position: fixed;
+  width: 100%;
+  left: calc( (100% - 100vw) / 2 );
+  /**
+   The css of 'html { margin-left: calc( 100% - 100vw); }' to prevent shifting due to scrollbar causes a fixed element to shift a bit when it is wrapped
+   */
+
+
+  &.sticky-wrap {
+    margin: 0 auto;
+    max-width: $max_screen_width;
+    padding-left: $wrap-padding;
+    padding-right: $wrap-padding;
+  }
+}
+

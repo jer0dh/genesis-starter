@@ -83,14 +83,6 @@
   margin-left: 0;
 }
 
-/* ## Primary and Secondary Navigation
---------------------------------------------- */
-
-.nav-primary,
-.nav-secondary {
-  border-bottom: 1px solid $color-border-default;
-}
-
 
 @include media('>md') { //992px
 
