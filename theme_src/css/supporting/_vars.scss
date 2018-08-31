@@ -36,6 +36,7 @@ $breakpoints: (
         sm: $screen-sm-min,
         md: $screen-md-min,
     tablet: 768px,
+        mobileMenu: 950px,
         lg: $screen-lg-min,
         xl: $screen-xl-min
 );
@@ -55,6 +56,10 @@ $header-image-min-height: to-em(60px);
 $sidebar-gutter: 20px;
 
 $main-margin-bottom: to-em(60px);
+
+
+$section-tb-padding: 70px;
+
 
 /* Grid - Columns
 ------------------------------------------ */
@@ -167,6 +172,23 @@ $color-anchor-default: $blue;
 $color-border-default: #dddddd;
 
 
+
+/*
+  Buttons
+  -------------------------------------------------------- */
+
+$btn-default-color:           $white;
+$btn-default-bg:               $blue;
+$btn-padding-y:               0.6rem;
+$btn-padding-x:               1rem;
+$btn-line-height:             1.5;
+
+$btn-font-weight:             300;
+$btn-box-shadow:              none;
+$btn-border-width:            1px;
+$btn-border-radius:           0;
+$btn-transition:              all .3s ease-in-out;
+$btn-border-width:            1px;
 
 /* Typography
 ------------------------------------- */

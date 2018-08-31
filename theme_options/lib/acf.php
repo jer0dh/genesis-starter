@@ -9,21 +9,23 @@
 //add_filter('acf/settings/show_admin', '__return_false');
 
 
-/* adding more security to ACF fields by sanitizing input */
+/* adding a little more security to ACF fields by sanitizing input */
+/* not sanitizing input whose field name contains 'raw_html' */
 /* from: http://www.advancedcustomfields.com/resources/acf_form/#security */
-add_filter('acf/update_value', 'gtl_kses_post', 10, 1);
-function gtl_kses_post( $value ) {
+add_filter( 'acf/update_value', 'ssp_kses_post', 10, 3 );
+function ssp_kses_post( $value, $post_id = null, $field = null ) {
 
-	// is array
-	if( is_array($value) ) {
 
-		return array_map('gtl_kses_post', $value);
-
+	if ( isset( $field ) && strpos( $field['name'], 'raw_html' ) > - 1 ) {
+		return $value;
 	}
+	if ( ! is_array( $value ) ) {
 
-	// return
 	return wp_kses_post( $value );
 
+	} else {
+		return $value;
+	}
 }
 
 
@@ -49,7 +51,29 @@ function get_the_sub_field_without_wpautop( $field_name ) {
 // add Theme options page using ACF
 if( function_exists('acf_add_options_page') ) {
 
-	acf_add_options_page('Theme Settings');
+	acf_add_options_page( array(
+		'page_title' => 'Theme Settings',
+		'menu_title' => 'Theme Settings',
+		'menu_slug'  => 'theme-settings',
+		'capability' => 'edit_posts',
+		'redirect'   => true
+	) );
+	acf_add_options_sub_page( array(
+		'page_title'  => 'General Settings',
+		'menu_title'  => 'General Settings',
+		'parent_slug' => 'theme-settings'
+	) );
+	acf_add_options_sub_page( array(
+		'page_title'  => 'Site Wide Banners',
+		'menu_title'  => 'Site Wide Banners',
+		'parent_slug' => 'theme-settings'
+	) );
+	acf_add_options_sub_page( array(
+		'page_title'  => 'Social Media',
+		'menu_title'  => 'Social Media',
+		'parent_slug' => 'theme-settings'
+	) );
+
 }
 
 // BEGIN Code to add titles to flex layout on backend
@@ -76,11 +100,57 @@ function acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 	} elseif( $layout['name'] === 'basic_content' && $content = get_sub_field('content')) {
 
 		$title .= ' - ' . wp_strip_all_tags(substr($content, 0,40)) . '...';
+	}  elseif ( $layout['name'] === 'generic_block' && $content = get_sub_field( 'content' ) ) {
+
+		$title .= ' - <span>' . wp_strip_all_tags( substr( $content, 0, 60 ) ) . '...</span>';
+
+	} elseif ( $layout['name'] === 'site_wide_banner' && $content = get_sub_field( 'site_wide_banner' ) ) {
+
+		$title .= ' - <span>' . wp_strip_all_tags( $content['label'] ) . '</span>';
 	}
 
 	return $title;
 
 }
+
+function ssp_load_background_field_choices( $field ) {
+
+	// reset choices
+	$field['choices'] = array();
+
+
+	// if has rows
+	if ( have_rows( 'theme_backgrounds', 'option' ) ) {
+
+		// while has rows
+		while ( have_rows( 'theme_backgrounds', 'option' ) ) {
+
+			// instantiate row
+			the_row();
+
+
+			// vars
+			$value = get_sub_field( 'class' );
+			$label = get_sub_field( 'name' );
+
+
+			// append to choices
+			$field['choices'][ $value ] = $label;
+
+		}
+
+	}
+
+
+	return $field;
+
+}
+
+// For each select name (must be unique) add a filter
+add_filter( 'acf/load_field/name=3c_background_select', 'ssp_load_background_field_choices' );
+add_filter( 'acf/load_field/name=swb1_background_select', 'ssp_load_background_field_choices' );
+add_filter( 'acf/load_field/name=swb2_background_select', 'ssp_load_background_field_choices' );
+
 
 // END Code to add titles to flex layout on backend
 

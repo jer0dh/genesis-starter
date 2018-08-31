@@ -8,7 +8,9 @@ button.menu-toggle {
   color: transparent;
 }
 
-@include media('<md') {
+
+
+@include media('<mobileMenu') {
 
   button.sub-menu-toggle,
   button.menu-toggle {

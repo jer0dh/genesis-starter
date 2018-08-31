@@ -1,7 +1,17 @@
 
 /* # Structure and Layout
 ---------------------------------------------------------------------------------------------------- */
+/* ## prevent horizontal scroll
+------------------------------------------------ */
+html {
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
+body {
+  overflow-x: hidden;
+}
 /* ## Site Containers
 --------------------------------------------- */
 
