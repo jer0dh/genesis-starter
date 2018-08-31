@@ -451,6 +451,14 @@ the ability to create custom blocks using their interface. It will be nice to ha
 
 ## Change Log
 
+### 2018-8-31
+  * Adding sample section template-parts when creating modules using ACF
+  * Adding optional javascript code for responsive background images, and section load with scrolled in view.
+  * Added php functions for help in responsive background images
+  * Added svg Sprite gulp task
+  * Added to the acf backend styling
+  * Adding aria-label to responsive menu buttons
+
 ### 2018-7-20
   * rearranging css, optimizing.
 
