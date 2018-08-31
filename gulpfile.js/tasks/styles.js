@@ -16,7 +16,7 @@ const deployRemote = require('../lib/deployRemote');
  * Sass Minify - copies minified css version of /css/sass/*.scss
  */
 gulp.task('styles-sass-min', function () {
-    return gulp.src( config.srcFolder + '/css/*.scss')
+    return gulp.src( config.srcFolder + '/css/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'compressed', sourceMap: true}).on('error', sass.logError))
         .pipe(autoprefixer({}))  // browsers: ['last 4 versions']
@@ -24,7 +24,7 @@ gulp.task('styles-sass-min', function () {
             path.extname = '.min.css'
         }))
 
-        .pipe(sourcemaps.write('./maps'))
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest( config.destination + '/css'));
 });
 

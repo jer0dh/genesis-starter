@@ -56,6 +56,7 @@ config.doNotCopyList = [
     '!' + config.srcFolder + '/js/**/*.*',
     '!' + config.srcFolder + '/**/*.scss',
     '!' + config.srcFolder + '/**/*.php',
+    '!' + config.srcFolder + '/svg*/**/*.*'
 ];
 
 config.jsConcatenatedScriptsName = pkg.jsConcatenatedScriptsName;
@@ -74,5 +75,43 @@ config.negatedAllConcatenatedScripts = config.negatedConcatenatedScripts.concat(
 
 config.jsAppPath = `${config.srcFolder}/js/app`;
 config.jsAppScript = 'app.js';
+
+
+/**
+ * svgSprite Config
+ */
+
+config.svgSrc = 'svg/src/**/*.svg';
+config.svgDest = 'svg/dest';
+config.svgConfig = {
+    shape: {
+        dimension: { // Set maximum dimensions
+            maxWidth: 32,
+            maxHeight: 32
+        },
+        spacing: { // Add padding
+            padding: 2
+        },
+        transform: ['svgo'],
+        dest: config.svgDest + '/intermediate-svg' // Keep the intermediate files
+    },
+    mode: {
+        inline: true,
+        view: { // Activate the «view» mode
+            bust: false,
+            render: {
+                scss: true // Activate Sass output (with default options)
+            }
+        },
+        symbol: {
+            inline: true
+        } // Activate the «symbol» mode
+    },
+
+    svg: {
+        xmlDeclaration: false,
+        doctypeDeclaration: false
+    }
+};
 
 module.exports = config;

@@ -444,6 +444,7 @@ the ability to create custom blocks using their interface. It will be nice to ha
 ### Element scrolled into view
   * Couple of functions found [here](https://stackoverflow.com/questions/487073/check-if-element-is-visible-after-scrolling)
   * [ScrollMagic](http://scrollmagic.io/)
+      Good article: https://ihatetomatoes.net/svg-scrolling-animation-triggered-scrollmagic/
   * ScrollReveal.js
   * [Waypoints.js](http://imakewebthings.com/waypoints/guides/getting-started/)
   * jQuery AniView
