@@ -37,7 +37,7 @@ gulp.task('build', function(cb) {
         'js-concat-scripts',
 
         // Use webpack to package in module javascript
-        'js-app',
+        //'js-app',
 
         // Copy all other files to destination
         'files-template-copy',

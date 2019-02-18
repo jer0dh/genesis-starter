@@ -18,7 +18,7 @@ const deployRemote = (src, dest) => {
                 incremental: true,
                 progress: true,
                 recursive: true,
-                //    clean: true,
+                clean: true,
                 exclude: ['.git', '*.scss']
             }))
     }
@@ -33,6 +33,8 @@ const deployRemote = (src, dest) => {
                 remotePath: config.sftp.remotePath + config.themeName + '/' + dest,
             }));
     }
+
+    console.log('Did not deploy');
 };
 
 module.exports = deployRemote;

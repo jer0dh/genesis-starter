@@ -94,7 +94,50 @@ add_theme_support('post-thumbnails');
 add_theme_support( 'align-wide' );
 
 /* Add support for 3-column footer widgets
-add_theme_support( 'genesis-footer-widgets', 3 );
+add_theme_support( 'genesis-footer-widgets', 3 ); */
+
+
+if( ! class_exists('acf') ) {
+	// show message to dashboard that ACF plugin is required
+	add_action( 'admin_notices',  'gs_plugin_ACF_not_loaded' );
+
+} else {
+
+//* Load ACF functions
+	require_once( get_stylesheet_directory() . '/lib/acf.php' );
+}
+
+//* Load Ajax functions
+	require_once( get_stylesheet_directory() . '/lib/ajax.php' );
+
+//* Load Image functions
+	require_once( get_stylesheet_directory() . '/lib/image_functions.php' );
+
+//* Load Footer functions
+	require_once( get_stylesheet_directory() . '/lib/footer.php' );
+
+//* Load shortcode functions
+	require_once( get_stylesheet_directory() . '/lib/shortcodes.php' );
+
+//* Load helper functions
+	require_once( get_stylesheet_directory() . '/lib/helper_functions.php' );
+
+//* Load to alter blog / archive / single pages
+	require_once( get_stylesheet_directory() . '/lib/blog_category_archive_single_post.php' );
+
+//* Load woocommerce helpers for course registration
+	require_once( get_stylesheet_directory() . '/lib/woocommerce-helpers.php' );
+
+//* Load woocommerce hooks for courses/shop page
+	require_once( get_stylesheet_directory() . '/lib/woocommerce-courses-page.php' );
+
+
+
+
+function gs_plugin_ACF_not_loaded() {
+	printf( '<div class="error"><p>%s</p></div>', __( 'This theme REQUIRES the Advanced Custom Fields plugin and it is not loaded' ) );
+}
+
 
 
 // change default footer and add ACF fields that should be configured in theme settings
@@ -113,7 +156,6 @@ function gtl_do_footer(){
 
 }
 
-*/
 
 add_theme_support( 'genesis-structural-wraps', array(
 	 'header',
@@ -124,7 +166,7 @@ add_theme_support( 'genesis-structural-wraps', array(
 	'footer',
 	) );
 
-/*
+
 /* add sidebar
 genesis_register_sidebar( array(
 	'id'        => 'sidebar-name',

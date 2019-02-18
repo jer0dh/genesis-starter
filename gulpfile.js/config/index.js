@@ -52,7 +52,7 @@ config.themeBackups = 'theme_backup';
 
 config.doNotCopyList = [
     '!' + config.srcFolder + '/css/**/*.*',
-    '!' + config.srcFolder + '/images/**/*.*',
+  //  '!' + config.srcFolder + '/images/**/*.*',
     '!' + config.srcFolder + '/js/**/*.*',
     '!' + config.srcFolder + '/**/*.scss',
     '!' + config.srcFolder + '/**/*.php',
